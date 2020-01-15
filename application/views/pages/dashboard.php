@@ -1,677 +1,551 @@
-<div class="right_col" role="main">
-    <!-- top tiles -->
-    <div class="row" style="display: inline-block;">
-        <div class="tile_count">
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-                <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
-                <div class="count">2500</div>
-                <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+<section class="content">
+    <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3><?= $total_merchant?></h3>
+
+                        <p>Merchant</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-card"></i>
+                    </div>
+                    <a href="<?= base_url('merchant')?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
             </div>
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-                <span class="count_top"><i class="fa fa-clock-o"></i> Average Time</span>
-                <div class="count">123.50</div>
-                <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3><?= $total_supplier?></h3>
+
+                        <p>Supplier</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+                    <a href="<?= base_url('supplier')?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
             </div>
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-                <span class="count_top"><i class="fa fa-user"></i> Total Males</span>
-                <div class="count green">2,500</div>
-                <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3><?= $total_user?></h3>
+
+                        <p>User</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person"></i>
+                    </div>
+                    <a href="<?= base_url('users')?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
             </div>
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-                <span class="count_top"><i class="fa fa-user"></i> Total Females</span>
-                <div class="count">4,567</div>
-                <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3><?= $total_pelanggan?></h3>
+
+                        <p>Pelanggan</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-pie-graph"></i>
+                    </div>
+                    <a href="<?= base_url('pelanggan')?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
             </div>
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-                <span class="count_top"><i class="fa fa-user"></i> Total Collections</span>
-                <div class="count">2,315</div>
-                <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-                <span class="count_top"><i class="fa fa-user"></i> Total Connections</span>
-                <div class="count">7,325</div>
-                <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
-            </div>
+            <!-- ./col -->
         </div>
-    </div>
-    <!-- /top tiles -->
-
-    <div class="row">
-        <div class="col-md-12 col-sm-12 ">
-            <div class="dashboard_graph">
-
-                <div class="row x_title">
-                    <div class="col-md-6">
-                        <h3>Network Activities <small>Graph title sub-title</small></h3>
-                    </div>
-                    <div class="col-md-6">
-                        <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                            <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-9 col-sm-9 ">
-                    <div id="chart_plot_01" class="demo-placeholder"></div>
-                </div>
-                <div class="col-md-3 col-sm-3  bg-white">
-                    <div class="x_title">
-                        <h2>Top Campaign Performance</h2>
-                        <div class="clearfix"></div>
-                    </div>
-
-                    <div class="col-md-12 col-sm-12 ">
-                        <div>
-                            <p>Facebook Campaign</p>
-                            <div class="">
-                                <div class="progress progress_sm" style="width: 76%;">
-                                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="80"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <p>Twitter Campaign</p>
-                            <div class="">
-                                <div class="progress progress_sm" style="width: 76%;">
-                                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-sm-12 ">
-                        <div>
-                            <p>Conventional Media</p>
-                            <div class="">
-                                <div class="progress progress_sm" style="width: 76%;">
-                                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="40"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <p>Bill boards</p>
-                            <div class="">
-                                <div class="progress progress_sm" style="width: 76%;">
-                                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="clearfix"></div>
-            </div>
-        </div>
-
-    </div>
-    <br />
-
-    <div class="row">
-        <div class="col-md-4 col-sm-4 ">
-            <div class="x_panel tile fixed_height_320">
-                <div class="x_title">
-                    <h2>App Versions</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Settings 1</a>
-                                <a class="dropdown-item" href="#">Settings 2</a>
-                            </div>
-                        </li>
-                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                        </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                    <h4>App Usage across versions</h4>
-                    <div class="widget_summary">
-                        <div class="w_left w_25">
-                            <span>0.1.5.2</span>
-                        </div>
-                        <div class="w_center w_55">
-                            <div class="progress">
-                                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 66%;">
-                                    <span class="sr-only">60% Complete</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w_right w_20">
-                            <span>123k</span>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-
-                    <div class="widget_summary">
-                        <div class="w_left w_25">
-                            <span>0.1.5.3</span>
-                        </div>
-                        <div class="w_center w_55">
-                            <div class="progress">
-                                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 45%;">
-                                    <span class="sr-only">60% Complete</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w_right w_20">
-                            <span>53k</span>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="widget_summary">
-                        <div class="w_left w_25">
-                            <span>0.1.5.4</span>
-                        </div>
-                        <div class="w_center w_55">
-                            <div class="progress">
-                                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 25%;">
-                                    <span class="sr-only">60% Complete</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w_right w_20">
-                            <span>23k</span>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="widget_summary">
-                        <div class="w_left w_25">
-                            <span>0.1.5.5</span>
-                        </div>
-                        <div class="w_center w_55">
-                            <div class="progress">
-                                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 5%;">
-                                    <span class="sr-only">60% Complete</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w_right w_20">
-                            <span>3k</span>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="widget_summary">
-                        <div class="w_left w_25">
-                            <span>0.1.5.6</span>
-                        </div>
-                        <div class="w_center w_55">
-                            <div class="progress">
-                                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 2%;">
-                                    <span class="sr-only">60% Complete</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w_right w_20">
-                            <span>1k</span>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 col-sm-4 ">
-            <div class="x_panel tile fixed_height_320 overflow_hidden">
-                <div class="x_title">
-                    <h2>Device Usage</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Settings 1</a>
-                                <a class="dropdown-item" href="#">Settings 2</a>
-                            </div>
-                        </li>
-                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                        </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                    <table class="" style="width:100%">
-                        <tr>
-                            <th style="width:37%;">
-                                <p>Top 5</p>
-                            </th>
-                            <th>
-                                <div class="col-lg-7 col-md-7 col-sm-7 ">
-                                    <p class="">Device</p>
-                                </div>
-                                <div class="col-lg-5 col-md-5 col-sm-5 ">
-                                    <p class="">Progress</p>
-                                </div>
-                            </th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <canvas class="canvasDoughnut" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
-                            </td>
-                            <td>
-                                <table class="tile_info">
-                                    <tr>
-                                        <td>
-                                            <p><i class="fa fa-square blue"></i>IOS </p>
-                                        </td>
-                                        <td>30%</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p><i class="fa fa-square green"></i>Android </p>
-                                        </td>
-                                        <td>10%</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p><i class="fa fa-square purple"></i>Blackberry </p>
-                                        </td>
-                                        <td>20%</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p><i class="fa fa-square aero"></i>Symbian </p>
-                                        </td>
-                                        <td>15%</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p><i class="fa fa-square red"></i>Others </p>
-                                        </td>
-                                        <td>30%</td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col-md-4 col-sm-4 ">
-            <div class="x_panel tile fixed_height_320">
-                <div class="x_title">
-                    <h2>Quick Settings</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Settings 1</a>
-                                <a class="dropdown-item" href="#">Settings 2</a>
-                            </div>
-                        </li>
-                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                        </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                    <div class="dashboard-widget-content">
-                        <ul class="quick-list">
-                            <li><i class="fa fa-calendar-o"></i><a href="#">Settings</a>
+        <!-- /.row -->
+        <!-- Main row -->
+        <div class="row">
+            <!-- Left col -->
+            <section class="col-lg-7 connectedSortable">
+                <!-- Custom tabs (Charts with tabs)-->
+                <div class="card">
+                    <div class="card-header d-flex p-0">
+                        <h3 class="card-title p-3">
+                            <i class="fa fa-pie-chart mr-1"></i>
+                            Sales
+                        </h3>
+                        <ul class="nav nav-pills ml-auto p-2">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
                             </li>
-                            <li><i class="fa fa-bars"></i><a href="#">Subscription</a>
-                            </li>
-                            <li><i class="fa fa-bar-chart"></i><a href="#">Auto Renewal</a> </li>
-                            <li><i class="fa fa-line-chart"></i><a href="#">Achievements</a>
-                            </li>
-                            <li><i class="fa fa-bar-chart"></i><a href="#">Auto Renewal</a> </li>
-                            <li><i class="fa fa-line-chart"></i><a href="#">Achievements</a>
-                            </li>
-                            <li><i class="fa fa-area-chart"></i><a href="#">Logout</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
                             </li>
                         </ul>
+                    </div><!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="tab-content p-0">
+                            <!-- Morris chart - Sales -->
+                            <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;"></div>
+                            <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
+                        </div>
+                    </div><!-- /.card-body -->
+                </div>
+                <!-- /.card -->
 
-                        <div class="sidebar-widget">
-                            <h4>Profile Completion</h4>
-                            <canvas width="150" height="80" id="chart_gauge_01" class="" style="width: 160px; height: 100px;"></canvas>
-                            <div class="goal-wrapper">
-                                <span id="gauge-text" class="gauge-value pull-left">0</span>
-                                <span class="gauge-value pull-left">%</span>
-                                <span id="goal-text" class="goal-value pull-right">100%</span>
-                            </div>
+                <!-- DIRECT CHAT -->
+                <div class="card direct-chat direct-chat-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Direct Chat</h3>
+
+                        <div class="card-tools">
+                            <span data-toggle="tooltip" title="3 New Messages" class="badge badge-primary">3</span>
+                            <button type="button" class="btn btn-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle">
+                                <i class="fa fa-comments"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-widget="remove"><i class="fa fa-times"></i>
+                            </button>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="row">
-        <div class="col-md-4 col-sm-4 ">
-            <div class="x_panel">
-                <div class="x_title">
-                    <h2>Recent Activities <small>Sessions</small></h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Settings 1</a>
-                                <a class="dropdown-item" href="#">Settings 2</a>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <!-- Conversations are loaded here -->
+                        <div class="direct-chat-messages">
+                            <!-- Message. Default to the left -->
+                            <div class="direct-chat-msg">
+                                <div class="direct-chat-info clearfix">
+                                    <span class="direct-chat-name float-left">Alexander Pierce</span>
+                                    <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
+                                </div>
+                                <!-- /.direct-chat-info -->
+                                <img class="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image">
+                                <!-- /.direct-chat-img -->
+                                <div class="direct-chat-text">
+                                    Is this template really for free? That's unbelievable!
+                                </div>
+                                <!-- /.direct-chat-text -->
                             </div>
-                        </li>
-                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                        </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                    <div class="dashboard-widget-content">
+                            <!-- /.direct-chat-msg -->
 
-                        <ul class="list-unstyled timeline widget">
-                            <li>
-                                <div class="block">
-                                    <div class="block_content">
-                                        <h2 class="title">
-                                            <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
-                                        </h2>
-                                        <div class="byline">
-                                            <span>13 hours ago</span> by <a>Jane Smith</a>
+                            <!-- Message to the right -->
+                            <div class="direct-chat-msg right">
+                                <div class="direct-chat-info clearfix">
+                                    <span class="direct-chat-name float-right">Sarah Bullock</span>
+                                    <span class="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
+                                </div>
+                                <!-- /.direct-chat-info -->
+                                <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+                                <!-- /.direct-chat-img -->
+                                <div class="direct-chat-text">
+                                    You better believe it!
+                                </div>
+                                <!-- /.direct-chat-text -->
+                            </div>
+                            <!-- /.direct-chat-msg -->
+
+                            <!-- Message. Default to the left -->
+                            <div class="direct-chat-msg">
+                                <div class="direct-chat-info clearfix">
+                                    <span class="direct-chat-name float-left">Alexander Pierce</span>
+                                    <span class="direct-chat-timestamp float-right">23 Jan 5:37 pm</span>
+                                </div>
+                                <!-- /.direct-chat-info -->
+                                <img class="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image">
+                                <!-- /.direct-chat-img -->
+                                <div class="direct-chat-text">
+                                    Working with AdminLTE on a great new app! Wanna join?
+                                </div>
+                                <!-- /.direct-chat-text -->
+                            </div>
+                            <!-- /.direct-chat-msg -->
+
+                            <!-- Message to the right -->
+                            <div class="direct-chat-msg right">
+                                <div class="direct-chat-info clearfix">
+                                    <span class="direct-chat-name float-right">Sarah Bullock</span>
+                                    <span class="direct-chat-timestamp float-left">23 Jan 6:10 pm</span>
+                                </div>
+                                <!-- /.direct-chat-info -->
+                                <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+                                <!-- /.direct-chat-img -->
+                                <div class="direct-chat-text">
+                                    I would love to.
+                                </div>
+                                <!-- /.direct-chat-text -->
+                            </div>
+                            <!-- /.direct-chat-msg -->
+
+                        </div>
+                        <!--/.direct-chat-messages-->
+
+                        <!-- Contacts are loaded here -->
+                        <div class="direct-chat-contacts">
+                            <ul class="contacts-list">
+                                <li>
+                                    <a href="#">
+                                        <img class="contacts-list-img" src="dist/img/user1-128x128.jpg">
+
+                                        <div class="contacts-list-info">
+                                            <span class="contacts-list-name">
+                                                Count Dracula
+                                                <small class="contacts-list-date float-right">2/28/2015</small>
+                                            </span>
+                                            <span class="contacts-list-msg">How have you been? I was...</span>
                                         </div>
-                                        <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-                                        </p>
-                                    </div>
+                                        <!-- /.contacts-list-info -->
+                                    </a>
+                                </li>
+                                <!-- End Contact Item -->
+                                <li>
+                                    <a href="#">
+                                        <img class="contacts-list-img" src="dist/img/user7-128x128.jpg">
+
+                                        <div class="contacts-list-info">
+                                            <span class="contacts-list-name">
+                                                Sarah Doe
+                                                <small class="contacts-list-date float-right">2/23/2015</small>
+                                            </span>
+                                            <span class="contacts-list-msg">I will be waiting for...</span>
+                                        </div>
+                                        <!-- /.contacts-list-info -->
+                                    </a>
+                                </li>
+                                <!-- End Contact Item -->
+                                <li>
+                                    <a href="#">
+                                        <img class="contacts-list-img" src="dist/img/user3-128x128.jpg">
+
+                                        <div class="contacts-list-info">
+                                            <span class="contacts-list-name">
+                                                Nadia Jolie
+                                                <small class="contacts-list-date float-right">2/20/2015</small>
+                                            </span>
+                                            <span class="contacts-list-msg">I'll call you back at...</span>
+                                        </div>
+                                        <!-- /.contacts-list-info -->
+                                    </a>
+                                </li>
+                                <!-- End Contact Item -->
+                                <li>
+                                    <a href="#">
+                                        <img class="contacts-list-img" src="dist/img/user5-128x128.jpg">
+
+                                        <div class="contacts-list-info">
+                                            <span class="contacts-list-name">
+                                                Nora S. Vans
+                                                <small class="contacts-list-date float-right">2/10/2015</small>
+                                            </span>
+                                            <span class="contacts-list-msg">Where is your new...</span>
+                                        </div>
+                                        <!-- /.contacts-list-info -->
+                                    </a>
+                                </li>
+                                <!-- End Contact Item -->
+                                <li>
+                                    <a href="#">
+                                        <img class="contacts-list-img" src="dist/img/user6-128x128.jpg">
+
+                                        <div class="contacts-list-info">
+                                            <span class="contacts-list-name">
+                                                John K.
+                                                <small class="contacts-list-date float-right">1/27/2015</small>
+                                            </span>
+                                            <span class="contacts-list-msg">Can I take a look at...</span>
+                                        </div>
+                                        <!-- /.contacts-list-info -->
+                                    </a>
+                                </li>
+                                <!-- End Contact Item -->
+                                <li>
+                                    <a href="#">
+                                        <img class="contacts-list-img" src="dist/img/user8-128x128.jpg">
+
+                                        <div class="contacts-list-info">
+                                            <span class="contacts-list-name">
+                                                Kenneth M.
+                                                <small class="contacts-list-date float-right">1/4/2015</small>
+                                            </span>
+                                            <span class="contacts-list-msg">Never mind I found...</span>
+                                        </div>
+                                        <!-- /.contacts-list-info -->
+                                    </a>
+                                </li>
+                                <!-- End Contact Item -->
+                            </ul>
+                            <!-- /.contacts-list -->
+                        </div>
+                        <!-- /.direct-chat-pane -->
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                        <form action="#" method="post">
+                            <div class="input-group">
+                                <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                                <span class="input-group-append">
+                                    <button type="button" class="btn btn-primary">Send</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.card-footer-->
+                </div>
+                <!--/.direct-chat -->
+
+                <!-- TO DO List -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="ion ion-clipboard mr-1"></i>
+                            To Do List
+                        </h3>
+
+                        <div class="card-tools">
+                            <ul class="pagination pagination-sm">
+                                <li class="page-item"><a href="#" class="page-link">&laquo;</a></li>
+                                <li class="page-item"><a href="#" class="page-link">1</a></li>
+                                <li class="page-item"><a href="#" class="page-link">2</a></li>
+                                <li class="page-item"><a href="#" class="page-link">3</a></li>
+                                <li class="page-item"><a href="#" class="page-link">&raquo;</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <ul class="todo-list">
+                            <li>
+                                <!-- drag handle -->
+                                <span class="handle">
+                                    <i class="fa fa-ellipsis-v"></i>
+                                    <i class="fa fa-ellipsis-v"></i>
+                                </span>
+                                <!-- checkbox -->
+                                <input type="checkbox" value="" name="">
+                                <!-- todo text -->
+                                <span class="text">Design a nice theme</span>
+                                <!-- Emphasis label -->
+                                <small class="badge badge-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
+                                <!-- General tools such as edit or delete-->
+                                <div class="tools">
+                                    <i class="fa fa-edit"></i>
+                                    <i class="fa fa-trash-o"></i>
                                 </div>
                             </li>
                             <li>
-                                <div class="block">
-                                    <div class="block_content">
-                                        <h2 class="title">
-                                            <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
-                                        </h2>
-                                        <div class="byline">
-                                            <span>13 hours ago</span> by <a>Jane Smith</a>
-                                        </div>
-                                        <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-                                        </p>
-                                    </div>
+                                <span class="handle">
+                                    <i class="fa fa-ellipsis-v"></i>
+                                    <i class="fa fa-ellipsis-v"></i>
+                                </span>
+                                <input type="checkbox" value="" name="">
+                                <span class="text">Make the theme responsive</span>
+                                <small class="badge badge-info"><i class="fa fa-clock-o"></i> 4 hours</small>
+                                <div class="tools">
+                                    <i class="fa fa-edit"></i>
+                                    <i class="fa fa-trash-o"></i>
                                 </div>
                             </li>
                             <li>
-                                <div class="block">
-                                    <div class="block_content">
-                                        <h2 class="title">
-                                            <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
-                                        </h2>
-                                        <div class="byline">
-                                            <span>13 hours ago</span> by <a>Jane Smith</a>
-                                        </div>
-                                        <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-                                        </p>
-                                    </div>
+                                <span class="handle">
+                                    <i class="fa fa-ellipsis-v"></i>
+                                    <i class="fa fa-ellipsis-v"></i>
+                                </span>
+                                <input type="checkbox" value="" name="">
+                                <span class="text">Let theme shine like a star</span>
+                                <small class="badge badge-warning"><i class="fa fa-clock-o"></i> 1 day</small>
+                                <div class="tools">
+                                    <i class="fa fa-edit"></i>
+                                    <i class="fa fa-trash-o"></i>
                                 </div>
                             </li>
                             <li>
-                                <div class="block">
-                                    <div class="block_content">
-                                        <h2 class="title">
-                                            <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
-                                        </h2>
-                                        <div class="byline">
-                                            <span>13 hours ago</span> by <a>Jane Smith</a>
-                                        </div>
-                                        <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-                                        </p>
-                                    </div>
+                                <span class="handle">
+                                    <i class="fa fa-ellipsis-v"></i>
+                                    <i class="fa fa-ellipsis-v"></i>
+                                </span>
+                                <input type="checkbox" value="" name="">
+                                <span class="text">Let theme shine like a star</span>
+                                <small class="badge badge-success"><i class="fa fa-clock-o"></i> 3 days</small>
+                                <div class="tools">
+                                    <i class="fa fa-edit"></i>
+                                    <i class="fa fa-trash-o"></i>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="handle">
+                                    <i class="fa fa-ellipsis-v"></i>
+                                    <i class="fa fa-ellipsis-v"></i>
+                                </span>
+                                <input type="checkbox" value="" name="">
+                                <span class="text">Check your messages and notifications</span>
+                                <small class="badge badge-primary"><i class="fa fa-clock-o"></i> 1 week</small>
+                                <div class="tools">
+                                    <i class="fa fa-edit"></i>
+                                    <i class="fa fa-trash-o"></i>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="handle">
+                                    <i class="fa fa-ellipsis-v"></i>
+                                    <i class="fa fa-ellipsis-v"></i>
+                                </span>
+                                <input type="checkbox" value="" name="">
+                                <span class="text">Let theme shine like a star</span>
+                                <small class="badge badge-secondary"><i class="fa fa-clock-o"></i> 1 month</small>
+                                <div class="tools">
+                                    <i class="fa fa-edit"></i>
+                                    <i class="fa fa-trash-o"></i>
                                 </div>
                             </li>
                         </ul>
                     </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer clearfix">
+                        <button type="button" class="btn btn-info float-right"><i class="fa fa-plus"></i> Add item</button>
+                    </div>
                 </div>
-            </div>
+                <!-- /.card -->
+            </section>
+            <!-- /.Left col -->
+            <!-- right col (We are only adding the ID to make the widgets sortable)-->
+            <section class="col-lg-5 connectedSortable">
+
+                <!-- Map card -->
+                <div class="card bg-primary-gradient">
+                    <div class="card-header no-border">
+                        <h3 class="card-title">
+                            <i class="fa fa-map-marker mr-1"></i>
+                            Visitors
+                        </h3>
+                        <!-- card tools -->
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-primary btn-sm daterange" data-toggle="tooltip" title="Date range">
+                                <i class="fa fa-calendar"></i>
+                            </button>
+                            <button type="button" class="btn btn-primary btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!-- /.card-tools -->
+                    </div>
+                    <div class="card-body">
+                        <div id="world-map" style="height: 250px; width: 100%;"></div>
+                    </div>
+                    <!-- /.card-body-->
+                    <div class="card-footer bg-transparent">
+                        <div class="row">
+                            <div class="col-4 text-center">
+                                <div id="sparkline-1"></div>
+                                <div class="text-white">Visitors</div>
+                            </div>
+                            <!-- ./col -->
+                            <div class="col-4 text-center">
+                                <div id="sparkline-2"></div>
+                                <div class="text-white">Online</div>
+                            </div>
+                            <!-- ./col -->
+                            <div class="col-4 text-center">
+                                <div id="sparkline-3"></div>
+                                <div class="text-white">Sales</div>
+                            </div>
+                            <!-- ./col -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                </div>
+                <!-- /.card -->
+
+                <!-- solid sales graph -->
+                <div class="card bg-info-gradient">
+                    <div class="card-header no-border">
+                        <h3 class="card-title">
+                            <i class="fa fa-th mr-1"></i>
+                            Sales Graph
+                        </h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn bg-info btn-sm" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn bg-info btn-sm" data-widget="remove">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart" id="line-chart" style="height: 250px;"></div>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer bg-transparent">
+                        <div class="row">
+                            <div class="col-4 text-center">
+                                <input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60" data-fgColor="#39CCCC">
+
+                                <div class="text-white">Mail-Orders</div>
+                            </div>
+                            <!-- ./col -->
+                            <div class="col-4 text-center">
+                                <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60" data-fgColor="#39CCCC">
+
+                                <div class="text-white">Online</div>
+                            </div>
+                            <!-- ./col -->
+                            <div class="col-4 text-center">
+                                <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60" data-fgColor="#39CCCC">
+
+                                <div class="text-white">In-Store</div>
+                            </div>
+                            <!-- ./col -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.card-footer -->
+                </div>
+                <!-- /.card -->
+
+                <!-- Calendar -->
+                <div class="card bg-success-gradient">
+                    <div class="card-header no-border">
+
+                        <h3 class="card-title">
+                            <i class="fa fa-calendar"></i>
+                            Calendar
+                        </h3>
+                        <!-- tools card -->
+                        <div class="card-tools">
+                            <!-- button with a dropdown -->
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-bars"></i></button>
+                                <div class="dropdown-menu float-right" role="menu">
+                                    <a href="#" class="dropdown-item">Add new event</a>
+                                    <a href="#" class="dropdown-item">Clear events</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a href="#" class="dropdown-item">View calendar</a>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-success btn-sm" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-success btn-sm" data-widget="remove">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                        <!-- /. tools -->
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body p-0">
+                        <!--The calendar -->
+                        <div id="calendar" style="width: 100%"></div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </section>
+            <!-- right col -->
         </div>
-
-
-        <div class="col-md-8 col-sm-8 ">
-
-
-
-            <div class="row">
-
-                <div class="col-md-12 col-sm-12 ">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>Visitors location <small>geo-presentation</small></h2>
-                            <ul class="nav navbar-right panel_toolbox">
-                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#">Settings 1</a>
-                                        <a class="dropdown-item" href="#">Settings 2</a>
-                                    </div>
-                                </li>
-                                <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                </li>
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                            <div class="dashboard-widget-content">
-                                <div class="col-md-4 hidden-small">
-                                    <h2 class="line_30">125.7k Views from 60 countries</h2>
-
-                                    <table class="countries_list">
-                                        <tbody>
-                                            <tr>
-                                                <td>United States</td>
-                                                <td class="fs15 fw700 text-right">33%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>France</td>
-                                                <td class="fs15 fw700 text-right">27%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Germany</td>
-                                                <td class="fs15 fw700 text-right">16%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Spain</td>
-                                                <td class="fs15 fw700 text-right">11%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Britain</td>
-                                                <td class="fs15 fw700 text-right">10%</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div id="world-map-gdp" class="col-md-8 col-sm-12 " style="height:230px;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="row">
-
-
-                <!-- Start to do list -->
-                <div class="col-md-6 col-sm-6 ">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>To Do List <small>Sample tasks</small></h2>
-                            <ul class="nav navbar-right panel_toolbox">
-                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#">Settings 1</a>
-                                        <a class="dropdown-item" href="#">Settings 2</a>
-                                    </div>
-                                </li>
-                                <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                </li>
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-
-                            <div class="">
-                                <ul class="to_do">
-                                    <li>
-                                        <p>
-                                            <input type="checkbox" class="flat"> Schedule meeting with new client </p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <input type="checkbox" class="flat"> Create email address for new intern</p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <input type="checkbox" class="flat"> Have IT fix the network printer</p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <input type="checkbox" class="flat"> Copy backups to offsite location</p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <input type="checkbox" class="flat"> Food truck fixie locavors mcsweeney</p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <input type="checkbox" class="flat"> Food truck fixie locavors mcsweeney</p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <input type="checkbox" class="flat"> Create email address for new intern</p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <input type="checkbox" class="flat"> Have IT fix the network printer</p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <input type="checkbox" class="flat"> Copy backups to offsite location</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End to do list -->
-
-                <!-- start of weather widget -->
-                <div class="col-md-6 col-sm-6 ">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>Daily active users <small>Sessions</small></h2>
-                            <ul class="nav navbar-right panel_toolbox">
-                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#">Settings 1</a>
-                                        <a class="dropdown-item" href="#">Settings 2</a>
-                                    </div>
-                                </li>
-                                <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                </li>
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="temperature"><b>Monday</b>, 07:30 AM
-                                        <span>F</span>
-                                        <span><b>C</b></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <div class="weather-icon">
-                                        <canvas height="84" width="84" id="partly-cloudy-day"></canvas>
-                                    </div>
-                                </div>
-                                <div class="col-sm-8">
-                                    <div class="weather-text">
-                                        <h2>Texas <br><i>Partly Cloudy Day</i></h2>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="weather-text pull-right">
-                                    <h3 class="degrees">23</h3>
-                                </div>
-                            </div>
-
-                            <div class="clearfix"></div>
-
-                            <div class="row weather-days">
-                                <div class="col-sm-2">
-                                    <div class="daily-weather">
-                                        <h2 class="day">Mon</h2>
-                                        <h3 class="degrees">25</h3>
-                                        <canvas id="clear-day" width="32" height="32"></canvas>
-                                        <h5>15 <i>km/h</i></h5>
-                                    </div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <div class="daily-weather">
-                                        <h2 class="day">Tue</h2>
-                                        <h3 class="degrees">25</h3>
-                                        <canvas height="32" width="32" id="rain"></canvas>
-                                        <h5>12 <i>km/h</i></h5>
-                                    </div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <div class="daily-weather">
-                                        <h2 class="day">Wed</h2>
-                                        <h3 class="degrees">27</h3>
-                                        <canvas height="32" width="32" id="snow"></canvas>
-                                        <h5>14 <i>km/h</i></h5>
-                                    </div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <div class="daily-weather">
-                                        <h2 class="day">Thu</h2>
-                                        <h3 class="degrees">28</h3>
-                                        <canvas height="32" width="32" id="sleet"></canvas>
-                                        <h5>15 <i>km/h</i></h5>
-                                    </div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <div class="daily-weather">
-                                        <h2 class="day">Fri</h2>
-                                        <h3 class="degrees">28</h3>
-                                        <canvas height="32" width="32" id="wind"></canvas>
-                                        <h5>11 <i>km/h</i></h5>
-                                    </div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <div class="daily-weather">
-                                        <h2 class="day">Sat</h2>
-                                        <h3 class="degrees">26</h3>
-                                        <canvas height="32" width="32" id="cloudy"></canvas>
-                                        <h5>10 <i>km/h</i></h5>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- end of weather widget -->
-            </div>
-        </div>
-    </div>
-</div>
-<!-- /page content -->
+        <!-- /.row (main row) -->
+    </div><!-- /.container-fluid -->
+</section>
