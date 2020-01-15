@@ -20,6 +20,20 @@ class Merchant extends CI_Controller
 
     $this->load->view('index', $data);
   }
+
+  public function store(){
+    $data = [
+      'nama_toko' => $this->input->post('nama_toko'),
+      'email' => $this->input->post('email'),
+      'nohp' => $this->input->post('nohp'),
+      'alamat' => $this->input->post('alamat'),
+      'user' => '089612994819',
+    ];
+
+    $this->db->insert('toko', $data);
+    $this->session->set_flashdata('success', 'Merchant berhasil ditambahkan');
+    redirect(base_url('merchant'));
+  }
 }
 
 

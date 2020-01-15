@@ -17,12 +17,12 @@
                         <form method="post" action="<?= base_url('barang/store') ?>">
                             <div class="row">
                                 <div class="col">
-                                    <label for="nama_kategori">Nama Kategori</label>
-                                    <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" placeholder="Nama Kategori">
+                                    <label for="nama_barang">Nama barang</label>
+                                    <input type="text" class="form-control" id="nama_barang" name="nama_barang" placeholder="Nama Barang">
                                 </div>
                                 <div class="col">
-                                    <label for="jenis_kategori">Jenis Kategori</label>
-                                    <input type="text" class="form-control" id="jenis_kategori" name="jenis_kategori" placeholder="Jenis Kategori (Optional)">
+                                    <label for="kodebarang">Kode Barang</label>
+                                    <input type="text" class="form-control" id="kodebarang" name="kodebarang" placeholder="Kode Barang">
                                 </div>
                             </div>
                             <br>
