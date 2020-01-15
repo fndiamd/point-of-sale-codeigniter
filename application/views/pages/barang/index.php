@@ -4,7 +4,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex, blanditiis tenetur ratione quia porro deserunt eius provident corporis consequatur sint assumenda laudantium corrupti mollitia molestias? Voluptatem inventore assumenda rem quibusdam?
                     </div>
                 </div>
             </div>
@@ -17,26 +17,22 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>User</th>
-                                    <th>Nama Merchant</th>
-                                    <th>E-mail</th>
+                                    <th>Kode Barang</th>
+                                    <th>Kategori</th>
+                                    <th>Nama Barang</th>
+                                    <th>Harga Beli</th>
+                                    <th>Harga Jual</th>
+                                    <th>Stock</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $no=1; foreach($merchants->result() as $merchant):?>
+                                <?php $no=1; foreach ($barangs->result() as $barang) : ?>
                                     <tr>
                                         <td><?= $no++?></td>
-                                        <td><?= $merchant->user?></td>
-                                        <td><?= $merchant->nama_toko?></td>
-                                        <td><?= $merchant->email?></td>
-                                        <td align="center" style="min-width: 150px">
-                                            <a href="" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-                                            <a href="" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                                            <a href="" class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                                        </td>
+                                        <td><?= $barang->kode_barang ?></td>
                                     </tr>
-                                <?php endforeach;?>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>

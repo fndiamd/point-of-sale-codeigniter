@@ -23,7 +23,19 @@
       <!-- /.content-header -->
 
       <!-- Main content -->
-      <?php $this->load->view('pages/'. $page) ?>
+      <div class="container">
+        <?php if ($this->session->flashdata('success')) : ?>
+          <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><?= $this->session->flashdata('success'); ?>
+          </div>
+        <?php elseif ($this->session->flashdata('danger')) : ?>
+          <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><?= $this->session->flashdata('error'); ?>
+          </div>
+        <?php endif; ?>
+      </div>
+
+      <?php $this->load->view('pages/' . $page) ?>
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
