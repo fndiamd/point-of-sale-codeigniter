@@ -2,16 +2,16 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <div class="card" data-widget="box-widget">
+            <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Buat Kategori Baru</h3>
                         <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <button button class="btn btn-tool" type="button" data-toggle="collapse" data-target="#data-card" aria-expanded="false" aria-controls="collapseExample">
                                 <i class="fa fa-minus"></i>
                             </button>
                         </div>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" id="data-card">
                         <form method="post" action="<?= base_url('kategori/store') ?>">
                             <div class="row">
                                 <div class="col">
