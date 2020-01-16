@@ -36,8 +36,8 @@
                                         <td><?= $barang->hargajual ?></td>
                                         <td><?= $barang->stok ?></td>
                                         <td align="center" style="min-width: 150px">
-                                            <a href="" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-                                            <a href="" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                            <a href="<?= base_url('barang/view/'.$barang->id_barang)?>" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+                                            <a href="<?= base_url('barang/edit/'.$barang->id_barang)?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
                                             <a href="<?= base_url('barang/delete/'.$barang->id_barang)?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>

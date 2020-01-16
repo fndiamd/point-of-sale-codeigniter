@@ -27,10 +27,46 @@ class Barang extends CI_Controller
     $this->load->view('index', $data);
   }
 
-  public function update(){
+  function update($id){
+    $data = [
+      'nama_barang' => $this->input->post('nama_barang'),
+      'kodebarang' => $this->input->post('kodebarang'),
+      'user' => $this->input->post('user'),
+      'id_kategori' => $this->input->post('id_kategori'),
+      'hargabeli' => $this->input->post('hargabeli'),
+      'hargajual' => $this->input->post('hargajual'),
+      'stok' => $this->input->post('stok'),
+      'minimalstok' => $this->input->post('minimalstok'),
+      'diskon' => $this->input->post('diskon'),
+      'deskripsi' => $this->input->post('deskripsi'),
+      'gbr' => $this->input->post('gbr'),
+      'tampilkan' => $this->input->post('tampilkan')
+    ];
+
+    $this->db->where('id_barang', $id);
+    $this->db->update('barang', $data);
+    $this->session->set_flashdata('success', 'barang berhasil update');
+		redirect(base_url('barang'));
+  }
+
+  public function view($id){
+    $this->db->where('id_barang', $id);
+    $barang = $this->db->get('barang')->row();
+    $data = [
+      'title' => 'View',
+      'page' => 'barang/form_view',
+      'data' => $barang
+    ];
+    $this->load->view('index', $data);
+  }
+
+  public function edit($id){
+    $this->db->where('id_barang', $id);
+    $barang = $this->db->get('barang')->row();
     $data = [
       'title' => 'Update',
       'page' => 'barang/form_update',
+      'data' => $barang
     ];
     $this->load->view('index', $data);
   }
