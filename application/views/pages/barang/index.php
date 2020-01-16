@@ -30,7 +30,12 @@
                                 <?php $no=1; foreach ($barangs->result() as $barang) : ?>
                                     <tr>
                                         <td><?= $no++?></td>
-                                        <td><?= $barang->kode_barang ?></td>
+                                        <td><?= $barang->kodebarang ?></td>
+                                        <td><?= $barang->nama_kategori?></td>
+                                        <td><?= $barang->nama_barang?></td>
+                                        <td><?= $barang->hargabeli?></td>
+                                        <td><?= $barang->hargajual?></td>
+                                        <td><?= $barang->stok?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

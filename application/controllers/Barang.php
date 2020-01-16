@@ -11,7 +11,10 @@ class Barang extends CI_Controller
 
   public function index()
   {
-    $barang = $this->db->get('barang');
+    $this->db->select('*');
+    $this->db->from('barang');
+    $this->db->join('kategori', 'kategori.id_kategori=barang.id_kategori', 'inner');
+    $barang = $this->db->get();
     $data = [
       'title' => 'Barang',
       'page' => 'barang/index',
