@@ -2,20 +2,12 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <div class="card">
-                <div class="card-header">
-                        <h3 class="card-title">Buat Barang Baru</h3>
-                        <div class="card-tools">
-                            <button button class="btn btn-tool" type="button" data-toggle="collapse" data-target="#data-card" aria-expanded="false" aria-controls="collapseExample">
-                                <i class="fa fa-minus"></i>
-                            </button>
-                        </div> 
-                    </div>
-                </div>
+            <a href="<?= base_url('barang/create')?>" class="btn btn-primary">
+                <i class="fa fa-plus"></i> &nbsp; Tambah Barang
+            </a>
             </div>
         </div>
-     </div>
-    
+        <br>
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -46,7 +38,7 @@
                                         <td align="center" style="min-width: 150px">
                                             <a href="" class="btn btn-primary"><i class="fa fa-eye"></i></a>
                                             <a href="" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                                            <a href="" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                            <a href="<?= base_url('barang/delete/'.$barang->id_barang)?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
