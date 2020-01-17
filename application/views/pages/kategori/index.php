@@ -11,16 +11,16 @@
                             </button>
                         </div>
                     </div>
-                    <div class="card-body" id="data-card">
+                    <div class="card-body collapse show" id="data-card">
                         <form method="post" action="<?= base_url('kategori/store') ?>">
                             <div class="row">
                                 <div class="col">
-                                    <label for="nama_kategori">Nama Kategori</label>
+                                    <label for="nama_kategori">Nama Kategori <span class="label-required">*</span></label>
                                     <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" placeholder="Nama Kategori">
                                 </div>
                                 <div class="col">
-                                    <label for="jenis_kategori">Jenis Kategori</label>
-                                    <input type="text" class="form-control" id="jenis_kategori" name="jenis_kategori" placeholder="Jenis Kategori (Optional)">
+                                    <label for="jenis_kategori">Jenis Kategori <span class="label-optional">( Optional )</span></label>
+                                    <input type="text" class="form-control" id="jenis_kategori" name="jenis_kategori" placeholder="Jenis Kategori">
                                 </div>
                             </div>
                             <br>

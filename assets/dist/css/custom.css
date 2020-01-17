@@ -5,3 +5,12 @@
 .select2-container--default .select2-selection--single{
     padding-bottom:25px;
 }
+
+.label-required{
+    color:red;
+}
+
+.label-optional{
+    font-weight: 300;
+    color:222;
+}

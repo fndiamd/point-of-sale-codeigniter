@@ -86,13 +86,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?= base_url('data-penjualan') ?>" class="nav-link">
+                            <a href="<?= base_url('penjualan/data-penjualan') ?>" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
                                 <p>Data Penjualan</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('penjualan') ?>" class="nav-link">
+                            <a href="<?= base_url('penjualan/detail-penjualan') ?>" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
                                 <p>Detail Penjualan</p>
                             </a>
@@ -109,13 +109,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?= base_url('data-pembelian') ?>" class="nav-link">
+                            <a href="<?= base_url('pembelian/data-pembelian') ?>" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
                                 <p>Data Pembelian</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('pembelian') ?>" class="nav-link">
+                            <a href="<?= base_url('pembelian/detail-pembelian') ?>" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
                                 <p>Detail Pembelian</p>
                             </a>

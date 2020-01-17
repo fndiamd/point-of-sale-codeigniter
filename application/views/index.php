@@ -28,7 +28,7 @@
           <div class="alert alert-success">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><?= $this->session->flashdata('success'); ?>
           </div>
-        <?php elseif ($this->session->flashdata('danger')) : ?>
+        <?php elseif ($this->session->flashdata('error')) : ?>
           <div class="alert alert-danger">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><?= $this->session->flashdata('error'); ?>
           </div>
