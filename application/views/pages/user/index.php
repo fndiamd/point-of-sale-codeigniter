@@ -14,8 +14,8 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Nama Lengkap</th>
-                                    <th>Password</th>
-                                    <th>ID Session</th>
+                                    <th>Email</th>
+                                    <th>Kota</th>
                                     <th>Level</th>
                                     <th>Action</th>
                                 </tr>
@@ -25,13 +25,13 @@
                                     <tr>
                                         <td><?= $no++?></td>
                                         <td><?= $user->nama_lengkap ?></td>
-                                        <td><?= $user->password ?></td>
-                                        <td><?= $user->id_session ?></td>
+                                        <td><?= $user->email ?></td>
+                                        <td><?= $user->kota ?></td>
                                         <td><?= $user->level ?></td>
                                         <td align="center" style="min-width: 150px">
-                                            <a href="" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-                                            <a href="" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                                            <a href="" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                            <a href="<?= base_url('user/view/'.$user->no_telp)?>" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+                                            <a href="<?= base_url('user/edit/'.$user->no_telp)?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                            <a href="<?= base_url('user/delete/'.$user->no_telp)?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

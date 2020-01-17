@@ -3,10 +3,25 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                    <form method="post" action="<?= base_url('supplier/update/'.$data->id_supplier) ?>">
+                    <form method="post" action="<?= base_url('user/update/'.$data->no_telp) ?>">
                     <div class="form-group">
-                      <label for="nama_supplier">Nama Supplier</label>
-                      <input type="text" class="form-control" id="nama_supplier" name="nama_supplier" value="<?php echo $data->nama_supplier ?>">
+                      <label for="nama_lengkap">Nama Lengkap</label>
+                      <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" value="<?php echo $data->nama_lengkap ?>">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="password">Password</label>
+                      <input type="text" class="form-control" id="password" name="password" value="<?php echo $data->password ?>">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="kota">kota</label>
+                      <input type="text" class="form-control" id="kota" name="kota" value="<?php echo $data->kota ?>">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="master">Master</label>
+                      <input type="text" class="form-control" id="master" name="master" value="<?php echo $data->master ?>">
                     </div>
 
                     <div class="form-group">
@@ -20,28 +35,23 @@
                     </div>
 
                     <div class="form-group">
-                      <label for="telpon">Telepon</label>
-                      <input type="text" class="form-control" id="telpon" name="telpon" value="<?php echo $data->telpon ?>">
+                      <label for="no_telp">Telepon</label>
+                      <input type="text" class="form-control" id="no_telp" name="no_telp" value="<?php echo $data->no_telp ?>">
                     </div>
 
                     <div class="form-group">
-                      <label for="profinsi">Provinsi</label>
-                      <input type="text" class="form-control" id="profinsi" name="profinsi" value="<?php echo $data->profinsi ?>">
+                      <label for="level">Level</label>
+                      <input type="text" class="form-control" id="level" name="level" value="<?php echo $data->level ?>">
                     </div>
 
                     <div class="form-group">
-                      <label for="kota">Kota</label>
-                      <input type="text" class="form-control" id="kota" name="kota" value="<?php echo $data->kota ?>">
+                      <label for="blokir">Blokir</label>
+                      <input type="text" class="form-control" id="blokir" name="blokir" value="<?php echo $data->blokir ?>">
                     </div>
 
                     <div class="form-group">
-                      <label for="user">User</label>
-                      <input type="text" class="form-control" id="user" name="user" value="<?php echo $data->user ?>">
-                    </div>
-
-                    <div class="form-group">
-                      <label for="hutang">Hutang</label>
-                      <input type="text" class="form-control" id="hutang" name="hutang" value="<?php echo $data->hutang ?>">
+                      <label for="id_session">ID Session</label>
+                      <input type="text" class="form-control" id="id_session" name="id_session" value="<?php echo $data->id_session ?>">
                     </div>
 
                     <div class="form-group">
@@ -50,8 +60,8 @@
                     </div>
 
                     <div class="form-group">
-                      <label for="aktiv">Active</label>
-                      <input type="text" class="form-control" id="aktiv" name="aktiv" value="<?php echo $data->aktiv ?>">
+                      <label for="paket">Paket</label>
+                      <input type="text" class="form-control" id="paket" name="paket" value="<?php echo $data->paket ?>">
                     </div>
 
                   <button type="submit" class="btn btn-primary">Submit</button>
