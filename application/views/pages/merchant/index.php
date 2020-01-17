@@ -10,10 +10,7 @@
                                 <i class="fa fa-minus"></i>
                             </button>
                         </div>
-                    </div>
-                </div>
-
-                <div class="card-body">
+                        <div class="card-body">
                         <form method="post" action="<?= base_url('merchant/store') ?>">
                             <div class="row">
                                 <div class="col">
@@ -40,8 +37,9 @@
                             <button type="submit" class="btn btn-primary pull-right">Submit</button>
                         </form>
                 </div>
-
+                    </div>
                 </div>
+            </div>
             </div>
         </div>
         <div class="row">
