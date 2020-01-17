@@ -13,7 +13,6 @@ class Barang extends CI_Controller
   {
     $this->db->select('*');
     $this->db->from('barang');
-    $this->db->join('kategori', 'kategori.id_kategori=barang.id_kategori', 'inner');
     $barang = $this->db->get();
     $data = [
       'title' => 'Barang',
@@ -22,6 +21,7 @@ class Barang extends CI_Controller
     ];
     $this->load->view('index', $data);
   }
+  
   public function create()
   {
     $data = [

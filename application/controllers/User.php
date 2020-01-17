@@ -2,7 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class Supplier extends CI_Controller
+class User extends CI_Controller
 {
 
   public function __construct()
@@ -12,11 +12,11 @@ class Supplier extends CI_Controller
 
   public function index()
   {
-    $supplier = $this->db->get('supplier');
+    $user = $this->db->get('users');
     $data = [
-      'title' => 'Supplier',
-      'page' => 'supplier/index',
-      'suppliers' => $supplier
+      'title' => 'User',
+      'page' => 'user/index',
+      'users' => $user
     ];
 
     $this->load->view('index', $data);
@@ -37,16 +37,16 @@ class Supplier extends CI_Controller
     ];
 
 
-    $this->db->insert('supplier', $data);
-    $this->session->set_flashdata('success', 'Supplier berhasil ditambahkan');
-    redirect(base_url('supplier'));
+    $this->db->insert('users', $data);
+    $this->session->set_flashdata('success', 'User berhasil ditambahkan');
+    redirect(base_url('user'));
   }
 
   public function create()
   {
     $data = [
-      'title' => 'Supplier',
-      'page' => 'supplier/form_tambah',
+      'title' => 'User',
+      'page' => 'user/form_tambah',
     ];
     $this->load->view('index', $data);
   }

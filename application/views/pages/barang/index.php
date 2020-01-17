@@ -2,35 +2,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Buat Barang Baru</h3>
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <form method="post" action="<?= base_url('barang/store') ?>">
-                            <div class="row">
-                                <div class="col">
-                                    <label for="nama_barang">Nama barang</label>
-                                    <input type="text" class="form-control" id="nama_barang" name="nama_barang" placeholder="Nama Barang">
-                                </div>
-                                <div class="col">
-                                    <label for="kodebarang">Kode Barang</label>
-                                    <input type="text" class="form-control" id="kodebarang" name="kodebarang" placeholder="Kode Barang">
-                                </div>
-                            </div>
-                            <br>
-                            <button type="submit" class="btn btn-primary pull-right">Submit</button>
-                        </form>
-                    </div>
-                </div>
+            <a href="<?= base_url('barang/create')?>" class="btn btn-success ">Tambah Barang <i class="fa fa-plus"></a></i>
+            <br><br>
             </div>
         </div>
-        <br>
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -54,7 +29,7 @@
                                     <tr>
                                         <td><?= $no++ ?></td>
                                         <td><?= $barang->kodebarang ?></td>
-                                        <td><?= $barang->nama_kategori ?></td>
+                                        <td><?= $barang->id_kategori ?></td>
                                         <td><?= $barang->nama_barang ?></td>
                                         <td><?= $barang->hargabeli ?></td>
                                         <td><?= $barang->hargajual ?></td>
