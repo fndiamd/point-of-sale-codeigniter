@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Point of sales | <?= $title?></title>
+    <title>Point of sales | <?= $title ?></title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -24,9 +24,17 @@
     <!-- Daterange picker -->
     <link rel="stylesheet" href="<?= base_url('assets/plugins/daterangepicker/daterangepicker-bs3.css') ?>">
     <!-- Data table -->
-    <link rel="stylesheet" href="<?= base_url('assets/plugins/datatables/dataTables.bootstrap4.css')?>">
+    <link rel="stylesheet" href="<?= base_url('assets/plugins/datatables/dataTables.bootstrap4.css') ?>">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="<?= base_url('assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') ?>">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" href="<?= base_url('assets/plugins/select2/select2.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/dist/css/custom.css') ?>">
+
+    <!-- jQuery -->
+    <script src="<?= base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
+
+    <!-- Chart -->
+    <script src="<?= base_url('assets/dist/js/Chart.bundle.js') ?>"></script>
 </head>

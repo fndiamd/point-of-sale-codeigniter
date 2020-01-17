@@ -3,9 +3,44 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-body">
-
+                <div class="card-header">
+                        <h3 class="card-title">Buat Merchant Baru</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
                     </div>
+                </div>
+
+                <div class="card-body">
+                        <form method="post" action="<?= base_url('merchant/store') ?>">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="nama_merchant">Nama Toko</label>
+                                    <input type="text" class="form-control" id="nama_toko" name="nama_toko" placeholder="Nama Toko">
+                                </div>
+                                <div class="col">
+                                    <label for="jenis_kategori">Email</label>
+                                    <input type="text" class="form-control" id="email" name="email" placeholder="email">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="nama_merchant">Nomor HP</label>
+                                    <input type="text" class="form-control" id="nohp" name="nohp" placeholder="Nomor HP">
+                                </div>
+                                <div class="col">
+                                    <label for="jenis_kategori">Alamat</label>
+                                    <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Alamat">
+                                </div>
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                        </form>
+                </div>
+
                 </div>
             </div>
         </div>

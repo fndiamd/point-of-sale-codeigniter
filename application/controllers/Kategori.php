@@ -31,9 +31,6 @@ class Kategori extends CI_Controller
       'status' => 0
     ];
 
-    if($data['jenis_kategori'] == ''){
-      $data['jenis_kategori'] = "-";
-    }
 
     $this->db->insert('kategori', $data);
     $this->session->set_flashdata('success', 'Kategori berhasil ditambahkan');

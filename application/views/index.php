@@ -47,17 +47,8 @@
         <b>Version</b> 3.0.0-alpha
       </div>
     </footer>
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">exampleModalexampleModal
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
   </div>
   <!-- ./wrapper -->
-
-  <!-- jQuery -->
-  <script src="<?= base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
   <!-- jQuery UI 1.11.4 -->
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -86,15 +77,14 @@
   <!-- Slimscroll -->
   <script src="<?= base_url('assets/plugins/slimScroll/jquery.slimscroll.min.js') ?>"></script>
   <!-- FastClick -->
-  <script src="<?= base_url('assets/plugins/fastclick/fastclick.js') ?>"></script>
+  <sChart.bundle.jscript src="<?= base_url('assets/plugins/fastclick/fastclick.js') ?>"></script>
   <!-- Data tables -->
-
   <script src="<?= base_url('assets/plugins/datatables/jquery.dataTables.js') ?>"></script>
   <script src="<?= base_url('assets/plugins/datatables/dataTables.bootstrap4.js') ?>"></script>
+  <!-- Select 2 -->
+  <script src="<?= base_url('assets/plugins/select2/select2.min.js')?>"></script>
   <!-- AdminLTE App -->
   <script src="<?= base_url('assets/dist/js/adminlte.js') ?>"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="<?= base_url('assets/dist/js/demo.js') ?>"></script>
   <script>
     $(function() {
       $('#data-tables').DataTable({
@@ -105,7 +95,15 @@
         "info": true,
         "autoWidth": true,
       });
+
+      $('.select-plugin').select2();
+
+      $(".datepicker").datepicker({
+        dateFormat: 'dd-mm-yyyy'
+      });
+
     });
+    
   </script>
 </body>
 

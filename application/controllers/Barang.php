@@ -23,6 +23,25 @@ class Barang extends CI_Controller
     $this->load->view('index', $data);
   }
 
+  public function store(){
+    $data = [
+      'nama_barang' => $this->input->post('nama_barang'),
+      'kodebarang' => $this->input->post('kodebarang'),
+      'user' => '089612994819',
+    ];
+
+    $this->db->insert('barang', $data);
+    $this->session->set_flashdata('success', 'barang berhasil ditambahkan');
+    redirect(base_url('barang'));
+  }
+
+  public function search(){
+    $id = $this->input->post('id_barang');
+    $this->db->where('id_barang', $id);
+    header('Content-Type: application/json');
+    echo json_encode($this->db->get('barang')->row());
+  }
+
 }
 
 

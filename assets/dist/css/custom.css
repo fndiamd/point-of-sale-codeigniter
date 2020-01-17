@@ -1,0 +1,7 @@
+.main-sidebar{
+    background-color: #5c94bd !important;
+}
+
+.select2-container--default .select2-selection--single{
+    padding-bottom:25px;
+}

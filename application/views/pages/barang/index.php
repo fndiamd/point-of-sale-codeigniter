@@ -3,8 +3,29 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Buat Barang Baru</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
                     <div class="card-body">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex, blanditiis tenetur ratione quia porro deserunt eius provident corporis consequatur sint assumenda laudantium corrupti mollitia molestias? Voluptatem inventore assumenda rem quibusdam?
+                        <form method="post" action="<?= base_url('barang/store') ?>">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="nama_barang">Nama barang</label>
+                                    <input type="text" class="form-control" id="nama_barang" name="nama_barang" placeholder="Nama Barang">
+                                </div>
+                                <div class="col">
+                                    <label for="kodebarang">Kode Barang</label>
+                                    <input type="text" class="form-control" id="kodebarang" name="kodebarang" placeholder="Kode Barang">
+                                </div>
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -27,15 +48,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $no=1; foreach ($barangs->result() as $barang) : ?>
+                                <?php $no = 1;
+                                foreach ($barangs->result() as $barang) : ?>
                                     <tr>
-                                        <td><?= $no++?></td>
+                                        <td><?= $no++ ?></td>
                                         <td><?= $barang->kodebarang ?></td>
-                                        <td><?= $barang->nama_kategori?></td>
-                                        <td><?= $barang->nama_barang?></td>
-                                        <td><?= $barang->hargabeli?></td>
-                                        <td><?= $barang->hargajual?></td>
-                                        <td><?= $barang->stok?></td>
+                                        <td><?= $barang->nama_kategori ?></td>
+                                        <td><?= $barang->nama_barang ?></td>
+                                        <td><?= $barang->hargabeli ?></td>
+                                        <td><?= $barang->hargajual ?></td>
+                                        <td><?= $barang->stok ?></td>
+                                        <td align="center" style="min-width: 150px">
+                                            <a href="" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+                                            <a href="" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                            <a href="" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
