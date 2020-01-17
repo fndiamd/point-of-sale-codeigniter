@@ -7,7 +7,6 @@
                 </a>
             </div>
         </div>
-        <br>
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -31,7 +30,7 @@
                                     <tr>
                                         <td><?= $no++ ?></td>
                                         <td><?= $barang->kodebarang ?></td>
-                                        <td><?= $barang->nama_kategori ?></td>
+                                        <td><?= $barang->id_kategori ?></td>
                                         <td><?= $barang->nama_barang ?></td>
                                         <td><?= $barang->hargabeli ?></td>
                                         <td><?= $barang->hargajual ?></td>

@@ -30,7 +30,7 @@ class Barang extends CI_Controller
 
     $this->load->view('index', $data);
   }
-
+  
   public function create()
   {
     $data = [

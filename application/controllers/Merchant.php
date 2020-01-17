@@ -21,19 +21,80 @@ class Merchant extends CI_Controller
     $this->load->view('index', $data);
   }
 
+  public function create()
+  {
+    $data = [
+      'title' => 'Toko',
+      'page' => 'merchant/form_tambah',
+    ];
+    $this->load->view('index', $data);
+  }
+
   public function store(){
     $data = [
       'nama_toko' => $this->input->post('nama_toko'),
       'email' => $this->input->post('email'),
       'nohp' => $this->input->post('nohp'),
       'alamat' => $this->input->post('alamat'),
-      'user' => '089612994819',
+      'user' => $this->input->post('user')
     ];
 
     $this->db->insert('toko', $data);
     $this->session->set_flashdata('success', 'Merchant berhasil ditambahkan');
     redirect(base_url('merchant'));
   }
+
+  public function view($id)
+  {
+    $this->db->where('id_toko', $id);
+    $merchant = $this->db->get('toko')->row();
+    $data = [
+      'title' => 'View',
+      'page' => 'merchant/form_view',
+      'data' => $merchant
+    ];
+    $this->load->view('index', $data);
+  }
+
+  public function edit($id)
+  {
+    $this->db->where('id_toko', $id);
+    $barang = $this->db->get('toko')->row();
+    $data = [
+      'title' => 'Update',
+      'page' => 'merchant/form_update',
+      'data' => $barang
+    ];
+    $this->load->view('index', $data);
+  }
+
+  function update($id)
+  {
+    $data = [
+      'nama_toko' => $this->input->post('nama_toko'),
+      'alamat' => $this->input->post('alamat'),
+      'user' => $this->input->post('user'),
+      'email' => $this->input->post('email'),
+      'nohp' => $this->input->post('nohp'),
+      
+    ];
+
+    $this->db->where('id_toko', $id);
+    $this->db->update('toko', $data);
+    $this->session->set_flashdata('success', 'toko berhasil update');
+    redirect(base_url('merchant'));
+  }
+
+  public function delete($id)
+  {
+    if (!isset($id)) show_404();
+
+    $this->db->where('id_toko', $id);
+    $this->db->delete('toko');
+    $this->session->set_flashdata('success', 'toko berhasil dihapus');
+    redirect(base_url('merchant'));
+  }
+
 }
 
 
