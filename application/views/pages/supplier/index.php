@@ -33,7 +33,7 @@
                                         <td align="center" style="min-width: 150px">
                                             <a href="<?= base_url('supplier/view/'.$supplier->id_supplier)?>" class="btn btn-primary"><i class="fa fa-eye"></i></a>
                                             <a href="<?= base_url('supplier/edit/'.$supplier->id_supplier)?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                                            <a href="" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                            <a href="<?= base_url('supplier/delete/'.$supplier->id_supplier)?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
