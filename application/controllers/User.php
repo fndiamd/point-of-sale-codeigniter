@@ -99,27 +99,29 @@ class User extends CI_Controller
 
   function update($id)
   {
-    if (!$this->upload->do_upload('gambar')) {
+    $data = [
+        'nama_lengkap' => $this->input->post('nama_lengkap'),
+        'password' => $this->input->post('password'),
+        'tanggal' => $this->input->post('tanggal'),
+        'alamat' => $this->input->post('alamat'),
+        'email' => $this->input->post('email'),
+        'no_telp' => $this->input->post('no_telp'),
+        'kota' => $this->input->post('kota'),
+        'level' => $this->input->post('level'),
+        'blokir' => $this->input->post('blokir'),
+        'id_session' => $this->input->post('id_session'),
+        'paket' => $this->input->post('paket'),
+      ];
 
-      $this->session->set_flashdata('error', $this->upload->display_errors());
-      redirect(base_url('user/create'));
-    } else {
-      $gambar = $this->upload->data();
-      $data = [
-          'nama_lengkap' => $this->input->post('nama_lengkap'),
-          'password' => $this->input->post('password'),
-          'tanggal' => $this->input->post('tanggal'),
-          'alamat' => $this->input->post('alamat'),
-          'email' => $this->input->post('email'),
-          'no_telp' => $this->input->post('no_telp'),
-          'kota' => $this->input->post('kota'),
-          'level' => $this->input->post('level'),
-          'blokir' => $this->input->post('blokir'),
-          'id_session' => $this->input->post('id_session'),
-          'gbr' => $gambar['file_name'],
-          'paket' => $this->input->post('paket'),
-        ];
-    }
+      if (!empty($_FILES['gambar']['name'])) {
+        if (!$this->upload->do_upload('gambar')) {
+          $this->session->set_flashdata('error', $this->upload->display_errors());
+          redirect(base_url('user/create'));
+        } else {
+          $gambar = $this->upload->data();
+          $data['gbr'] = $gambar['file_name'];
+        }
+      }
 
     $this->db->where('no_telp', $id);
     $this->db->update('users', $data);

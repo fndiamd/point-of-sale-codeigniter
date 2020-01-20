@@ -1,4 +1,13 @@
 <section class="content">
+<div class ="container-fluid">
+<div class="row">
+      <div class="col-12">
+        <a href="<?= base_url('supplier') ?>" class="btn btn-default">
+          <i class="fa fa-arrow-left"></i>&nbsp; Kembali
+        </a>
+      </div>
+</div>
+<br>
 <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -74,4 +83,5 @@
                 </div>
             </div>
         </div>
+</div>
 </section>

@@ -98,12 +98,6 @@ class Supplier extends CI_Controller
 
   function update($id)
   {
-    if (!$this->upload->do_upload('gambar')) {
-
-      $this->session->set_flashdata('error', $this->upload->display_errors());
-      redirect(base_url('supplier/create'));
-    } else {
-      $gambar = $this->upload->data();
       $data = [
         'nama_supplier' => $this->input->post('nama_supplier'),
         'alamat' => $this->input->post('alamat'),
@@ -113,10 +107,18 @@ class Supplier extends CI_Controller
         'profinsi' => $this->input->post('profinsi'),
         'kota' => $this->input->post('kota'),
         'hutang' => $this->input->post('hutang'),
-        'gbr' => $gambar['file_name'],
         'aktiv' => $this->input->post('aktiv'),
       ];
-    }
+
+      if (!empty($_FILES['gambar']['name'])) {
+        if (!$this->upload->do_upload('gambar')) {
+          $this->session->set_flashdata('error', $this->upload->display_errors());
+          redirect(base_url('supplier/create'));
+        } else {
+          $gambar = $this->upload->data();
+          $data['gbr'] = $gambar['file_name'];
+        }
+      }
 
     $this->db->where('id_supplier', $id);
     $this->db->update('supplier', $data);
