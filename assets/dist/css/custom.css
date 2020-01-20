@@ -14,3 +14,15 @@
     font-weight: 300;
     color:222;
 }
+
+.bg-login{
+    background-image: linear-gradient(to left, #f90, #22a5e3);
+    width:100%;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.card-login{
+    margin-top: 25vh;
+}

@@ -16,7 +16,7 @@
         <!-- User Dropdown Menu -->
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
-                <i class="fa fa-user"></i> &nbsp; Fandi Ahmad
+                <i class="fa fa-user"></i> &nbsp; <?= $this->session->userdata('nama_admin')?>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <div class="dropdown-divider"></div>
@@ -28,7 +28,7 @@
                     <i class="fa fa-lock mr-2"></i> Ganti Password
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
+                <a href="<?= base_url('auth/logout')?>" class="dropdown-item">
                     <i class="fa fa-power-off mr-2"></i> Keluar
                 </a>
             </div>

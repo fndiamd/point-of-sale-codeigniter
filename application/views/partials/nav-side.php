@@ -13,7 +13,7 @@
                 <img src="<?= base_url('assets/') ?>dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Fandi Ahmad</a>
+                <a href="#" class="d-block"><?= $this->session->userdata('nama_admin')?></a>
             </div>
         </div>
 

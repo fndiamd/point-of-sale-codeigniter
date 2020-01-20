@@ -13,7 +13,7 @@ class Merchant extends CI_Controller
   {
     $merchant = $this->db->get('toko');
     $data = [
-      'title' => 'Merchant',
+      'title' => 'Manajemen Toko',
       'page' => 'merchant/index',
       'merchants' => $merchant
     ];
@@ -24,9 +24,11 @@ class Merchant extends CI_Controller
   public function create()
   {
     $data = [
-      'title' => 'Toko',
+      'title' => 'Tambah Toko Baru',
       'page' => 'merchant/form_tambah',
+      'user' => $this->db->get('users')->result()
     ];
+
     $this->load->view('index', $data);
   }
 
@@ -49,7 +51,7 @@ class Merchant extends CI_Controller
     $this->db->where('id_toko', $id);
     $merchant = $this->db->get('toko')->row();
     $data = [
-      'title' => 'View',
+      'title' => 'Detail '.$merchant->nama_toko,
       'page' => 'merchant/form_view',
       'data' => $merchant
     ];
@@ -59,12 +61,13 @@ class Merchant extends CI_Controller
   public function edit($id)
   {
     $this->db->where('id_toko', $id);
-    $barang = $this->db->get('toko')->row();
+    $merchant = $this->db->get('toko')->row();
     $data = [
-      'title' => 'Update',
+      'title' => 'Update '.$merchant->nama_toko,
       'page' => 'merchant/form_update',
-      'data' => $barang
+      'data' => $merchant
     ];
+
     $this->load->view('index', $data);
   }
 
