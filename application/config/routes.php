@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$route['default_controller'] = 'dashboard';
+$route['default_controller'] = 'auth';
 $route['penjualan/data-penjualan'] = 'DataPenjualan';
 $route['penjualan/detail-penjualan'] = 'Penjualan';
 

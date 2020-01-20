@@ -1,3 +1,9 @@
+<?php
+  if (!$this->session->userdata('id_admin')) {
+    $this->session->set_flashdata('error', 'Anda harus sign-in terlebih dahulu!');
+    redirect(base_url());
+  }
+?>
 <?php $this->load->view('partials/head') ?>
 
 <body class="hold-transition sidebar-mini">
@@ -77,34 +83,34 @@
   <!-- Slimscroll -->
   <script src="<?= base_url('assets/plugins/slimScroll/jquery.slimscroll.min.js') ?>"></script>
   <!-- FastClick -->
-  <sChart.bundle.jscript src="<?= base_url('assets/plugins/fastclick/fastclick.js') ?>"></script>
-  <!-- Data tables -->
-  <script src="<?= base_url('assets/plugins/datatables/jquery.dataTables.js') ?>"></script>
-  <script src="<?= base_url('assets/plugins/datatables/dataTables.bootstrap4.js') ?>"></script>
-  <!-- Select 2 -->
-  <script src="<?= base_url('assets/plugins/select2/select2.min.js')?>"></script>
-  <!-- AdminLTE App -->
-  <script src="<?= base_url('assets/dist/js/adminlte.js') ?>"></script>
-  <script>
-    $(function() {
-      $('#data-tables').DataTable({
-        "paging": true,
-        "lengthChange": true,
-        "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": true,
+  <sChart.bundle.jscript src="<?= base_url('assets/plugins/fastclick/fastclick.js') ?>">
+    </script>
+    <!-- Data tables -->
+    <script src="<?= base_url('assets/plugins/datatables/jquery.dataTables.js') ?>"></script>
+    <script src="<?= base_url('assets/plugins/datatables/dataTables.bootstrap4.js') ?>"></script>
+    <!-- Select 2 -->
+    <script src="<?= base_url('assets/plugins/select2/select2.min.js') ?>"></script>
+    <!-- AdminLTE App -->
+    <script src="<?= base_url('assets/dist/js/adminlte.js') ?>"></script>
+    <script>
+      $(function() {
+        $('#data-tables').DataTable({
+          "paging": true,
+          "lengthChange": true,
+          "searching": true,
+          "ordering": true,
+          "info": true,
+          "autoWidth": true,
+        });
+
+        $('.select-plugin').select2();
+
+        $(".datepicker").datepicker({
+          dateFormat: 'dd-mm-yyyy'
+        });
+
       });
-
-      $('.select-plugin').select2();
-
-      $(".datepicker").datepicker({
-        dateFormat: 'dd-mm-yyyy'
-      });
-
-    });
-    
-  </script>
+    </script>
 </body>
 
 </html>
