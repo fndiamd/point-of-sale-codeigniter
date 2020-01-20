@@ -11,13 +11,15 @@ class MPelanggan extends CI_Model {
     return $this->db->get('pelanggan')->result();
   }
 
-  public function getById(){
-    
-  }
-
   public function pelangganUser($user){
     $this->db->where('user', $user);
     return $this->db->get('pelanggan')->result();
+  }
+
+  public function getById($value){
+    $this->db->where('pelanggan.id_pelanggan', $value);
+    
+    return $this->db->get('pelanggan')->row();
   }
 }
 

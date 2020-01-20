@@ -8,6 +8,16 @@ class User extends CI_Controller
   public function __construct()
   {
     parent::__construct();
+
+    $configUpload = [
+      'upload_path' => './assets/uploads/user/',
+      'allowed_types' => 'gif|jpeg|jpg|png',
+      'max_size' => 10000,
+      'overwrite' => true
+    ];
+    $this->load->library('upload', $configUpload);
+    $this->load->model('MKategori', 'kategori');
+    $this->load->model('MUser', 'user');
   }
 
   public function index()
@@ -16,28 +26,36 @@ class User extends CI_Controller
     $data = [
       'title' => 'User',
       'page' => 'user/index',
-      'users' => $user
+      'users' => $user,
+      'kategori' => $this->kategori->getAll(),
+      'user' => $this->user->getAll()
     ];
 
     $this->load->view('index', $data);
   }
 
   public function store(){
-    $data = [
-      'nama_lengkap' => $this->input->post('nama_lengkap'),
-      'password' => $this->input->post('password'),
-      'tanggal' => $this->input->post('tanggal'),
-      'alamat' => $this->input->post('alamat'),
-      'email' => $this->input->post('email'),
-      'no_telp' => $this->input->post('no_telp'),
-      'kota' => $this->input->post('kota'),
-      'level' => $this->input->post('level'),
-      'blokir' => $this->input->post('blokir'),
-      'id_session' => $this->input->post('id_session'),
-      'gbr' => $this->input->post('gbr'),
-      'paket' => $this->input->post('paket'),
-    ];
+    if (!$this->upload->do_upload('gambar')) {
 
+      $this->session->set_flashdata('error', $this->upload->display_errors());
+      redirect(base_url('user/create'));
+    } else {
+      $gambar = $this->upload->data();
+      $data = [
+        'nama_lengkap' => $this->input->post('nama_lengkap'),
+        'password' => $this->input->post('password'),
+        'tanggal' => $this->input->post('tanggal'),
+        'alamat' => $this->input->post('alamat'),
+        'email' => $this->input->post('email'),
+        'no_telp' => $this->input->post('no_telp'),
+        'kota' => $this->input->post('kota'),
+        'level' => $this->input->post('level'),
+        'blokir' => $this->input->post('blokir'),
+        'id_session' => $this->input->post('id_session'),
+        'gbr' => $gambar['file_name'],
+        'paket' => $this->input->post('paket'),
+      ];
+  }
 
     $this->db->insert('users', $data);
     $this->session->set_flashdata('success', 'User berhasil ditambahkan');
@@ -72,27 +90,36 @@ class User extends CI_Controller
     $data = [
       'title' => 'Update',
       'page' => 'user/form_update',
-      'data' => $user
+      'data' => $user,
+      'kategori' => $this->kategori->getAll(),
+      'user' => $this->user->getAll()
     ];
     $this->load->view('index', $data);
   }
 
   function update($id)
   {
-    $data = [
-        'nama_lengkap' => $this->input->post('nama_lengkap'),
-        'password' => $this->input->post('password'),
-        'tanggal' => $this->input->post('tanggal'),
-        'alamat' => $this->input->post('alamat'),
-        'email' => $this->input->post('email'),
-        'no_telp' => $this->input->post('no_telp'),
-        'kota' => $this->input->post('kota'),
-        'level' => $this->input->post('level'),
-        'blokir' => $this->input->post('blokir'),
-        'id_session' => $this->input->post('id_session'),
-        'gbr' => $this->input->post('gbr'),
-        'paket' => $this->input->post('paket'),
-      ];
+    if (!$this->upload->do_upload('gambar')) {
+
+      $this->session->set_flashdata('error', $this->upload->display_errors());
+      redirect(base_url('user/create'));
+    } else {
+      $gambar = $this->upload->data();
+      $data = [
+          'nama_lengkap' => $this->input->post('nama_lengkap'),
+          'password' => $this->input->post('password'),
+          'tanggal' => $this->input->post('tanggal'),
+          'alamat' => $this->input->post('alamat'),
+          'email' => $this->input->post('email'),
+          'no_telp' => $this->input->post('no_telp'),
+          'kota' => $this->input->post('kota'),
+          'level' => $this->input->post('level'),
+          'blokir' => $this->input->post('blokir'),
+          'id_session' => $this->input->post('id_session'),
+          'gbr' => $gambar['file_name'],
+          'paket' => $this->input->post('paket'),
+        ];
+    }
 
     $this->db->where('no_telp', $id);
     $this->db->update('users', $data);
@@ -102,8 +129,8 @@ class User extends CI_Controller
 
   public function delete($id)
   {
-    if (!isset($id)) show_404();
-
+    $user = $this->user->getById($id);
+    unlink(FCPATH.'assets/uploads/user/'.$user->gbr);
     $this->db->where('no_telp', $id);
     $this->db->delete('users');
     $this->session->set_flashdata('success', 'User berhasil dihapus');

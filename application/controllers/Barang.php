@@ -141,6 +141,8 @@ class Barang extends CI_Controller
 
   public function delete($id)
   {
+    $barang = $this->barang->getById($id);
+    unlink(FCPATH.'assets/uploads/barang/'.$barang->gbr);
     $this->db->where('id_barang', $id);
     $this->db->delete('barang');
     $this->session->set_flashdata('success', 'barang berhasil dihapus');

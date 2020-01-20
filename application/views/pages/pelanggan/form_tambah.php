@@ -1,4 +1,13 @@
 <section class="content">
+<div class="container-fluid">
+<div class="row">
+      <div class="col-12">
+        <a href="<?= base_url('pelanggan') ?>" class="btn btn-default">
+          <i class="fa fa-arrow-left"></i>&nbsp; Kembali
+        </a>
+      </div>
+</div>
+<br>
 <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -21,7 +30,7 @@
 
                     <div class="form-group">
                       <label for="alamat">Alamat<span class="label-required"> *</span></label>
-                      <textarea type="text" class="form-control" id="alamat" name="alamat" cols="30" rows="5" class="form-control" required placeholder="Alamat Pelanggan"></textarea>
+                      <textarea type="text" class="form-control" id="alamat" name="alamat" cols="30" rows="5" required placeholder="Alamat Pelanggan"></textarea>
                     </div>
 
                     <div class="form-group">
@@ -52,24 +61,19 @@
 
                     <div class="row">
                       <div class="col">
-                        <label for="hutang">Hutang <span class="label-required"> *</span></label>
+                        <label for="hutang">Hutang<span class="label-required"> *</span></label>
                         <div class="input-group">
                           <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">Rp</span>
-                            </div>
-                            <input type="number" class="form-control" id="hutang" name="hutang" required min="0" placeholder="Hutang Pelanggan">
                           </div>
+                          <input type="number" class="form-control" id="hutang" name="hutang" required min="0" placeholder="Hutang Pelanggan">
                         </div>
                       </div>
-
-                    <div class="form-group">
-                      <label for="gambar">Gambar <span class="label-required"> *</span></label>
-                      <input type="file" name="gambar" id="gambar" class="form-control" required>
                     </div>
 
                     <div class="form-group">
-                      <label for="aktiv">Active<span class="label-required"> *</span></label>
-                      <input type="text" class="form-control" id="aktiv" name="aktiv">
+                      <label for="gambar">Gambar<span class="label-required"> *</span></label>
+                      <input type="file" name="gambar" id="gambar" class="form-control" required>
                     </div>
 
                   <button type="submit" class="btn btn-primary">Submit</button>
@@ -77,5 +81,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+      </div>
+</div>
 </section>

@@ -1,4 +1,13 @@
 <section class="content">
+<div class="container-fluid">
+<div class="row">
+      <div class="col-12">
+        <a href="<?= base_url('pelanggan') ?>" class="btn btn-default">
+          <i class="fa fa-arrow-left"></i>&nbsp; Kembali
+        </a>
+      </div>
+</div>
+<br>
 <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -20,48 +29,57 @@
                     </div>
 
                     <div class="form-group">
-                      <label for="nama_pelanggan">Nama Pelanggan</label>
+                      <label for="nama_pelanggan">Nama Pelanggan<span class="label-required"> *</span></label>
                       <input type="text" class="form-control" id="nama_pelanggan" name="nama_pelanggan" value="<?php echo $data->nama_pelanggan ?>">
                     </div>
 
                     <div class="form-group">
-                      <label for="alamat">Alamat</label>
-                      <input type="text" class="form-control" id="alamat" name="alamat" value="<?php echo $data->alamat ?>">
+                      <label for="alamat">Alamat<span class="label-required"> *</span></label>
+                      <textarea type="text" class="form-control" id="alamat" name="alamat" cols="30" rows="5" ><?php echo $data->alamat ?></textarea>
                     </div>
 
                     <div class="form-group">
-                      <label for="email">Email</label>
+                      <label for="email">Email<span class="label-required"> *</span></label>
                       <input type="text" class="form-control" id="email" name="email" value="<?php echo $data->email ?>">
                     </div>
 
                     <div class="form-group">
-                      <label for="telpon">Telepon</label>
+                      <label for="telpon">Telepon<span class="label-required"> *</span></label>
                       <input type="text" class="form-control" id="telpon" name="telpon" value="<?php echo $data->telpon ?>">
                     </div>
+                    
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="status">Status<span class="label-required"> *</span></label>
+                          <input type="text" class="form-control" id="status" name="status" value="<?php echo $data->status ?>">
+                        </div>
+                      </div>
 
-                    <div class="form-group">
-                      <label for="status">Status</label>
-                      <input type="text" class="form-control" id="status" name="status" value="<?php echo $data->status ?>">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="aktiv">Active<span class="label-required"> *</span></label>
+                          <input type="text" class="form-control" id="aktiv" name="aktiv" value="<?php echo $data->aktiv ?>">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col">
+                      <label for="hutang">Hutang <span class="label-required"> *</span></label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">Rp</span>
+                          </div>
+                          <input type="number" class="form-control" id="hutang" name="hutang" required min="0" value="<?php echo $data->hutang ?>">
+                        </div>
+                      </div>
                     </div>
 
                     <div class="form-group">
-                      <label for="user">User</label>
-                      <input type="text" class="form-control" id="user" name="user" value="<?php echo $data->user ?>">
-                    </div>
-
-                    <div class="form-group">
-                      <label for="hutang">Hutang</label>
-                      <input type="text" class="form-control" id="hutang" name="hutang" value="<?php echo $data->hutang ?>">
-                    </div>
-
-                    <div class="form-group">
-                      <label for="gbr">Gambar</label>
-                      <input type="text" class="form-control" id="gbr" name="gbr" value="<?php echo $data->gbr ?>">
-                    </div>
-
-                    <div class="form-group">
-                      <label for="aktiv">Active</label>
-                      <input type="text" class="form-control" id="aktiv" name="aktiv" value="<?php echo $data->aktiv ?>">
+                      <label for="gambar">Gambar <span class="label-optional">( Optional )</span></label>
+                      <input type="file" name="gambar" id="gambar" class="form-control" aria-describedby="gambarHelp">
+                      <small id="gambarHelp" class="form-text text-muted">Biarkan kosong bila tidak ingin merubah gambar Pelanggan.</small>
                     </div>
 
                   <button type="submit" class="btn btn-primary">Submit</button>
@@ -69,5 +87,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+          </div>
+</div>
+
 </section>

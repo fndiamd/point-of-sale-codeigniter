@@ -99,17 +99,25 @@ class Pelanggan extends CI_Controller
 
   function update($id)
   {
-    $data = [
-      'nama_pelanggan' => $this->input->post('nama_pelanggan'),
-      'alamat' => $this->input->post('alamat'),
-      'email' => $this->input->post('email'),
-      'telpon' => $this->input->post('telpon'),
-      'user' => $this->input->post('user'),
-      'status' => $this->input->post('status'),
-      'hutang' => $this->input->post('hutang'),
-      'gbr' => $this->input->post('gbr'),
-      'aktiv' => $this->input->post('aktiv'),
-    ];
+    if (!$this->upload->do_upload('gambar')) {
+
+      $this->session->set_flashdata('error', $this->upload->display_errors());
+      redirect(base_url('pelanggan/create'));
+    } else {
+
+      $gambar = $this->upload->data();
+      $data = [
+        'nama_pelanggan' => $this->input->post('nama_pelanggan'),
+        'alamat' => $this->input->post('alamat'),
+        'email' => $this->input->post('email'),
+        'telpon' => $this->input->post('telpon'),
+        'user' => $this->input->post('user'),
+        'status' => $this->input->post('status'),
+        'hutang' => $this->input->post('hutang'),
+        'gbr' => $gambar['file_name'],
+        'aktiv' => $this->input->post('aktiv'),
+      ];
+    }
 
     $this->db->where('id_pelanggan', $id);
     $this->db->update('pelanggan', $data);
@@ -119,8 +127,8 @@ class Pelanggan extends CI_Controller
 
   public function delete($id)
   {
-    if (!isset($id)) show_404();
-
+    $pelanggan = $this->pelanggan->getById($id);
+    unlink(FCPATH.'assets/uploads/pelanggan/'.$pelanggan->gbr);
     $this->db->where('id_pelanggan', $id);
     $this->db->delete('pelanggan');
     $this->session->set_flashdata('success', 'pelanggan berhasil dihapus');
