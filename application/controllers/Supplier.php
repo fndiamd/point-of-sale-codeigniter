@@ -75,7 +75,7 @@ class Supplier extends CI_Controller
     $this->db->where('id_supplier', $id);
     $supplier = $this->db->get('supplier')->row();
     $data = [
-      'title' => 'View',
+      'title' => 'Lihat Supplier',
       'page' => 'supplier/form_view',
       'data' => $supplier
     ];

@@ -65,7 +65,7 @@ class User extends CI_Controller
   public function create()
   {
     $data = [
-      'title' => 'User',
+      'title' => 'Tambah User',
       'page' => 'user/form_tambah',
     ];
     $this->load->view('index', $data);
@@ -76,7 +76,7 @@ class User extends CI_Controller
     $this->db->where('no_telp', $id);
     $user = $this->db->get('users')->row();
     $data = [
-      'title' => 'View',
+      'title' => 'Lihat User',
       'page' => 'user/form_view',
       'data' => $user
     ];
@@ -88,7 +88,7 @@ class User extends CI_Controller
     $this->db->where('no_telp', $id);
     $user = $this->db->get('users')->row();
     $data = [
-      'title' => 'Update',
+      'title' => 'Update User',
       'page' => 'user/form_update',
       'data' => $user,
       'kategori' => $this->kategori->getAll(),

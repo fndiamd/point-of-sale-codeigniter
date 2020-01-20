@@ -65,7 +65,7 @@ class Pelanggan extends CI_Controller
     $this->db->where('id_pelanggan', $id);
     $pelanggan = $this->db->get('pelanggan')->row();
     $data = [
-      'title' => 'View',
+      'title' => 'Lihat Pelanggan',
       'page' => 'pelanggan/form_view',
       'data' => $pelanggan
     ];
@@ -88,7 +88,7 @@ class Pelanggan extends CI_Controller
     $this->db->where('id_pelanggan', $id);
     $pelanggan = $this->db->get('pelanggan')->row();
     $data = [
-      'title' => 'Update',
+      'title' => 'Update Pelanggan',
       'page' => 'pelanggan/form_update',
       'data' => $pelanggan,
       'kategori' => $this->kategori->getAll(),
