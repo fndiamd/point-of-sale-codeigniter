@@ -1,11 +1,13 @@
 <section class="content">
     <div class="container-fluid">
     <div class="row">
-        <div class="col-12">
-            <a href="<?= base_url('pelanggan/create')?>" class="btn btn-success ">Tambah Pelanggan <i class="fa fa-plus"></a></i>
-            <br><br>
+            <div class="col-12">
+                <a href="<?= base_url('pelanggan/create')?>" class="btn btn-success">
+                    <i class="fa fa-plus"></i>&nbsp; Tambah Pelanggan
+                </a>
+            </div>
         </div>
-    </div>
+        <br>
         <div class="row">
             <div class="col-12">
                 <div class="card">
