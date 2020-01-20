@@ -12,7 +12,7 @@ class MBarang extends CI_Model {
 
   public function getAll(){
     $this->db->from($this->table);
-    $this->db->join('kategori', 'kategori.id_kategori='.$this->table.'.id_kategori');
+    $this->db->join('kategori', 'kategori.id_kategori='.$this->table.'.id_kategori', 'left');
     return $this->db->get()->result();
   }
 
