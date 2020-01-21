@@ -1,10 +1,13 @@
 <section class="content">
+<div class ="container-fluid">
 <div class="row">
-            <div class="col-12">
-            <a href="<?= base_url('supplier/create')?>" class="btn btn-success ">Tambah Supplier <i class="fa fa-plus"></a></i>
-            <br><br>
-            </div>
-        </div>
+    <div class="col-12">
+        <a href="<?= base_url('supplier/create')?>" class="btn btn-success">
+            <i class="fa fa-plus"></i>&nbsp; Tambah Supplier
+        </a>
+    </div>
+</div>
+        <br>
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -45,3 +48,4 @@
         </div>
     </div>
 </section>
+</div>
