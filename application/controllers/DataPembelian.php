@@ -7,6 +7,7 @@ class DataPembelian extends CI_Controller{
   {
     parent::__construct();
     $this->load->model('MDataPembelian', 'dataPembelian');
+    $this->load->model('MToko', 'toko');
   }
 
   public function index(){
@@ -14,7 +15,7 @@ class DataPembelian extends CI_Controller{
       'title' => 'Data Pembelian',
       'page' => 'data-pembelian/index',
       'dataPembelian' => $this->dataPembelian->getAll(),
-      'merchant' => $this->db->get('toko')->result()
+      'merchant' => $this->toko->getAll()
     ];
     
     $this->load->view('index', $data);

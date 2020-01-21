@@ -11,7 +11,8 @@ class MPenjualan extends CI_Model {
   }
 
   public function getAll($column = 'tanggal', $sort = 'sort'){
-    $this->db->from('penjualan');
+    $this->db->select('penjualan.*, toko.*, pelanggan.nama_pelanggan, barang.nama_barang');
+    $this->db->from($this->penjualan);
     $this->db->join('pelanggan', 'pelanggan.id_pelanggan=penjualan.id_pelanggan', 'left');
     $this->db->join('barang', 'barang.id_barang=penjualan.id_barang', 'left');
     $this->db->join('toko', 'toko.user=penjualan.user');
@@ -20,7 +21,8 @@ class MPenjualan extends CI_Model {
   }
 
   public function penjualanUser($user){
-    $this->db->from('penjualan');
+    $this->db->select('penjualan.*, pelanggan.nama_pelanggan, barang.nama_barang');
+    $this->db->from($this->penjualan);
     $this->db->join('pelanggan', 'pelanggan.id_pelanggan=penjualan.id_pelanggan');
     $this->db->join('barang', 'barang.id_barang=penjualan.id_barang');
     $this->db->where('penjualan.user', $user);

@@ -11,7 +11,7 @@
                         <p>Merchant</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-card"></i>
+                        <i class="fa fa-store-alt"></i>
                     </div>
                     <a href="<?= base_url('merchant') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
@@ -26,7 +26,7 @@
                         <p>Supplier</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-bag"></i>
+                        <i class="fa fa-store"></i>
                     </div>
                     <a href="<?= base_url('supplier') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
@@ -34,14 +34,14 @@
             <!-- ./col -->
             <div class="col-lg-3 col-6">
                 <!-- small box -->
-                <div class="small-box bg-secondary">
+                <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3><?= $total_user ?></h3>
+                        <h3><?= $total_barang ?></h3>
 
-                        <p>User</p>
+                        <p>Barang</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-person"></i>
+                        <i class="fa fa-gifts"></i>
                     </div>
                     <a href="<?= base_url('users') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
@@ -56,7 +56,7 @@
                         <p>Pelanggan</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-pie-graph"></i>
+                        <i class="fa fa-user"></i>
                     </div>
                     <a href="<?= base_url('pelanggan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>

@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['default_controller'] = 'auth';
 $route['penjualan/data-penjualan'] = 'DataPenjualan';
+$route['penjualan/data-penjualan/report'] = 'DataPenjualan/report';
 $route['penjualan/detail-penjualan'] = 'Penjualan';
 
 $route['pembelian/data-pembelian'] = 'DataPembelian';

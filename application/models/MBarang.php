@@ -12,7 +12,7 @@ class MBarang extends CI_Model {
 
   public function getAll(){
     $this->db->from($this->table);
-    $this->db->join('kategori', 'kategori.id_kategori='.$this->table.'.id_kategori');
+    $this->db->join('kategori', 'kategori.id_kategori='.$this->table.'.id_kategori', 'left');
     return $this->db->get()->result();
   }
 
@@ -36,9 +36,14 @@ class MBarang extends CI_Model {
     $this->db->insert($this->table, $data);
   }
 
-  public function update($data, $clause){ 
+  public function update($clause, $data){ 
     $this->db->where($clause);
     $this->db->update($this->table, $data);
+  }
+
+  public function delete($idbarang){
+    $this->db->where('id_barang', $idbarang);
+    $this->db->delete($this->table);
   }
 }
 

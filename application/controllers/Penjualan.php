@@ -13,7 +13,7 @@ class Penjualan extends CI_Controller
 
   public function index(){
     $data = [
-      'title' => 'Transaksi Penjualan',
+      'title' => 'Detail Penjualan',
       'page' => 'penjualan/index',
       'penjualan' => $this->penjualan->getAll(),
       'merchant' => $this->db->get('toko')->result() 

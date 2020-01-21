@@ -7,7 +7,6 @@ class Dashboard extends CI_Controller {
 		$data = [
 			'page' => 'dashboard',
 			'title' => 'Dashboard',
-			'total_user' => $this->db->count_all_results('users'),
 			'total_merchant' => $this->db->count_all_results('toko'),
 			'total_supplier' => $this->db->count_all_results('supplier'),
 			'total_pelanggan' => $this->db->count_all_results('pelanggan'),

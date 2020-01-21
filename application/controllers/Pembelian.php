@@ -11,7 +11,7 @@ class Pembelian extends CI_Controller
 
   public function index(){
     $data = [
-      'title' => 'Transaksi Pembelian',
+      'title' => 'Detail Pembelian',
       'page' => 'pembelian/index',
       'pembelian' => $this->pembelian->getAll(),
       'merchant' => $this->db->get('toko')->result()
