@@ -67,7 +67,9 @@ class Pelanggan extends CI_Controller
     $data = [
       'title' => 'Lihat Pelanggan',
       'page' => 'pelanggan/form_view',
-      'data' => $pelanggan
+      'data' => $pelanggan,
+      'kategori' => $this->kategori->getAll(),
+      'user' => $this->user->getAll()
     ];
     $this->load->view('index', $data);
   }

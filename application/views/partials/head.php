@@ -31,6 +31,7 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url('assets/plugins/select2/select2.min.css') ?>">
+    
     <link rel="stylesheet" href="<?= base_url('assets/dist/css/custom.css') ?>">
     <!-- jQuery -->
     <script src="<?= base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
