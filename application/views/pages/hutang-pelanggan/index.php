@@ -34,7 +34,7 @@
                             </div>
                             <br>
                             <button type="submit" class="btn btn-success pull-right">
-                                <i class="fa fa-plus"></i>&nbsp; Report
+                                <i class="fa fa-file-excel"></i>&nbsp; Report
                             </button>
                         </form>
                     </div>
@@ -54,7 +54,6 @@
                                     <th>Invoice</th>
                                     <th>Nominal</th>
                                     <th>Tanggal</th>
-                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -69,9 +68,6 @@
                                         </td>
                                         <td>Rp<?= number_format($data->nominal, 0, ",", ".") ?>,-</td>
                                         <td><?= date_format(date_create($data->tanggal), "d M Y") ?></td>
-                                        <td align="center">
-                                            <?= $data->status?>
-                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

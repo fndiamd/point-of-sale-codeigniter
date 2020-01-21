@@ -94,23 +94,10 @@
     <script src="<?= base_url('assets/dist/js/adminlte.js') ?>"></script>
     <script>
       $(function() {
-        $('#data-tables').DataTable({
-          "paging": true,
-          "lengthChange": true,
-          "searching": true,
-          "ordering": true,
-          "info": true,
-          "autoWidth": true,
-        });
-
         $('.select-plugin').select2();
-
-        $(".datepicker").datepicker({
-          dateFormat: 'dd-mm-yyyy'
-        });
-
       });
     </script>
+    <script src="<?= base_url('assets/dist/js/custom.js') ?>"></script>
 </body>
 
 </html>

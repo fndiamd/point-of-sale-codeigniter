@@ -25,7 +25,7 @@ class Pelanggan extends CI_Controller
   {
     $pelanggan = $this->db->get('pelanggan');
     $data = [
-      'title' => 'Pelanggan',
+      'title' => 'Manajemen Pelanggan',
       'page' => 'pelanggan/index',
       'pelanggans' => $pelanggan
     ];

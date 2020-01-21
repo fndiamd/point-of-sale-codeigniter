@@ -11,6 +11,7 @@ class MPiutangPelanggan extends CI_Model {
   }
 
   public function getAll($column = 'tanggal', $sort = 'desc'){
+    $this->db->select('pelanggan.nama_pelanggan, toko.nama_toko, historipiutangpelanggan.*');
     $this->db->from($this->table);
     $this->db->join('pelanggan', 'pelanggan.id_pelanggan='.$this->table.'.id_pelanggan', 'left');
     $this->db->join('toko', 'toko.user='.$this->table.'.user', 'left');

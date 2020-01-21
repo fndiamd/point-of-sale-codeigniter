@@ -34,7 +34,7 @@
                             </div>
                             <br>
                             <button type="submit" class="btn btn-success pull-right">
-                                <i class="fa fa-plus"></i>&nbsp; Report
+                                <i class="fa fa-file-excel"></i>&nbsp; Report
                             </button>
                         </form>
                     </div>

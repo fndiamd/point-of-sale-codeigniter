@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Point of sales | <?= $title ?></title>
+    <link rel="shortcut icon" href="<?= base_url('assets/dist/img/profit.png')?>" type="image/x-icon">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -31,10 +32,10 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url('assets/plugins/select2/select2.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/dist/css/custom.css') ?>">
-
     <!-- jQuery -->
     <script src="<?= base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
-
     <!-- Chart -->
     <script src="<?= base_url('assets/dist/js/Chart.bundle.js') ?>"></script>
+    <!-- Sweet Alert -->
+    <script src="<?= base_url('assets/plugins/sweetalert2-9.6.1/dist/sweetalert2.all.min.js')?>"></script>
 </head>

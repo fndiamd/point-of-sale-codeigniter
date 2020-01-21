@@ -1,32 +1,51 @@
-.main-sidebar{
-    background-color: #5c94bd !important;
+.main-sidebar {
+  background-color: #5c94bd !important;
 }
 
-.select2-container--default .select2-selection--single{
-    padding-bottom:25px;
+.select2-container--default .select2-selection--single {
+  padding-bottom: 25px;
 }
 
-.label-required{
-    color:red;
+.label-required {
+  color: red;
 }
 
-.label-optional{
-    font-weight: 300;
-    color:222;
+.label-optional {
+  font-weight: 300;
+  color: 222;
 }
 
-.bg-login{
-    background-image: linear-gradient(to left, #f90, #22a5e3);
-    width:100%;
-    min-height: 100vh;
-    background-repeat: no-repeat;
-    background-size: cover;
+.bg-login {
+  background-image: linear-gradient(to left, #f90, #22a5e3);
+  width: 100%;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.card-login{
-    margin-top: 25vh;
+.card-login {
+  margin-top: 25vh;
 }
 
-.text-bold{
-    font-weight: 600;
+.text-bold {
+  font-weight: 600;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #758184;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #758184;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #5b5656;
 }

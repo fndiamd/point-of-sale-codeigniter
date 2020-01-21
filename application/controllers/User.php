@@ -24,7 +24,7 @@ class User extends CI_Controller
   {
     $user = $this->db->get('users');
     $data = [
-      'title' => 'User',
+      'title' => 'Manajemen User',
       'page' => 'user/index',
       'users' => $user,
       'kategori' => $this->kategori->getAll(),

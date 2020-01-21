@@ -5,9 +5,12 @@ $route['default_controller'] = 'auth';
 $route['penjualan/data-penjualan'] = 'DataPenjualan';
 $route['penjualan/data-penjualan/report'] = 'DataPenjualan/report';
 $route['penjualan/detail-penjualan'] = 'Penjualan';
+$route['penjualan/detail-penjualan/report'] = 'Penjualan/report';
 
 $route['pembelian/data-pembelian'] = 'DataPembelian';
+$route['pembelian/data-pembelian/report'] = 'DataPembelian/report';
 $route['pembelian/detail-pembelian'] = 'Pembelian';
+$route['pembelian/detail-pembelian/report'] = 'Pembelian/report';
 
 $route['history/piutang-pelanggan'] = 'PiutangPelanggan';
 $route['history/piutang-supplier'] = 'PiutangSupplier';

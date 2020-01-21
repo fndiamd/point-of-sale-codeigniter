@@ -25,7 +25,7 @@ class Supplier extends CI_Controller
   {
     $supplier = $this->db->get('supplier');
     $data = [
-      'title' => 'Supplier',
+      'title' => 'Manajemen Supplier',
       'page' => 'supplier/index',
       'suppliers' => $supplier
     ];

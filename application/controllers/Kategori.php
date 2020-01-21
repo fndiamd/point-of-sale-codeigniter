@@ -15,7 +15,7 @@ class Kategori extends CI_Controller
     $this->db->where('status !=', '1');
     $kategori = $this->db->get('kategori');
     $data = [
-      'title' => 'Kategori',
+      'title' => 'Manajemen Kategori',
       'page' => 'kategori/index',
       'kategories' => $kategori
     ];

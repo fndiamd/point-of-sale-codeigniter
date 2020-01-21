@@ -1,67 +1,67 @@
 <section class="content">
     <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
+        <!-- Info boxes -->
         <div class="row">
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-info">
-                    <div class="inner">
-                        <h3><?= $total_merchant ?></h3>
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="info-box">
+                    <span class="info-box-icon bg-info elevation-1"><i class="fa fa-store-alt"></i></span>
 
-                        <p>Merchant</p>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Toko</span>
+                        <span class="info-box-number"><?= number_format($total_merchant, 0, ',', '.') ?></span>
+                        <a href="<?= base_url('toko') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
-                    <div class="icon">
-                        <i class="fa fa-store-alt"></i>
-                    </div>
-                    <a href="<?= base_url('merchant') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <!-- /.info-box-content -->
                 </div>
+                <!-- /.info-box -->
             </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-success">
-                    <div class="inner">
-                        <h3><?= $total_supplier ?></h3>
+            <!-- /.col -->
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="info-box mb-3">
+                    <span class="info-box-icon bg-danger elevation-1"><i class="fa fa-store"></i></span>
 
-                        <p>Supplier</p>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Supplier</span>
+                        <span class="info-box-number"><?= number_format($total_supplier, 0, ',', '.') ?></span>
+                        <a href="<?= base_url('supplier') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
-                    <div class="icon">
-                        <i class="fa fa-store"></i>
-                    </div>
-                    <a href="<?= base_url('supplier') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <!-- /.info-box-content -->
                 </div>
+                <!-- /.info-box -->
             </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-warning">
-                    <div class="inner">
-                        <h3><?= $total_barang ?></h3>
+            <!-- /.col -->
 
-                        <p>Barang</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-gifts"></i>
-                    </div>
-                    <a href="<?= base_url('users') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-danger">
-                    <div class="inner">
-                        <h3><?= $total_pelanggan ?></h3>
+            <!-- fix for small devices only -->
+            <div class="clearfix hidden-md-up"></div>
 
-                        <p>Pelanggan</p>
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="info-box mb-3">
+                    <span class="info-box-icon bg-success elevation-1"><i class="fa fa-gifts"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Barang</span>
+                        <span class="info-box-number"><?= number_format($total_barang, 0, ',', '.') ?></span>
+                        <a href="<?= base_url('barang') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
-                    <div class="icon">
-                        <i class="fa fa-user"></i>
-                    </div>
-                    <a href="<?= base_url('pelanggan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <!-- /.info-box-content -->
                 </div>
+                <!-- /.info-box -->
             </div>
-            <!-- ./col -->
+            <!-- /.col -->
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="info-box mb-3">
+                    <span class="info-box-icon bg-secondary elevation-1"><i class="fa fa-users"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Pelanggan</span>
+                        <span class="info-box-number"><?= number_format($total_pelanggan, 0, ',', '.') ?></span>
+                        <a href="<?= base_url('pelanggan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
         </div>
         <!-- /.row -->
         <!-- Main row -->

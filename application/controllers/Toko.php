@@ -90,8 +90,6 @@ class Toko extends CI_Controller
   public function delete($id)
   {
     $this->toko->delete(['id_toko' => $id]);
-    $this->session->set_flashdata('success', 'Toko berhasil dihapus');
-    redirect(base_url('toko'));
   }
 
 }
