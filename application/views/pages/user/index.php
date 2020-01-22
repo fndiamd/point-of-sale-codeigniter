@@ -25,7 +25,7 @@
                             </thead>
                             <tbody>
                                 <?php $no=1; foreach ($users->result() as $user) : ?>
-                                    <tr>
+                                    <tr id="user-<?= $user->no_telp ?>">
                                         <td><?= $no++?></td>
                                         <td><?= $user->nama_lengkap ?></td>
                                         <td><?= $user->email ?></td>
@@ -34,7 +34,9 @@
                                         <td align="center" style="min-width: 150px">
                                             <a href="<?= base_url('user/view/'.$user->no_telp)?>" class="btn btn-primary"><i class="fa fa-eye"></i></a>
                                             <a href="<?= base_url('user/edit/'.$user->no_telp)?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                                            <a href="<?= base_url('user/delete/'.$user->no_telp)?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                            <button class="delete-button btn btn-danger" row-data="user-<?= $user->no_telp ?>" data-url="<?= base_url('user/delete/' .$user->no_telp) ?>">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

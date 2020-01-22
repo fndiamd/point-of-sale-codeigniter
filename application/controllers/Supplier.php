@@ -130,10 +130,7 @@ class Supplier extends CI_Controller
   {
     $supplier = $this->supplier->getById($id);
     unlink(FCPATH.'assets/uploads/supplier/'.$supplier->gbr);
-    $this->db->where('id_supplier', $id);
-    $this->db->delete('supplier');
-    $this->session->set_flashdata('success', 'supplier berhasil dihapus');
-    redirect(base_url('supplier'));
+    $this->supplier->delete($id);
   }
 }
 

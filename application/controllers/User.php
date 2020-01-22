@@ -133,10 +133,7 @@ class User extends CI_Controller
   {
     $user = $this->user->getById($id);
     unlink(FCPATH.'assets/uploads/user/'.$user->gbr);
-    $this->db->where('no_telp', $id);
-    $this->db->delete('users');
-    $this->session->set_flashdata('success', 'User berhasil dihapus');
-    redirect(base_url('user'));
+    $this->user->delete($id);
   }
 }
 

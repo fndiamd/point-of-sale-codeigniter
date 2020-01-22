@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MPelanggan extends CI_Model {
 
+  private $table = 'pelanggan';
+
   public function __construct(){
     parent::__construct();
   }
@@ -20,6 +22,11 @@ class MPelanggan extends CI_Model {
     $this->db->where('pelanggan.id_pelanggan', $value);
     
     return $this->db->get('pelanggan')->row();
+  }
+
+  public function delete($idpelanggan){
+    $this->db->where('id_pelanggan', $idpelanggan);
+    $this->db->delete($this->table);
   }
 }
 

@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MUser extends CI_Model {
 
+  private $table = 'users';
+
   public function __construct(){
     parent::__construct();
   }
@@ -14,6 +16,11 @@ class MUser extends CI_Model {
 
   public function getAll(){
     return $this->db->get('users')->result();
+  }
+
+  public function delete($iduser){
+    $this->db->where('no_telp', $iduser);
+    $this->db->delete($this->table);
   }
 
 }

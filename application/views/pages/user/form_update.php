@@ -35,7 +35,7 @@
 
                     <div class="form-group">
                       <label for="alamat">Alamat<span class="label-required"> *</span></label>
-                      <textarea type="text" class="form-control" id="alamat" name="alamat"><?php echo $data->alamat ?></textarea>
+                      <textarea type="text" class="form-control" id="alamat" cols="30" rows="5" name="alamat"><?php echo $data->alamat ?></textarea>
                     </div>
 
                     <div class="form-group">
