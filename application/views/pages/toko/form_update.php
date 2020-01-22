@@ -12,30 +12,39 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <form method="post" action="<?= base_url('toko/update/' . $data->id_toko) ?>">
+            <form method="post" action="<?= base_url('toko/update/'.$data->id_toko) ?>">
               <div class="form-group">
-                <label for="nama_toko">Nama Toko</label>
-                <input type="text" class="form-control" id="nama_toko" name="nama_toko" value="<?php echo $data->nama_toko ?>">
+                <label for="user">User <span class="label-required">*</span></label>
+                <select name="user" class="form-control select-plugin" id="user" required>
+                  <option value="0">Master</option>
+                  <?php foreach ($user as $user) : ?>
+                    <?php if($user->no_telp == $data->user):?>
+                      <option selected value="<?= $user->no_telp ?>"><?= $user->no_telp ?></option>
+                    <?php else:?>
+                      <option value="<?= $user->no_telp ?>"><?= $user->no_telp ?></option>
+                    <?php endif;?>
+                  <?php endforeach; ?>
+                </select>
               </div>
 
               <div class="form-group">
-                <label for="alamat">Alamat</label>
-                <input type="text" class="form-control" id="alamat" name="alamat" value="<?php echo $data->alamat ?>">
+                <label for="nama_toko">Nama Toko <span class="label-required">*</span></label>
+                <input type="text" class="form-control" id="nama_toko" name="nama_toko" placeholder="Nama toko" value="<?= $data->nama_toko?>" required>
               </div>
 
               <div class="form-group">
-                <label for="email">Email</label>
-                <input type="text" class="form-control" id="email" name="email" value="<?php echo $data->email ?>">
+                <label for="alamat">Alamat <span class="label-required">*</span></label>
+                <textarea name="alamat" id="alamat" cols="30" rows="5" class="form-control" required placeholder="Alamat lengkap"><?= $data->alamat?></textarea>
               </div>
 
               <div class="form-group">
-                <label for="nohp">Nomor HP</label>
-                <input type="text" class="form-control" id="nohp" name="nohp" value="<?php echo $data->nohp ?>">
+                <label for="email">Email <span class="label-required">*</span></label>
+                <input type="text" class="form-control" id="email" name="email" placeholder="user@email.com" value="<?= $data->email?>">
               </div>
 
               <div class="form-group">
-                <label for="user">User </label>
-                <input type="text" class="form-control" id="user" name="user" value="<?php echo $data->user ?>">
+                <label for="nohp">Nomor HP <span class="label-required">*</span></label>
+                <input type="text" class="form-control" id="nohp" name="nohp" placeholder="08123456789" value="<?= $data->nohp?>" required>
               </div>
 
               <button type="submit" class="btn btn-primary">Submit</button>

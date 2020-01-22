@@ -65,7 +65,8 @@ class Toko extends CI_Controller
     $data = [
       'title' => 'Update '.$merchant->nama_toko,
       'page' => 'toko/form_update',
-      'data' => $merchant
+      'data' => $merchant,
+      'user' => $this->user->getAll()
     ];
 
     $this->load->view('index', $data);
