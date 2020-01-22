@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MSupplier extends CI_Model {
 
+  private $table = 'supplier';
+
   public function __construct(){
     parent::__construct();
   }
@@ -20,6 +22,11 @@ class MSupplier extends CI_Model {
   public function supplierUser($user){
     $this->db->where('user', $user);
     return $this->db->get('supplier')->result();
+  }
+
+  public function delete($idsupplier){
+    $this->db->where('id_supplier', $idsupplier);
+    $this->db->delete($this->table);
   }
 }
 

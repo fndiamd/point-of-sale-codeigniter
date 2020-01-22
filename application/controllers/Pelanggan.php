@@ -133,10 +133,7 @@ class Pelanggan extends CI_Controller
   {
     $pelanggan = $this->pelanggan->getById($id);
     unlink(FCPATH.'assets/uploads/pelanggan/'.$pelanggan->gbr);
-    $this->db->where('id_pelanggan', $id);
-    $this->db->delete('pelanggan');
-    $this->session->set_flashdata('success', 'pelanggan berhasil dihapus');
-    redirect(base_url('pelanggan'));
+    $this->pelanggan->delete($id);
   }
 
 }

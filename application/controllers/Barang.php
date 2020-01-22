@@ -143,10 +143,7 @@ class Barang extends CI_Controller
   {
     $barang = $this->barang->getById($id);
     unlink(FCPATH.'assets/uploads/barang/'.$barang->gbr);
-    
     $this->barang->delete($id);
-    $this->session->set_flashdata('success', 'Barang berhasil dihapus');
-    redirect(base_url('barang'));
   }
 }
 

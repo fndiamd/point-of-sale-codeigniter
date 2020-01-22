@@ -8,6 +8,8 @@ class Kategori extends CI_Controller
   public function __construct()
   {
     parent::__construct();
+
+    $this->load->model('MKategori', 'kategori');
   }
 
   public function index()
@@ -52,12 +54,9 @@ class Kategori extends CI_Controller
     redirect(base_url('kategori'));
   }
 
-  public function delete(){
-    $id = $this->uri->segment(3);
-    $this->db->where('id_kategori', $id);
-    $this->db->delete('kategori');
-    $this->session->set_flashdata('success', 'Kategori berhasil dihapus');
-    redirect(base_url('kategori'));
+  public function delete($id)
+  {
+    $this->kategori->delete($id);
   }
 }
 

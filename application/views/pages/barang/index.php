@@ -28,7 +28,7 @@
                             <tbody>
                                 <?php $no = 1;
                                 foreach ($barangs as $barang) : ?>
-                                    <tr>
+                                    <tr id="barang-<?= $barang->id_barang ?>">
                                         <td><?= $no++ ?></td>
                                         <td><?= $barang->kodebarang ?></td>
                                         <td><?= $barang->nama_kategori ?></td>
@@ -39,7 +39,9 @@
                                         <td align="center" style="min-width: 150px">
                                             <a href="<?= base_url('barang/view/'.$barang->id_barang)?>" class="btn btn-primary"><i class="fa fa-eye"></i></a>
                                             <a href="<?= base_url('barang/edit/'.$barang->id_barang)?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                                            <a href="<?= base_url('barang/delete/'.$barang->id_barang)?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                            <button class="delete-button btn btn-danger" row-data="barang-<?= $barang->id_barang ?>" data-url="<?= base_url('barang/delete/' .$barang->id_barang) ?>">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

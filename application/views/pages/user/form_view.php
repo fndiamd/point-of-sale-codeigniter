@@ -35,7 +35,7 @@
 
                     <div class="form-group">
                       <label for="alamat">Alamat<span class="label-required"> *</span></label>
-                      <textarea type="text" class="form-control" id="alamat" name="alamat" readonly><?= $data->alamat ?></textarea>
+                      <textarea type="text" class="form-control" cols="30" rows="5" id="alamat" name="alamat" readonly><?= $data->alamat ?></textarea>
                     </div>
 
                     <div class="form-group">

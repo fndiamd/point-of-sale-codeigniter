@@ -1,9 +1,18 @@
 <section class="content">
+<div class="container-fluid">
+<div class="row">
+      <div class="col-12">
+        <a href="<?= base_url('barang') ?>" class="btn btn-default">
+          <i class="fa fa-arrow-left"></i>&nbsp; Kembali
+        </a>
+      </div>
+    </div>
+    <br>
 <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                    <form method="post" action="<?= base_url('barang/') ?>">
+                    <form method="post">
                     <div class="form-group">
                       <label for="nama_barang">Nama Barang</label>
                       <input type="text" readonly class="form-control" id="nama_barang" name="nama_barang" value="<?php echo $data->nama_barang ?>">
@@ -43,11 +52,10 @@
                       <label for="deskripsi">Deskripsi Barang</label>
                       <input type="text" readonly class="form-control" id="deskripsi" name="deskripsi" value="<?php echo $data->deskripsi ?>">
                     </div>
-
-                  <button type="submit" class="btn btn-primary">Kembali</button>
                   </form>
                     </div>
                 </div>
             </div>
         </div>
+</div>
 </section>

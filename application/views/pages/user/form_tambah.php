@@ -35,7 +35,7 @@
 
                     <div class="form-group">
                       <label for="alamat">Alamat<span class="label-required"> *</span></label>
-                      <textarea type="text" class="form-control" id="alamat" name="alamat" required placeholder="Alamat User"></textarea>
+                      <textarea type="text" class="form-control" id="alamat" name="alamat" cols="30" rows="5" required placeholder="Alamat User"></textarea>
                     </div>
 
                     <div class="form-group">

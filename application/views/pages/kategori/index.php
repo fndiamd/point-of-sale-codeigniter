@@ -46,7 +46,7 @@
                             <tbody>
                                 <?php $no = 1;
                                 foreach ($kategories->result() as $kategori) : ?>
-                                    <tr>
+                                    <tr id="kategori_delete-<?= $kategori->id_kategori ?>">
                                         <td><?= $no++ ?></td>
                                         <td><?= $kategori->nama_kategori ?></td>
                                         <td><?= $kategori->jenis_kategori ?></td>
@@ -55,9 +55,9 @@
                                             <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#kategori-<?= $kategori->id_kategori ?>">
                                                 <i class="fa fa-edit"></i>
                                             </button>
-                                            <a class="btn btn-danger" href="<?= base_url('kategori/delete/'.$kategori->id_kategori) ?>">
+                                            <button class="delete-button btn btn-danger" row-data="kategori_delete-<?= $kategori->id_kategori ?>" data-url="<?= base_url('kategori/delete/' . $kategori->id_kategori) ?>">
                                                 <i class="fa fa-trash"></i>
-                                            </a>
+                                            </button>
                                         </td>
                                     </tr>
                                     <!-- Modal -->
