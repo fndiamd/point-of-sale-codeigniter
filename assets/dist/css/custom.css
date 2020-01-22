@@ -43,6 +43,8 @@
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #758184;
+
+  border-radius: 10px;
 }
 
 /* Handle on hover */

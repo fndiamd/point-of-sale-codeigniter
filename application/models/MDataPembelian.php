@@ -29,4 +29,11 @@ class MDataPembelian extends CI_Model {
     return $this->db->get()->result();
   }
 
+  public function reportCount($date)
+  {
+    $this->db->where('tanggal', $date);
+    $this->db->from($this->table);
+    return $this->db->count_all_results();
+  }
+
 }

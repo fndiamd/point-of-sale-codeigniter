@@ -51,8 +51,15 @@ class MDataPenjualan extends CI_Model
     if ($id_toko != null) {
       $this->db->where('toko.id_toko', $id_toko);
     }
-    $this->db->where('datapenjualan.tanggal BETWEEN "'.$awal.'" and "'.$akhir.'"');
+    $this->db->where('datapenjualan.tanggal BETWEEN "' . $awal . '" and "' . $akhir . '"');
     return $this->db->get()->result();
+  }
+
+  public function reportCount($date)
+  {
+    $this->db->where('tanggal', $date);
+    $this->db->from($this->table);
+    return $this->db->count_all_results();
   }
 }
 

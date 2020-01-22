@@ -89,6 +89,9 @@
 </section>
 
 <script>
+    var dataPenjualan = <?= $transaksiPenjualan ?>;
+    var dataPembelian = <?= $transaksiPembelian ?>;
+
     function formatDate(date) {
 
         var dd = date.getDate();
@@ -124,23 +127,16 @@
             labels: Last7Days(),
             datasets: [{
                     label: 'Transaksi Pembelian',
-                    data: [12, 19, 3, 5, 2, 3, 12, 21],
+                    data: dataPembelian,
                     backgroundColor: 'rgba(103,143,159, 0.8)',
                     borderColor: 'rgba(103,123,149, 2)',
                     borderWidth: 2
                 },
                 {
                     label: 'Transaksi Penjualan',
-                    data: [29, 21, 8, 15, 9, 11, 21, 33],
+                    data: dataPenjualan,
                     backgroundColor: 'rgba(70,179,200, 0.7)',
                     borderColor: 'rgba(70,179,230, 2)',
-                    borderWidth: 2
-                },
-                {
-                    label: 'Barang Masuk',
-                    data: [3, 8, 2, 19, 11, 4, 1, 30],
-                    backgroundColor: 'rgba(138,198,219,0.8)',
-                    borderColor: 'rgba(138,198,209,2)',
                     borderWidth: 2
                 }
             ]

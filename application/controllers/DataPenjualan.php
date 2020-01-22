@@ -40,10 +40,10 @@ class DataPenjualan extends CI_Controller
 
     if(empty($id_toko)){
       $dataPenjualan = $this->dataPenjualan->report(null, $tanggal_awal, $tanggal_akhir);
-      $filename = 'Detail-Penjualan-'.$tanggal_awal.'_'.$tanggal_akhir;
+      $filename = 'Data-Penjualan-'.$tanggal_awal.'_'.$tanggal_akhir;
     }else{
       $dataPenjualan = $this->dataPenjualan->report($id_toko, $tanggal_awal, $tanggal_akhir);
-      $filename = 'Detail-Penjualan-'.$toko->nama_toko.'-'.$tanggal_awal.'_'.$tanggal_akhir;
+      $filename = 'Data-Penjualan-'.$toko->nama_toko.'-'.$tanggal_awal.'_'.$tanggal_akhir;
     }
 
     $columnTitle = [

@@ -12,11 +12,11 @@
                         </div>
                     </div>
                     <div class="card-body" id="data-card">
-                        <form action="">
+                        <form action="<?= base_url('history/piutang-supplier/report')?>" method="post">
                             <div class="row">
                                 <div class="col">
                                     <label for="merchant">Merchant</label>
-                                    <select name="toko" class="form-control select-plugin" id="merchant">
+                                    <select name="id_toko" class="form-control select-plugin" id="merchant">
                                         <option disabled selected>Semua</option>
                                         <?php foreach ($merchant as $merchant) : ?>
                                             <option value="<?= $merchant->id_toko ?>"><?= $merchant->nama_toko ?></option>
@@ -24,12 +24,12 @@
                                     </select>
                                 </div>
                                 <div class="col">
-                                    <label for="mulai">Tanggal Mulai</label>
-                                    <input type="text" class="form-control datepicker" name="tanggal" id="mulai" data-date-format="yyyy-mm-dd" placeholder="<?= date("yy-m-d") ?>">
+                                    <label for="awal">Tanggal Mulai</label>
+                                    <input type="text" class="form-control datepicker" name="tanggal_awal" id="awal" data-date-format="yyyy-mm-dd" value="<?= $bulan_lalu ?>">
                                 </div>
                                 <div class="col">
-                                    <label for="mulai">Tanggal Akhir</label>
-                                    <input type="text" class="form-control datepicker" name="tanggal" id="akhir" data-date-format="yyyy-mm-dd" placeholder="<?= date("yy-m-d") ?>">
+                                    <label for="akhir">Tanggal Akhir</label>
+                                    <input type="text" class="form-control datepicker" name="tanggal_akhir" id="akhir" data-date-format="yyyy-mm-dd" value="<?= date("yy-m-d") ?>">
                                 </div>
                             </div>
                             <br>

@@ -19,7 +19,18 @@ class MPiutangPelanggan extends CI_Model {
     return $this->db->get()->result();
   }
 
-  // ------------------------------------------------------------------------
+  public function report($id_toko, $awal, $akhir)
+  {
+    $this->db->select('pelanggan.nama_pelanggan, toko.nama_toko, historipiutangpelanggan.*');
+    $this->db->from($this->table);
+    $this->db->join('pelanggan', 'pelanggan.id_pelanggan='.$this->table.'.id_pelanggan', 'left');
+    $this->db->join('toko', 'toko.user='.$this->table.'.user', 'left');
+    if ($id_toko != null) {
+      $this->db->where('toko.id_toko', $id_toko);
+    }
+    $this->db->where('historipiutangpelanggan.tanggal BETWEEN "'.$awal.'" and "'.$akhir.'"');
+    return $this->db->get()->result();
+  }
 
 }
 
