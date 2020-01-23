@@ -16,7 +16,6 @@ class User extends CI_Controller
       'overwrite' => true
     ];
     $this->load->library('upload', $configUpload);
-    $this->load->model('MKategori', 'kategori');
     $this->load->model('MUser', 'user');
   }
 
@@ -27,7 +26,6 @@ class User extends CI_Controller
       'title' => 'Manajemen User',
       'page' => 'user/index',
       'users' => $user,
-      'kategori' => $this->kategori->getAll(),
       'user' => $this->user->getAll()
     ];
 
@@ -36,7 +34,6 @@ class User extends CI_Controller
 
   public function store(){
     if (!$this->upload->do_upload('gambar')) {
-
       $this->session->set_flashdata('error', $this->upload->display_errors());
       redirect(base_url('user/create'));
     } else {
@@ -91,7 +88,6 @@ class User extends CI_Controller
       'title' => 'Update User',
       'page' => 'user/form_update',
       'data' => $user,
-      'kategori' => $this->kategori->getAll(),
       'user' => $this->user->getAll()
     ];
     $this->load->view('index', $data);
