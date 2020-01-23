@@ -23,6 +23,10 @@ class MUser extends CI_Model {
     $this->db->delete($this->table);
   }
 
+  public function save($data){
+    $this->db->insert($this->table, $data);
+  }
+
 }
 
 /* End of file MUser_model.php */

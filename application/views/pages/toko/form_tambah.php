@@ -12,17 +12,52 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <form method="post" action="<?= base_url('toko/store') ?>">
+            <form method="post" action="<?= base_url('toko/store') ?>" enctype="multipart/form-data">
+              <h3>User</h3>
+              <span class="label-optional">Mohon isikan identitas user pemilik toko</span>
+              <span class="label-required"> * </span>
+              <hr>
               <div class="form-group">
-                <label for="user">User <span class="label-required">*</span></label>
-                <select name="user" class="form-control select-plugin" id="user" required>
-                  <option disabled selected>--- Pilih User ---</option>
-                  <option value="0">Master</option>
-                  <?php foreach ($user as $user) : ?>
-                    <option value="<?= $user->no_telp ?>"><?= $user->no_telp ?></option>
-                  <?php endforeach; ?>
-                </select>
+                <label for="nama_lengkap">Nama Lengkap<span class="label-required"> *</span></label>
+                <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" placeholder="Nama Lengkap User">
               </div>
+
+              <div class="row">
+                <div class="col">
+                  <label for="email">Email<span class="label-optional">( Optional )</span></label>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="Email User">
+                </div>
+                <div class="col">
+                  <label for="password">Password<span class="label-required"> *</span></label>
+                  <input type="password" class="form-control" id="password" name="password" required placeholder="Password User">
+                </div>
+              </div>
+              <br>
+
+              <div class="form-group">
+                <label for="kota">Kota <span class="label-optional">( Optional )</span></label>
+                <input type="text" class="form-control" id="kota" name="kota" placeholder="Kota User">
+              </div>
+
+              <div class="form-group">
+                <label for="alamat_user">Alamat<span class="label-optional">( Optional )</span></label>
+                <textarea class="form-control" id="alamat_user" name="alamat_user" cols="30" rows="5" placeholder="Alamat User"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="telp_user">Telepon<span class="label-required"> *</span></label>
+                <input type="text" class="form-control" id="telp_user" name="telp_user" required placeholder="Telepon User">
+              </div>
+              <div class="form-group">
+                <label for="gambar">Gambar<span class="label-optional">( Optional )</span></label>
+                <input type="file" name="gambar" id="gambar" class="form-control">
+              </div>
+
+              <br>
+              <h3>Toko</h3>
+              <span class="label-optional">Mohon isikan identitas toko anda</span>
+              <span class="label-required"> * </span>
+              <hr>
 
               <div class="form-group">
                 <label for="nama_toko">Nama Toko <span class="label-required">*</span></label>
@@ -30,18 +65,15 @@
               </div>
 
               <div class="form-group">
-                <label for="alamat">Alamat <span class="label-required">*</span></label>
-                <textarea name="alamat" id="alamat" cols="30" rows="5" class="form-control" required placeholder="Alamat lengkap"></textarea>
+                <label for="alamat_toko">Alamat Toko <span class="label-optional">( Optional )</span></label>
+                <textarea name="alamat_toko" id="alamat_toko" cols="30" rows="5" class="form-control" placeholder="Alamat toko" aria-describedby="alamatHelp"></textarea>
+                <small id="alamatHelp" class="form-text text-muted">Biarkan kosong bila sama dengan alamat user.</small>
               </div>
 
               <div class="form-group">
-                <label for="email">Email <span class="label-required">*</span></label>
-                <input type="text" class="form-control" id="email" name="email" placeholder="user@email.com" required>
-              </div>
-
-              <div class="form-group">
-                <label for="nohp">Nomor HP <span class="label-required">*</span></label>
-                <input type="text" class="form-control" id="nohp" name="nohp" placeholder="08123456789" required>
+                <label for="telp_toko">Nomor HP <span class="label-optional">( Optional )</span></label>
+                <input type="text" class="form-control" id="telp_toko" name="telp_toko" placeholder="08123456789" aria-describedby="telponHelp">
+                <small id="telponHelp" class="form-text text-muted">Biarkan kosong bila sama dengan nomor telpon user.</small>
               </div>
 
               <button type="submit" class="btn btn-primary">Submit</button>

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login - Point of sale</title>
+    <link rel="shortcut icon" href="<?= base_url('assets/dist/img/profit.png')?>" type="image/x-icon">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?= base_url('assets/plugins/font-awesome/css/font-awesome.min.css') ?>">
     <!-- Bootstrap -->

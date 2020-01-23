@@ -9,6 +9,14 @@ class Toko extends CI_Controller
     parent::__construct();
     $this->load->model('MToko', 'toko');
     $this->load->model('MUser', 'user');
+
+    $configUpload = [
+      'upload_path' => './assets/uploads/user/',
+      'allowed_types' => 'gif|jpeg|jpg|png',
+      'max_size' => 10000,
+      'overwrite' => true
+    ];
+    $this->load->library('upload', $configUpload);
   }
 
   public function index()
@@ -34,16 +42,47 @@ class Toko extends CI_Controller
     $this->load->view('index', $data);
   }
 
-  public function store(){
+  public function store()
+  {
     $data = [
-      'nama_toko' => $this->input->post('nama_toko'),
-      'email' => $this->input->post('email'),
-      'nohp' => $this->input->post('nohp'),
-      'alamat' => $this->input->post('alamat'),
-      'user' => $this->input->post('user')
+      'dataUser' => [
+        'nama_lengkap' => $this->input->post('nama_lengkap'),
+        'email' => $this->input->post('email'),
+        'password' => md5($this->input->post('password')),
+        'tanggal' => date('yy-m-d'),
+        'kota' => $this->input->post('kota'),
+        'alamat' => $this->input->post('alamat_user'),
+        'no_telp' => $this->input->post('telp_user'),
+        'level' => 'master',
+        'blokir' => 'N',
+        'paket' => 1,
+        'master' => $this->input->post('telp_user')
+      ],
+      'dataToko' => [
+        'nama_toko' => $this->input->post('nama_toko'),
+        'nohp' => $this->input->post('telp_toko'),
+        'alamat' => $this->input->post('alamat_toko'),
+        'user' => $this->input->post('telp_user'),
+        'email' => $this->input->post('email')
+      ]
     ];
 
-    $this->toko->save($data);
+    if (!empty($_FILES['gambar']['name'])) {
+      if (!$this->upload->do_upload('gambar')) {
+        $this->session->set_flashdata('error', $this->upload->display_errors());
+        redirect(base_url('toko/create'));
+      } else {
+        $gambar = $this->upload->data();
+        $data['dataUser']['gbr'] = $gambar['file_name'];
+      }
+    }
+
+    if(empty($data['dataToko']['nohp'])) $data['dataToko']['nohp'] = $this->input->post('telp_user');
+    if(empty($data['dataToko']['alamat'])) $data['dataToko']['alamat'] = $this->input->post('alamat_user');
+    
+    $this->user->save($data['dataUser']);
+    $this->toko->save($data['dataToko']);
+
     $this->session->set_flashdata('success', 'Toko berhasil ditambahkan');
     redirect(base_url('toko'));
   }
@@ -52,7 +91,7 @@ class Toko extends CI_Controller
   {
     $merchant = $this->toko->getById($id);
     $data = [
-      'title' => 'Detail '.$merchant->nama_toko,
+      'title' => 'Detail ' . $merchant->nama_toko,
       'page' => 'toko/form_view',
       'data' => $merchant
     ];
@@ -63,7 +102,7 @@ class Toko extends CI_Controller
   {
     $merchant = $this->toko->getById($id);
     $data = [
-      'title' => 'Update '.$merchant->nama_toko,
+      'title' => 'Update ' . $merchant->nama_toko,
       'page' => 'toko/form_update',
       'data' => $merchant,
       'user' => $this->user->getAll()
@@ -80,7 +119,7 @@ class Toko extends CI_Controller
       'user' => $this->input->post('user'),
       'email' => $this->input->post('email'),
       'nohp' => $this->input->post('nohp'),
-      
+
     ];
 
     $this->toko->update(['id_toko' => $id], $data);
@@ -92,7 +131,6 @@ class Toko extends CI_Controller
   {
     $this->toko->delete(['id_toko' => $id]);
   }
-
 }
 
 
