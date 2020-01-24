@@ -34,45 +34,45 @@
                     </div>
 
                     <div class="form-group">
-                      <label for="email">Email<span class="label-required"> *</span></label>
-                      <input type="text" class="form-control" id="email" name="email" required placeholder="Email Pelanggan">
+                      <label for="email">Email<span class="label-optional"> ( Optional )</span></label>
+                      <input type="email" class="form-control" id="email" name="email" placeholder="Email Pelanggan">
                     </div>
 
                     <div class="form-group">
-                      <label for="telpon">Telepon<span class="label-required"> *</span></label>
-                      <input type="text" class="form-control" id="telpon" name="telpon" required placeholder="Telepon Pelanggan">
+                      <label for="telpon">Telepon<span class="label-optional"> ( Optional )</span></label>
+                      <input type="text" class="form-control" id="telpon" name="telpon" placeholder="Telepon Pelanggan">
                     </div>
 
                     <div class="row">
                       <div class="col">
                         <div class="form-group">
-                          <label for="status">Status<span class="label-required"> *</span></label>
-                          <input type="text" class="form-control" id="status" name="status" required placeholder="Status Pelanggan">
+                          <label for="status">Status<span class="label-optional"></span></label>
+                          <input type="text" class="form-control" id="status" name="status" placeholder="Status Pelanggan">
                         </div>
                       </div>
 
                       <div class="col">
                         <div class="form-group">
-                          <label for="aktiv">Active<span class="label-required"> *</span></label>
-                          <input type="text" class="form-control" id="aktiv" name="aktiv" required placeholder="Active Pelanggan">
+                          <label for="aktiv">Active<span class="label-optional"></span></label>
+                          <input type="text" class="form-control" id="aktiv" name="aktiv" placeholder="Active Pelanggan">
                         </div>
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="col">
-                        <label for="hutang">Hutang<span class="label-required"> *</span></label>
+                        <label for="hutang">Hutang<span class="label-optional"> ( Optional )</span></label>
                         <div class="input-group">
                           <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">Rp</span>
                           </div>
-                          <input type="number" class="form-control" id="hutang" name="hutang" required min="0" placeholder="Hutang Pelanggan">
+                          <input type="number" class="form-control" id="hutang" name="hutang" placeholder="Hutang Pelanggan">
                         </div>
                       </div>
                     </div>
 
                     <div class="form-group">
-                      <label for="gambar">Gambar<span class="label-optional">( Optional )</span></label>
+                      <label for="gambar">Gambar<span class="label-optional"> ( Optional )</span></label>
                       <input type="file" name="gambar" id="gambar" class="form-control" >
                     </div>
 

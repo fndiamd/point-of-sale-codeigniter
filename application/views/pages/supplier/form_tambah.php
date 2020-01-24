@@ -36,8 +36,8 @@
                     </div>
 
                     <div class="form-group">
-                      <label for="email">Email<span class="label-required"> *</span></label>
-                      <input type="text" class="form-control" id="email" name="email" required placeholder="Email Supplier">
+                      <label for="email">Email<span class="label-optional"> ( Optional )</span></label>
+                      <input type="text" class="form-control" id="email" name="email" placeholder="Email Supplier">
                     </div>
 
                     <div class="form-group">
@@ -57,12 +57,12 @@
 
                     <div class="row">
                       <div class="col">
-                        <label for="hutang">Hutang<span class="label-required"> *</span></label>
+                        <label for="hutang">Hutang<span class="label-optional"> ( Optional )</span></label>
                         <div class="input-group">
                           <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">Rp</span>
                           </div>
-                          <input type="number" class="form-control" id="hutang" name="hutang" required min="0" placeholder="Hutang Supplier">
+                          <input type="number" class="form-control" id="hutang" name="hutang" min="0" placeholder="Hutang Supplier">
                         </div>
                       </div>
                     </div>
@@ -73,8 +73,8 @@
                     </div>
 
                     <div class="form-group">
-                      <label for="aktiv">Active<span class="label-required"> *</span></label>
-                      <input type="text" class="form-control" id="aktiv" name="aktiv" required placeholder="Active Pelanggan">
+                      <label for="aktiv">Active<span class="label-optional"> ( Optional )</span></label>
+                      <input type="text" class="form-control" id="aktiv" name="aktiv" placeholder="Active Pelanggan">
                     </div>
 
                   <button type="submit" class="btn btn-primary">Submit</button>

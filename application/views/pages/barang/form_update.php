@@ -95,9 +95,9 @@
               </div>
               <br>
               <div class="form-group">
-                <label for="diskon">Diskon <span class="label-required">*</span></label>
+                <label for="diskon">Diskon <span class="label-optional">( Optional )</span></label>
                 <div class="input-group">
-                  <input type="number" class="form-control" id="diskon" name="diskon" min="0" value="<?= $barang->diskon?>" placeholder="Diskon barang" aria-describedby="diskonHelp">
+                  <input type="number" class="form-control" id="diskon" name="diskon" value="<?= $barang->diskon?>" placeholder="Diskon barang" aria-describedby="diskonHelp">
                   <div class="input-group-append">
                     <span class="input-group-text" id="basic-addon1">%</span>
                   </div>

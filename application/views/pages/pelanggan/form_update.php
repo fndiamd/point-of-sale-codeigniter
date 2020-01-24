@@ -38,26 +38,26 @@
               </div>
 
               <div class="form-group">
-                <label for="email">Email<span class="label-required"> *</span></label>
+                <label for="email">Email<span class="label-optional"> ( Optional )</span></label>
                 <input type="text" class="form-control" id="email" name="email" value="<?php echo $data->email ?>">
               </div>
 
               <div class="form-group">
-                <label for="telpon">Telepon<span class="label-required"> *</span></label>
+                <label for="telpon">Telepon<span class="label-optional"> ( Optional )</span></label>
                 <input type="text" class="form-control" id="telpon" name="telpon" value="<?php echo $data->telpon ?>">
               </div>
 
               <div class="row">
                 <div class="col">
                   <div class="form-group">
-                    <label for="status">Status<span class="label-required"> *</span></label>
+                    <label for="status">Status<span class="label-optional"> ( Optional )</span></label>
                     <input type="text" class="form-control" id="status" name="status" value="<?php echo $data->status ?>">
                   </div>
                 </div>
 
                 <div class="col">
                   <div class="form-group">
-                    <label for="aktiv">Active<span class="label-required"> *</span></label>
+                    <label for="aktiv">Active<span class="label-optional"> ( Optional )</span></label>
                     <input type="text" class="form-control" id="aktiv" name="aktiv" value="<?php echo $data->aktiv ?>">
                   </div>
                 </div>
@@ -65,12 +65,12 @@
 
               <div class="row">
                 <div class="col">
-                  <label for="hutang">Hutang <span class="label-required"> *</span></label>
+                  <label for="hutang">Hutang <span class="label-optional">( Optional )</span></label>
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="basic-addon1">Rp</span>
                     </div>
-                    <input type="number" class="form-control" id="hutang" name="hutang" required min="0" value="<?php echo $data->hutang ?>">
+                    <input type="number" class="form-control" id="hutang" name="hutang" value="<?php echo $data->hutang ?>">
                   </div>
                 </div>
               </div>
