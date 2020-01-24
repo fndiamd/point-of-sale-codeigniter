@@ -1,16 +1,117 @@
-$(function () {
-    $('#data-tables').DataTable({
-        "paging": true,
-        "lengthChange": true,
-        "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": true,
-    });
+const url = window.location.pathname
+const page = url.substr(15)
 
+function setHtmlValue(id, value) {
+    document.getElementById(id).innerHTML = value
+}
+
+function currencyFormat(x) {
+    return 'Rp' + x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
+function generateDataTable(is_ajax, url = null) {
+    if (is_ajax == true) {
+        $('#data-tables').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": true,
+            "ajax": {
+                url: url,
+                type: "GET"
+            }
+        });
+    } else {
+        $('#data-tables').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": true,
+        });
+    }
+}
+
+// function detail
+
+function detailDataPenjualan(data) {
+    setHtmlValue('modal-title', 'Data Penjualan - ' + data.no_invoice)
+    setHtmlValue('nama_toko', data.nama_toko)
+    setHtmlValue('nama_pelanggan', data.nama_pelanggan)
+    setHtmlValue('no_invoice', data.no_invoice)
+    setHtmlValue('tanggal_transaksi', data.tanggal)
+    setHtmlValue('pembayaran', data.pembayaran)
+    setHtmlValue('keterangan', data.keterangan)
+    setHtmlValue('total_order', currencyFormat(data.totalorder))
+    setHtmlValue('total_bayar', currencyFormat(data.totalbayar))
+    setHtmlValue('kembalian', currencyFormat(data.kembalian))
+    setHtmlValue('status_transaksi', data.status)
+    setHtmlValue('jatuh_tempo', data.jatuh_tempo)
+    setHtmlValue('operator', data.operator)
+}
+
+function detailPenjualan(data){
+    setHtmlValue('modal-title', 'Detail Penjualan - ' + data.no_invoice)
+    setHtmlValue('nama_toko', data.nama_toko)
+    setHtmlValue('nama_pelanggan', data.nama_pelanggan)
+    setHtmlValue('nama_barang', data.nama_barang)
+    setHtmlValue('no_invoice', data.no_invoice)
+    setHtmlValue('jumlah_barang', data.jumlah)
+    setHtmlValue('harga_barang', currencyFormat(data.harga))
+    setHtmlValue('total_harga', currencyFormat(data.totalharga))
+    setHtmlValue('total_modal', currencyFormat(data.totalmodal))
+    setHtmlValue('tanggal_transaksi', data.tanggal)
+    setHtmlValue('catatan', data.catatan)
+    setHtmlValue('sisa_stok', data.sisa_stok)
+    setHtmlValue('status_transaksi', data.status)
+}
+
+function getDetail(url, detailFunction) {
+    $(document).on('click', '.detail-button', function () {
+        const dataId = $(this).attr('data-id')
+        $.ajax({
+            method: "post",
+            url: url,
+            data: { id: dataId },
+            success: function (data) {
+                detailFunction(data)
+            }
+        })
+    })
+}
+
+$(document).ready(function () {
     $(".datepicker").datepicker({
         dateFormat: 'dd-mm-yyyy'
     });
+
+    switch (page) {
+        case 'history/piutang-pelanggan':
+            generateDataTable(true, 'piutang-pelanggan/load')
+            break;
+        case 'history/piutang-supplier':
+            generateDataTable(true, 'piutang-supplier/load')
+            break;
+        case 'log-pembayaran/hutang-pelanggan':
+            generateDataTable(true, 'hutang-pelanggan/load')
+            break;
+        case 'log-pembayaran/hutang-supplier':
+            generateDataTable(true, 'hutang-supplier/load')
+            break;
+        case 'penjualan/data-penjualan':
+            generateDataTable(true, 'data-penjualan/load')
+            getDetail('data-penjualan/detail', detailDataPenjualan)
+            break;
+        case 'penjualan/detail-penjualan':
+            generateDataTable(true, 'detail-penjualan/load')
+            getDetail('detail-penjualan/detail', detailPenjualan)
+            break;
+        default:
+            generateDataTable(false)
+    }
 
     $(document).on('click', '.delete-button', function () {
         const urlData = $(this).attr('data-url');
@@ -57,4 +158,4 @@ $(function () {
             }
         })
     });
-})
+});

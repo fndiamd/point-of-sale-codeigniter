@@ -28,7 +28,7 @@ class MDataPenjualan extends CI_Model
     $this->db->from($this->table);
     $this->db->join('pelanggan', 'pelanggan.id_pelanggan=' . $this->table . '.id_pelanggan', 'left');
     $this->db->join('toko', 'toko.user=' . $this->table . '.user', 'left');
-    $this->db->where($this->table . '.' . $this->primaryKey, $id_datapenjualan);
+    $this->db->where($this->table . '.id_datapenjualan', $id_datapenjualan);
     return $this->db->get()->row();
   }
 
