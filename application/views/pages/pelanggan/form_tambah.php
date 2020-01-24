@@ -72,8 +72,8 @@
                     </div>
 
                     <div class="form-group">
-                      <label for="gambar">Gambar<span class="label-required"> *</span></label>
-                      <input type="file" name="gambar" id="gambar" class="form-control" required>
+                      <label for="gambar">Gambar<span class="label-optional">( Optional )</span></label>
+                      <input type="file" name="gambar" id="gambar" class="form-control" >
                     </div>
 
                   <button type="submit" class="btn btn-primary">Submit</button>

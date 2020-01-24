@@ -34,13 +34,6 @@ class Pelanggan extends CI_Controller
   }
 
   public function store(){
-    if (!$this->upload->do_upload('gambar')) {
-
-      $this->session->set_flashdata('error', $this->upload->display_errors());
-      redirect(base_url('pelanggan/create'));
-    } else {
-
-      $gambar = $this->upload->data();
       $data = [
         'nama_pelanggan' => $this->input->post('nama_pelanggan'),
         'alamat' => $this->input->post('alamat'),
@@ -49,10 +42,18 @@ class Pelanggan extends CI_Controller
         'user' => $this->input->post('user'),
         'status' => $this->input->post('status'),
         'hutang' => $this->input->post('hutang'),
-        'gbr' => $gambar['file_name'],
         'aktiv' => $this->input->post('aktiv'),
       ];
-    }
+
+      if (!empty($_FILES['gambar']['name'])) {
+        if (!$this->upload->do_upload('gambar')) {
+          $this->session->set_flashdata('error', $this->upload->display_errors());
+          redirect(base_url('pelanggan/create'));
+        } else {
+          $gambar = $this->upload->data();
+          $data['gbr'] = $gambar['file_name'];
+        }
+      }
 
 
     $this->db->insert('pelanggan', $data);
