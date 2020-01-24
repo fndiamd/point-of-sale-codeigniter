@@ -49,17 +49,17 @@
                     </div>
 
                     <div class="form-group">
-                      <label for="level">Level<span class="label-required"> *</span></label>
+                      <label for="level">Level<span class="label-optional"></span></label>
                       <input type="text" class="form-control" id="level" name="level" value="<?php echo $data->level ?>">
                     </div>
 
                     <div class="form-group">
-                      <label for="blokir">Blokir<span class="label-required"> *</span></label>
+                      <label for="blokir">Blokir<span class="label-optional"></span></label>
                       <input type="text" class="form-control" id="blokir" name="blokir" value="<?php echo $data->blokir ?>">
                     </div>
 
                     <div class="form-group">
-                      <label for="id_session">ID Session<span class="label-required"> *</span></label>
+                      <label for="id_session">ID Session<span class="label-optional"></span></label>
                       <input type="text" class="form-control" id="id_session" name="id_session" value="<?php echo $data->id_session ?>">
                     </div>
 
