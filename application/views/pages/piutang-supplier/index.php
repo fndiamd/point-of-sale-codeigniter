@@ -58,22 +58,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $no = 1;
-                                foreach ($piutangPelanggan as $data) : ?>
-                                    <tr>
-                                        <td><?= $no++ ?></td>
-                                        <td style="max-width: 150px"><?= $data->nama_toko ?></td>
-                                        <td><?= $data->nama_supplier ?></td>
-                                        <td align="center">
-                                            <?= $data->no_invoice ?>
-                                        </td>
-                                        <td>Rp<?= number_format($data->nominal, 0, ",", ".") ?>,-</td>
-                                        <td><?= date_format(date_create($data->tanggal), "d M Y") ?></td>
-                                        <td align="center">
-                                            <?= $data->status?>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
+                                
                             </tbody>
                         </table>
                     </div>

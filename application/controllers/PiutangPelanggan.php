@@ -6,7 +6,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class PiutangPelanggan extends CI_Controller
 {
-    
+
   public function __construct()
   {
     parent::__construct();
@@ -14,19 +14,50 @@ class PiutangPelanggan extends CI_Controller
     $this->load->model('MToko', 'toko');
   }
 
-  public function index(){
+  public function index()
+  {
     $now = new DateTime();
     $back = $now->sub(DateInterval::createFromDateString('30 days'));
 
     $data = [
       'page' => 'piutang-pelanggan/index',
       'title' => 'History Piutang Pelanggan',
-      'piutangPelanggan' => $this->piutangPelanggan->getAll(),
       'merchant' => $this->db->get('toko')->result(),
       'bulan_lalu' => $back->format('Y-m-d')
     ];
-    
+
     $this->load->view('index', $data);
+  }
+
+  public function load()
+  {
+    $draw = intval($this->input->get("draw"));
+    $start = intval($this->input->get("start"));
+    $length = intval($this->input->get("length"));
+    $query = $this->db->get("historipiutangpelanggan");
+    $data = []; $no = 1;
+
+    foreach ($this->piutangPelanggan->getAll() as $row) {
+      $data[] = array(
+        $no++,
+        $row->nama_toko,
+        $row->nama_pelanggan,
+        $row->no_invoice, 
+        'Rp'.number_format($row->nominal, 0, ",", ".").',-',
+        date_format(date_create($row->tanggal), "d M Y"),
+        $row->status
+      );
+    }
+
+    $result = array(
+      "draw" => $draw,
+      "recordsTotal" => $query->num_rows(),
+      "recordsFiltered" => $query->num_rows(),
+      "data" => $data
+    );
+
+    echo json_encode($result);
+    exit();
   }
 
   public function report()
@@ -46,13 +77,13 @@ class PiutangPelanggan extends CI_Controller
 
     $spreadsheet = new Spreadsheet;
     $columnTitle = [
-      'Nama Toko','Nama Pelanggan','No. Invoice', 'Nominal', 'Tanggal', 'Status'
+      'Nama Toko', 'Nama Pelanggan', 'No. Invoice', 'Nominal', 'Tanggal', 'Status'
     ];
 
     $index = $cell = 1;
-    
-    foreach(range('A', 'F') as $column){
-      $spreadsheet->setActiveSheetIndex(0)->setCellValue($column.''.$cell, $columnTitle[$index-1]);
+
+    foreach (range('A', 'F') as $column) {
+      $spreadsheet->setActiveSheetIndex(0)->setCellValue($column . '' . $cell, $columnTitle[$index - 1]);
       $spreadsheet->getActiveSheet()->getColumnDimension($column)->setAutoSize(true);
       $index++;
     }
@@ -77,7 +108,6 @@ class PiutangPelanggan extends CI_Controller
     header('Cache-Control: max-age=0');
     $writer->save('php://output');
   }
-
 }
 
 

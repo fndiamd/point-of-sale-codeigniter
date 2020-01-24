@@ -23,12 +23,44 @@ class DataPenjualan extends CI_Controller
     $data = [
       'title' => 'Data Penjualan',
       'page' => 'data-penjualan/index',
-      'dataPenjualan' => $this->dataPenjualan->getAll(),
       'merchant' => $this->db->get('toko')->result(),
       'bulan_lalu' => $back->format('Y-m-d')
     ];
 
     $this->load->view('index', $data);
+  }
+
+  public function load()
+  {
+    $data = [];
+    $no = 1;
+
+    foreach ($this->dataPenjualan->getAll() as $row) {
+      $data[] = array(
+        $no++,
+        $row->nama_toko,
+        $row->nama_pelanggan,
+        $row->no_invoice,
+        'Rp' . number_format($row->totalorder, 0, ",", ".") . ',-',
+        date_format(date_create($row->tanggal), "d M Y"),
+        '<button type="button" class="btn btn-primary detail-button" data-toggle="modal" data-target="#modal-detail" data-id="'.$row->id_datapenjualan.'">
+          <i class="fa fa-eye"></i>
+        </button>'
+      );
+    }
+
+    $result = array(
+      "data" => $data
+    );
+
+    echo json_encode($result);
+    exit();
+  }
+
+  public function detail(){
+    $id = $this->input->post('id');
+    header('Content-Type: application/json');
+    echo json_encode($this->dataPenjualan->getById($id));
   }
 
   public function report()
@@ -38,24 +70,24 @@ class DataPenjualan extends CI_Controller
     $tanggal_awal = $this->input->post('tanggal_awal');
     $tanggal_akhir = $this->input->post('tanggal_akhir');
 
-    if(empty($id_toko)){
+    if (empty($id_toko)) {
       $dataPenjualan = $this->dataPenjualan->report(null, $tanggal_awal, $tanggal_akhir);
-      $filename = 'Data-Penjualan-'.$tanggal_awal.'_'.$tanggal_akhir;
-    }else{
+      $filename = 'Data-Penjualan-' . $tanggal_awal . '_' . $tanggal_akhir;
+    } else {
       $dataPenjualan = $this->dataPenjualan->report($id_toko, $tanggal_awal, $tanggal_akhir);
-      $filename = 'Data-Penjualan-'.$toko->nama_toko.'-'.$tanggal_awal.'_'.$tanggal_akhir;
+      $filename = 'Data-Penjualan-' . $toko->nama_toko . '-' . $tanggal_awal . '_' . $tanggal_akhir;
     }
 
     $columnTitle = [
-      'Nama Toko','Nama Pelanggan', 'No. Invoice', 'Tanggal Transaksi','Pembayaran','Keterangan',
-      'Total Order','Total Bayar','Kembalian','Status Transaksi','Tanggal Jatuh Tempo', 'Operator'
+      'Nama Toko', 'Nama Pelanggan', 'No. Invoice', 'Tanggal Transaksi', 'Pembayaran', 'Keterangan',
+      'Total Order', 'Total Bayar', 'Kembalian', 'Status Transaksi', 'Tanggal Jatuh Tempo', 'Operator'
     ];
 
     $spreadsheet = new Spreadsheet;
 
     $index = $cell = 1;
-    foreach(range('A', 'L') as $column){
-      $spreadsheet->setActiveSheetIndex(0)->setCellValue($column.''.$cell, $columnTitle[$index-1]);
+    foreach (range('A', 'L') as $column) {
+      $spreadsheet->setActiveSheetIndex(0)->setCellValue($column . '' . $cell, $columnTitle[$index - 1]);
       $spreadsheet->getActiveSheet()->getColumnDimension($column)->setAutoSize(true);
       $index++;
     }
@@ -63,20 +95,20 @@ class DataPenjualan extends CI_Controller
     $spreadsheet->getActiveSheet()->getStyle('A1:L1')->getFont()->setBold(true);
     $row = 2;
 
-    foreach($dataPenjualan as $data){
+    foreach ($dataPenjualan as $data) {
       $spreadsheet->setActiveSheetIndex(0)
-        ->setCellValue('A'.$row, $data->nama_toko)
-        ->setCellValue('B'.$row, $data->nama_pelanggan)
-        ->setCellValue('C'.$row, $data->no_invoice)
-        ->setCellValue('D'.$row, $data->tanggal)
-        ->setCellValue('E'.$row, $data->pembayaran)
-        ->setCellValue('F'.$row, $data->keterangan)
-        ->setCellValue('G'.$row, $data->totalorder)
-        ->setCellValue('H'.$row, $data->totalbayar)
-        ->setCellValue('I'.$row, $data->kembalian)
-        ->setCellValue('J'.$row, $data->status)
-        ->setCellValue('K'.$row, $data->jatuh_tempo)
-        ->setCellValue('L'.$row, $data->operator);
+        ->setCellValue('A' . $row, $data->nama_toko)
+        ->setCellValue('B' . $row, $data->nama_pelanggan)
+        ->setCellValue('C' . $row, $data->no_invoice)
+        ->setCellValue('D' . $row, $data->tanggal)
+        ->setCellValue('E' . $row, $data->pembayaran)
+        ->setCellValue('F' . $row, $data->keterangan)
+        ->setCellValue('G' . $row, $data->totalorder)
+        ->setCellValue('H' . $row, $data->totalbayar)
+        ->setCellValue('I' . $row, $data->kembalian)
+        ->setCellValue('J' . $row, $data->status)
+        ->setCellValue('K' . $row, $data->jatuh_tempo)
+        ->setCellValue('L' . $row, $data->operator);
       $row++;
     }
 

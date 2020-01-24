@@ -20,13 +20,14 @@ class MPenjualan extends CI_Model {
     return $this->db->get()->result();
   }
 
-  public function penjualanUser($user){
-    $this->db->select('penjualan.*, pelanggan.nama_pelanggan, barang.nama_barang');
+  public function getById($id){
+    $this->db->select('penjualan.*, toko.*, pelanggan.nama_pelanggan, barang.nama_barang');
     $this->db->from($this->table);
-    $this->db->join('pelanggan', 'pelanggan.id_pelanggan=penjualan.id_pelanggan');
-    $this->db->join('barang', 'barang.id_barang=penjualan.id_barang');
-    $this->db->where('penjualan.user', $user);
-    return $this->db->get()->result();
+    $this->db->join('pelanggan', 'pelanggan.id_pelanggan=penjualan.id_pelanggan', 'left');
+    $this->db->join('barang', 'barang.id_barang=penjualan.id_barang', 'left');
+    $this->db->join('toko', 'toko.user=penjualan.user', 'left');
+    $this->db->where('penjualan.id_penjualan', $id);
+    return $this->db->get()->row();
   }
 
   public function report($id_toko, $awal, $akhir)

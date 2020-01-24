@@ -12,7 +12,7 @@
                         </div>
                     </div>
                     <div class="card-body" id="data-card">
-                        <form action="<?= base_url('history/piutang-pelanggan/report')?>" method="post">
+                        <form action="<?= base_url('history/piutang-pelanggan/report') ?>" method="post">
                             <div class="row">
                                 <div class="col">
                                     <label for="merchant">Merchant</label>
@@ -58,22 +58,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $no = 1;
-                                foreach ($piutangPelanggan as $data) : ?>
-                                    <tr>
-                                        <td><?= $no++ ?></td>
-                                        <td style="max-width: 150px"><?= $data->nama_toko ?></td>
-                                        <td><?= $data->nama_pelanggan ?></td>
-                                        <td align="center">
-                                            <?= $data->no_invoice ?>
-                                        </td>
-                                        <td>Rp<?= number_format($data->nominal, 0, ",", ".") ?>,-</td>
-                                        <td><?= date_format(date_create($data->tanggal), "d M Y") ?></td>
-                                        <td align="center">
-                                            <?= $data->status?>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>

@@ -22,12 +22,40 @@ class HutangSupplier extends CI_Controller
     $data = [
       'page' => 'hutang-supplier/index',
       'title' => 'Pembayaran Hutang Supplier',
-      'hutangSupplier' => $this->hutangSupplier->getAll(),
       'merchant' => $this->db->get('toko')->result(),
       'bulan_lalu' => $back->format('Y-m-d')
     ];
 
     $this->load->view('index', $data);
+  }
+
+  public function load(){
+    $draw = intval($this->input->get("draw"));
+    $start = intval($this->input->get("start"));
+    $length = intval($this->input->get("length"));
+    $query = $this->db->get("logpembayaranhutangsupplier");
+    $data = []; $no = 1;
+
+    foreach ($this->hutangSupplier->getAll() as $row) {
+      $data[] = array(
+        $no++,
+        $row->nama_toko,
+        $row->nama_supplier,
+        $row->no_invoice, 
+        'Rp'.number_format($row->nominal, 0, ",", ".").',-',
+        date_format(date_create($row->tanggal), "d M Y"),
+      );
+    }
+
+    $result = array(
+      "draw" => $draw,
+      "recordsTotal" => $query->num_rows(),
+      "recordsFiltered" => $query->num_rows(),
+      "data" => $data
+    );
+
+    echo json_encode($result);
+    exit();
   }
 
   public function report()
