@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Reader\Csv;
+use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
+
 class Barang extends CI_Controller
 {
 
@@ -30,7 +34,7 @@ class Barang extends CI_Controller
 
     $this->load->view('index', $data);
   }
-  
+
   public function create()
   {
     $data = [
@@ -68,7 +72,7 @@ class Barang extends CI_Controller
         'tampilkan' => 0
       ];
 
-      $this->db->insert('barang', $data);
+      $this->barang->save($data);
       $this->session->set_flashdata('success', 'Barang berhasil ditambahkan');
       redirect(base_url('barang'));
     }
@@ -142,9 +146,42 @@ class Barang extends CI_Controller
   public function delete($id)
   {
     $barang = $this->barang->getById($id);
-    unlink(FCPATH.'assets/uploads/barang/'.$barang->gbr);
+    unlink(FCPATH . 'assets/uploads/barang/' . $barang->gbr);
     $this->barang->delete($id);
   }
+
+  public function import()
+  {
+    $file_mimes = array('application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    if(isset($_FILES['excelbarang']['name'])) {
+      $arr_file = explode('.', $_FILES['excelbarang']['name']);
+      $extension = end($arr_file);
+    
+      if('csv' == $extension) {
+          $reader = new \PhpOffice\PhpSpreadsheet\Reader\Csv();
+          $kodebarang = 0;
+          $barang = 1;
+      } else {
+          $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+          $kodebarang = 1;
+          $barang = 2;
+      }
+    
+      $spreadsheet = $reader->load($_FILES['excelbarang']['tmp_name']);
+      $sheetData = $spreadsheet->getActiveSheet()->toArray();
+
+      for($i = 0;$i < count($sheetData);$i++){
+        $data = [
+          'kodebarang' => $sheetData[$i][$kodebarang],
+          'nama_barang' => $sheetData[$i][$barang],
+          'user' => '0',
+          'id_kategori' => 1
+        ];
+        $this->barang->save($data);
+      }
+      redirect(base_url('barang'));
+    }
+  } 
 }
 
 

@@ -10,9 +10,10 @@ class MBarang extends CI_Model {
     parent::__construct();
   }
 
-  public function getAll(){
+  public function getAll($column = 'id_barang', $sort = 'desc'){
     $this->db->from($this->table);
     $this->db->join('kategori', 'kategori.id_kategori='.$this->table.'.id_kategori', 'left');
+    $this->db->order_by($column, $sort);
     return $this->db->get()->result();
   }
 
