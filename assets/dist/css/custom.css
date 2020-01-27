@@ -52,3 +52,7 @@
   background: #5b5656;
 }
 
+.dt-center{
+  text-align: center;
+  min-width: 120px;
+}

@@ -21,14 +21,39 @@ class Toko extends CI_Controller
 
   public function index()
   {
-    $merchant = $this->toko->getAll();
     $data = [
       'title' => 'Manajemen Toko',
       'page' => 'toko/index',
-      'merchants' => $merchant
     ];
 
     $this->load->view('index', $data);
+  }
+
+  public function load()
+  {
+    $data = [];
+    $no = 1;
+
+    foreach ($this->toko->getAll() as $row) {
+      $data[] = array(
+        $no++,
+        $row->user,
+        $row->nama_toko,
+        $row->email,
+        '<a href="'.base_url('toko/view/'.$row->id_toko).'" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+        <a href="'.base_url('toko/edit/'.$row->id_toko).'" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+        <button class="delete-button btn btn-danger" row-data="toko-'.$row->id_toko.'" data-url="'.base_url('toko/delete/'.$row->id_toko).'">
+            <i class="fa fa-trash"></i>
+        </button>'
+      );
+    }
+
+    $result = array(
+      "data" => $data
+    );
+
+    echo json_encode($result);
+    exit();
   }
 
   public function create()
@@ -77,9 +102,9 @@ class Toko extends CI_Controller
       }
     }
 
-    if(empty($data['dataToko']['nohp'])) $data['dataToko']['nohp'] = $this->input->post('telp_user');
-    if(empty($data['dataToko']['alamat'])) $data['dataToko']['alamat'] = $this->input->post('alamat_user');
-    
+    if (empty($data['dataToko']['nohp'])) $data['dataToko']['nohp'] = $this->input->post('telp_user');
+    if (empty($data['dataToko']['alamat'])) $data['dataToko']['alamat'] = $this->input->post('alamat_user');
+
     $this->user->save($data['dataUser']);
     $this->toko->save($data['dataToko']);
 

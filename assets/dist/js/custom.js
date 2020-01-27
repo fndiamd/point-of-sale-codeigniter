@@ -5,6 +5,14 @@ function setHtmlValue(id, value) {
     document.getElementById(id).innerHTML = value
 }
 
+function setInputValue(id, value) {
+    document.getElementById(id).value = value
+}
+
+function getInputValue(id) {
+    return document.getElementById(id).value
+}
+
 function currencyFormat(x) {
     return 'Rp' + x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
@@ -12,6 +20,7 @@ function currencyFormat(x) {
 function generateDataTable(is_ajax, url = null) {
     if (is_ajax == true) {
         $('#data-tables').DataTable({
+            "bAutoWidth": false,
             "paging": true,
             "lengthChange": true,
             "searching": true,
@@ -21,7 +30,10 @@ function generateDataTable(is_ajax, url = null) {
             "ajax": {
                 url: url,
                 type: "GET"
-            }
+            },
+            "columnDefs": [
+                { "className": "dt-center", "targets": -1 }
+            ]
         });
     } else {
         $('#data-tables').DataTable({
@@ -53,7 +65,7 @@ function detailDataPenjualan(data) {
     setHtmlValue('operator', data.operator)
 }
 
-function detailPenjualan(data){
+function detailPenjualan(data) {
     setHtmlValue('modal-title', 'Detail Penjualan - ' + data.no_invoice)
     setHtmlValue('nama_toko', data.nama_toko)
     setHtmlValue('nama_pelanggan', data.nama_pelanggan)
@@ -85,7 +97,7 @@ function detailDataPembelian(data) {
     setHtmlValue('operator', data.operator)
 }
 
-function detailPembelian(data){
+function detailPembelian(data) {
     setHtmlValue('modal-title', 'Detail Pembelian - ' + data.no_invoice)
     setHtmlValue('nama_toko', data.nama_toko)
     setHtmlValue('nama_supplier', data.nama_supplier)
@@ -97,6 +109,13 @@ function detailPembelian(data){
     setHtmlValue('tanggal_transaksi', data.tanggal)
     setHtmlValue('catatan', data.catatan)
     setHtmlValue('status_transaksi', data.status)
+}
+
+function detailKategori(data) {
+    setHtmlValue('modal-title', 'Edit kategori ' + data.nama_kategori)
+    setInputValue('modalnama_kategori', data.nama_kategori)
+    setInputValue('modaljenis_kategori', data.jenis_kategori)
+    setInputValue('modalid_kategori', data.id_kategori)
 }
 
 // detail ajax
@@ -112,6 +131,34 @@ function getDetail(url, detailFunction) {
             }
         })
     })
+}
+
+function editKategori() {
+    $(document).on('click', '.btn-submit', function (e) {
+        e.preventDefault();
+        const kategori = getInputValue('modalnama_kategori')
+        const jenis = getInputValue('modaljenis_kategori')
+        const id = getInputValue('modalid_kategori')
+
+        $.ajax({
+            url: 'kategori/update/' + id,
+            method: 'post',
+            data: {
+                nama_kategori: kategori,
+                jenis_kategori: jenis
+            },
+            success: function () {
+                $('#data-tables').DataTable().ajax.reload();
+                $('#modal-edit').modal('hide');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Kategori berhasil diupdate',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+        })
+    });
 }
 
 $(document).ready(function () {
@@ -141,12 +188,32 @@ $(document).ready(function () {
             getDetail('detail-penjualan/detail', detailPenjualan)
             break;
         case 'pembelian/data-pembelian':
-            generateDataTable(true,'data-pembelian/load')
+            generateDataTable(true, 'data-pembelian/load')
             getDetail('data-pembelian/detail', detailDataPembelian)
             break;
         case 'pembelian/detail-pembelian':
             generateDataTable(true, 'detail-pembelian/load')
             getDetail('detail-pembelian/detail', detailPembelian)
+            break;
+        case 'toko':
+            generateDataTable(true, 'toko/load')
+            break;
+        case 'barang':
+            generateDataTable(true, 'barang/load')
+            break;
+        case 'kategori':
+            generateDataTable(true, 'kategori/load')
+            getDetail('kategori/detail', detailKategori)
+            editKategori();
+            break;
+        case 'pelanggan':
+            generateDataTable(true, 'pelanggan/load')
+            break;
+        case 'supplier':
+            generateDataTable(true, 'supplier/load');
+            break;
+        case 'user':
+            generateDataTable(true, 'user/load');
             break;
         default:
             generateDataTable(false)
@@ -182,7 +249,7 @@ $(document).ready(function () {
                             'Data kamu sudah dihapus.',
                             'success'
                         );
-                        $('#' + rowData).remove();
+                        $('#data-tables').DataTable().ajax.reload();
                     }
                 });
             } else if (

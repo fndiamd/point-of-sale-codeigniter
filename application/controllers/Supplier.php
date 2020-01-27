@@ -26,11 +26,39 @@ class Supplier extends CI_Controller
     $supplier = $this->db->get('supplier');
     $data = [
       'title' => 'Manajemen Supplier',
-      'page' => 'supplier/index',
-      'suppliers' => $supplier
+      'page' => 'supplier/index'
     ];
 
     $this->load->view('index', $data);
+  }
+
+  public function load()
+  {
+    $data = [];
+    $no = 1;
+
+    foreach ($this->supplier->getAll() as $row) {
+      $data[] = array(
+        $no++,
+        $row->nama_supplier,
+        $row->email,
+        $row->telpon,
+        $row->profinsi,
+        $row->kota,
+        '<a href="'.base_url('supplier/view/'.$row->id_supplier).'" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+        <a href="'.base_url('supplier/edit/'.$row->id_supplier).'" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+        <button class="delete-button btn btn-danger" row-data="supplier-'.$row->id_supplier.'" data-url="'.base_url('supplier/delete/' .$row->id_supplier).'">
+            <i class="fa fa-trash"></i>
+        </button>'
+      );
+    }
+
+    $result = array(
+      "data" => $data
+    );
+
+    echo json_encode($result);
+    exit();
   }
 
   public function store(){
