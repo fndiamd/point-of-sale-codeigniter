@@ -29,6 +29,38 @@ class DataPembelian extends CI_Controller
     $this->load->view('index', $data);
   }
 
+  public function load(){
+    $data = [];
+    $no = 1;
+
+    foreach ($this->dataPembelian->getAll() as $row) {
+      $data[] = array(
+        $no++,
+        $row->nama_toko,
+        $row->nama_supplier,
+        $row->no_invoice,
+        'Rp' . number_format($row->totalorder, 0, ",", ".") . ',-',
+        date_format(date_create($row->tanggal), "d M Y"),
+        '<button type="button" class="btn btn-primary detail-button" data-toggle="modal" data-target="#modal-detail" data-id="'.$row->id_datapembelian.'">
+          <i class="fa fa-eye"></i>
+        </button>'
+      );
+    }
+
+    $result = array(
+      "data" => $data
+    );
+
+    echo json_encode($result);
+    exit();
+  }
+
+  public function detail(){
+    $id = $this->input->post('id');
+    header('Content-Type: application/json');
+    echo json_encode($this->dataPembelian->getById($id));
+  }
+
   public function report()
   {
     $id_toko = $this->input->post('id_toko');

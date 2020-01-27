@@ -69,6 +69,37 @@ function detailPenjualan(data){
     setHtmlValue('status_transaksi', data.status)
 }
 
+function detailDataPembelian(data) {
+    setHtmlValue('modal-title', 'Data Pembelian - ' + data.no_invoice)
+    setHtmlValue('nama_toko', data.nama_toko)
+    setHtmlValue('nama_supplier', data.nama_supplier)
+    setHtmlValue('no_invoice', data.no_invoice)
+    setHtmlValue('tanggal_transaksi', data.tanggal)
+    setHtmlValue('pembayaran', data.pembayaran)
+    setHtmlValue('keterangan', data.keterangan)
+    setHtmlValue('total_order', currencyFormat(data.totalorder))
+    setHtmlValue('total_bayar', currencyFormat(data.totalbayar))
+    setHtmlValue('kembalian', currencyFormat(data.kembalian))
+    setHtmlValue('status_transaksi', data.status)
+    setHtmlValue('jatuh_tempo', data.jatuh_tempo)
+    setHtmlValue('operator', data.operator)
+}
+
+function detailPembelian(data){
+    setHtmlValue('modal-title', 'Detail Pembelian - ' + data.no_invoice)
+    setHtmlValue('nama_toko', data.nama_toko)
+    setHtmlValue('nama_supplier', data.nama_supplier)
+    setHtmlValue('nama_barang', data.nama_barang)
+    setHtmlValue('no_invoice', data.no_invoice)
+    setHtmlValue('jumlah_barang', data.jumlah)
+    setHtmlValue('harga_barang', currencyFormat(data.harga))
+    setHtmlValue('total_harga', currencyFormat(data.totalharga))
+    setHtmlValue('tanggal_transaksi', data.tanggal)
+    setHtmlValue('catatan', data.catatan)
+    setHtmlValue('status_transaksi', data.status)
+}
+
+// detail ajax
 function getDetail(url, detailFunction) {
     $(document).on('click', '.detail-button', function () {
         const dataId = $(this).attr('data-id')
@@ -108,6 +139,14 @@ $(document).ready(function () {
         case 'penjualan/detail-penjualan':
             generateDataTable(true, 'detail-penjualan/load')
             getDetail('detail-penjualan/detail', detailPenjualan)
+            break;
+        case 'pembelian/data-pembelian':
+            generateDataTable(true,'data-pembelian/load')
+            getDetail('data-pembelian/detail', detailDataPembelian)
+            break;
+        case 'pembelian/detail-pembelian':
+            generateDataTable(true, 'detail-pembelian/load')
+            getDetail('detail-pembelian/detail', detailPembelian)
             break;
         default:
             generateDataTable(false)
