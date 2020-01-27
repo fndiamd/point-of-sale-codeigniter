@@ -40,58 +40,41 @@
                                     <th>#</th>
                                     <th>Nama Kategori</th>
                                     <th>Jenis Kategori</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <?php $no = 1;
-                                foreach ($kategories->result() as $kategori) : ?>
-                                    <tr id="kategori_delete-<?= $kategori->id_kategori ?>">
-                                        <td><?= $no++ ?></td>
-                                        <td><?= $kategori->nama_kategori ?></td>
-                                        <td><?= $kategori->jenis_kategori ?></td>
-                                        <td align="center">
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#kategori-<?= $kategori->id_kategori ?>">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
-                                            <button class="delete-button btn btn-danger" row-data="kategori_delete-<?= $kategori->id_kategori ?>" data-url="<?= base_url('kategori/delete/' . $kategori->id_kategori) ?>">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="kategori-<?= $kategori->id_kategori ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel"><?= $kategori->nama_kategori ?></h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form method="post" action="<?= base_url('kategori/update/'.$kategori->id_kategori) ?>">
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <label for="nama_kategori">Nama Kategori</label>
-                                                                <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" placeholder="Nama Kategori" value="<?= $kategori->nama_kategori ?>">
-                                                            </div>
-                                                            <div class="col">
-                                                                <label for="jenis_kategori">Jenis Kategori</label>
-                                                                <input type="text" class="form-control" id="jenis_kategori" name="jenis_kategori" placeholder="Jenis Kategori (Optional)" value="<?= $kategori->jenis_kategori ?>">
-                                                            </div>
-                                                        </div>
-                                                        <br>
-                                                        <button type="submit" class="btn btn-primary pull-right">Submit</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php endforeach; ?>
-                            </tbody>
+                            <tbody></tbody>
                         </table>
+                        <div class="modal fade" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modal-title"></h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="post">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label for="nama_kategori">Nama Kategori</label>
+                                                    <input type="text" class="form-control" id="modalnama_kategori" name="nama_kategori" placeholder="Nama Kategori">
+                                                </div>
+                                                <div class="col">
+                                                    <label for="jenis_kategori">Jenis Kategori</label>
+                                                    <input type="text" class="form-control" id="modaljenis_kategori" name="jenis_kategori" placeholder="Jenis Kategori (Optional)">
+                                                </div>
+                                                <input type="hidden" id="modalid_kategori">
+                                            </div>
+                                            <br>
+                                            <button type="button" class="btn btn-primary pull-right btn-submit">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

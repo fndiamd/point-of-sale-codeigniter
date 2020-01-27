@@ -28,11 +28,40 @@ class Barang extends CI_Controller
   {
     $data = [
       'title' => 'Manajemen Barang',
-      'page' => 'barang/index',
-      'barangs' => $this->barang->getAll()
+      'page' => 'barang/index'
     ];
 
     $this->load->view('index', $data);
+  }
+
+  public function load()
+  {
+    $data = [];
+    $no = 1;
+
+    foreach ($this->barang->getAll() as $row) {
+      $data[] = array(
+        $no++,
+        $row->kodebarang,
+        $row->nama_kategori,
+        $row->nama_barang,
+        $row->hargabeli,
+        $row->hargajual,
+        $row->stok,
+        '<a href="'.base_url('barang/view/' . $row->id_barang).'" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+        <a href="'.base_url('barang/edit/' . $row->id_barang).'" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+        <button class="delete-button btn btn-danger" row-data="barang-'.$row->id_barang.'" data-url="'.base_url('barang/delete/' . $row->id_barang).'">
+            <i class="fa fa-trash"></i>
+        </button>'
+      );
+    }
+
+    $result = array(
+      "data" => $data
+    );
+
+    echo json_encode($result);
+    exit();
   }
 
   public function create()
@@ -133,14 +162,6 @@ class Barang extends CI_Controller
       'data' => $barang
     ];
     $this->load->view('index', $data);
-  }
-
-  public function search()
-  {
-    $id = $this->input->post('id_barang');
-    $this->db->where('id_barang', $id);
-    header('Content-Type: application/json');
-    echo json_encode($this->db->get('barang')->row());
   }
 
   public function delete($id)

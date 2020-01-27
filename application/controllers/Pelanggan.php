@@ -26,11 +26,38 @@ class Pelanggan extends CI_Controller
     $pelanggan = $this->db->get('pelanggan');
     $data = [
       'title' => 'Manajemen Pelanggan',
-      'page' => 'pelanggan/index',
-      'pelanggans' => $pelanggan
+      'page' => 'pelanggan/index'
     ];
 
     $this->load->view('index', $data);
+  }
+
+  public function load()
+  {
+    $data = [];
+    $no = 1;
+
+    foreach ($this->pelanggan->getAll() as $row) {
+      $data[] = array(
+        $no++,
+        $row->nama_pelanggan,
+        $row->email,
+        $row->telpon,
+        $row->status,
+        '<a href="'.base_url('pelanggan/view/'.$row->id_pelanggan).'" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+        <a href="'.base_url('pelanggan/edit/'.$row->id_pelanggan).'" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+        <button class="delete-button btn btn-danger" row-data="pelanggan-'.$row->id_pelanggan.'" data-url="'.base_url('pelanggan/delete/' .$row->id_pelanggan).'">
+            <i class="fa fa-trash"></i>
+        </button>'
+      );
+    }
+
+    $result = array(
+      "data" => $data
+    );
+
+    echo json_encode($result);
+    exit();
   }
 
   public function store(){

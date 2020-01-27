@@ -25,11 +25,38 @@ class User extends CI_Controller
     $data = [
       'title' => 'Manajemen User',
       'page' => 'user/index',
-      'users' => $user,
-      'user' => $this->user->getAll()
+      'users' => $user
     ];
 
     $this->load->view('index', $data);
+  }
+
+  public function load()
+  {
+    $data = [];
+    $no = 1;
+
+    foreach ($this->user->getAll() as $row) {
+      $data[] = array(
+        $no++,
+        $row->nama_lengkap,
+        $row->email,
+        $row->kota,
+        $row->level,
+        '<a href="'.base_url('user/view/' . $row->no_telp).'" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+        <a href="'.base_url('user/edit/' . $row->no_telp).'" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+        <button class="delete-button btn btn-danger" row-data="user-'.$row->no_telp.'" data-url="'.base_url('user/delete/' . $row->no_telp).'">
+            <i class="fa fa-trash"></i>
+        </button>'
+      );
+    }
+
+    $result = array(
+      "data" => $data
+    );
+
+    echo json_encode($result);
+    exit();
   }
 
   public function store(){

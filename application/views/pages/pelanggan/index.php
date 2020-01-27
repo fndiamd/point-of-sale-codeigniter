@@ -23,24 +23,7 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <?php $no=1; foreach ($pelanggans->result() as $pelanggan) : ?>
-                                    <tr id="pelanggan-<?= $pelanggan->id_pelanggan ?>">
-                                        <td><?= $no++?></td>
-                                        <td><?= $pelanggan->nama_pelanggan ?></td>
-                                        <td><?= $pelanggan->email ?></td>
-                                        <td><?= $pelanggan->telpon ?></td>
-                                        <td><?= $pelanggan->status ?></td>
-                                        <td align="center" style="min-width: 150px">
-                                            <a href="<?= base_url('pelanggan/view/'.$pelanggan->id_pelanggan)?>" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-                                            <a href="<?= base_url('pelanggan/edit/'.$pelanggan->id_pelanggan)?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                                            <button class="delete-button btn btn-danger" row-data="pelanggan-<?= $pelanggan->id_pelanggan ?>" data-url="<?= base_url('pelanggan/delete/' .$pelanggan->id_pelanggan) ?>">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
+                            <tbody></tbody>
                         </table>
                     </div>
                 </div>

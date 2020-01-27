@@ -25,23 +25,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $no=1; foreach ($suppliers->result() as $supplier) : ?>
-                                    <tr id="supplier-<?= $supplier->id_supplier ?>">
-                                        <td><?= $no++?></td>
-                                        <td><?= $supplier->nama_supplier ?></td>
-                                        <td><?= $supplier->email ?></td>
-                                        <td><?= $supplier->telpon ?></td>
-                                        <td><?= $supplier->profinsi ?></td>
-                                        <td><?= $supplier->kota ?></td>
-                                        <td align="center" style="min-width: 150px">
-                                            <a href="<?= base_url('supplier/view/'.$supplier->id_supplier)?>" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-                                            <a href="<?= base_url('supplier/edit/'.$supplier->id_supplier)?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                                            <button class="delete-button btn btn-danger" row-data="supplier-<?= $supplier->id_supplier ?>" data-url="<?= base_url('supplier/delete/' .$supplier->id_supplier) ?>">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
+                                
                             </tbody>
                         </table>
                     </div>

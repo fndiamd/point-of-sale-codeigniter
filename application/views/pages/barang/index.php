@@ -20,7 +20,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <table class="table table-bordered table-hover dataTable" id="data-tables" role="grid">
+                        <table class="table table-bordered table-hover dataTable" style="min-width:100wh" id="data-tables" role="grid">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -34,25 +34,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $no = 1;
-                                foreach ($barangs as $barang) : ?>
-                                    <tr id="barang-<?= $barang->id_barang ?>">
-                                        <td><?= $no++ ?></td>
-                                        <td><?= $barang->kodebarang ?></td>
-                                        <td><?= $barang->nama_kategori ?></td>
-                                        <td><?= $barang->nama_barang ?></td>
-                                        <td><?= $barang->hargabeli ?></td>
-                                        <td><?= $barang->hargajual ?></td>
-                                        <td><?= $barang->stok ?></td>
-                                        <td align="center" style="min-width: 150px">
-                                            <a href="<?= base_url('barang/view/' . $barang->id_barang) ?>" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-                                            <a href="<?= base_url('barang/edit/' . $barang->id_barang) ?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                                            <button class="delete-button btn btn-danger" row-data="barang-<?= $barang->id_barang ?>" data-url="<?= base_url('barang/delete/' . $barang->id_barang) ?>">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
+                                
                             </tbody>
                         </table>
                     </div>

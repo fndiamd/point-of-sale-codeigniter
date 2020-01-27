@@ -13,6 +13,11 @@ class MKategori extends CI_Model {
     return $this->db->get('kategori')->result();
   }
 
+  public function getById($id){
+    $this->db->where('id_kategori', $id);
+    return $this->db->get('kategori')->row();
+  }
+
   public function delete($idkategori){
     $this->db->where('id_kategori', $idkategori);
     $this->db->delete($this->table);
