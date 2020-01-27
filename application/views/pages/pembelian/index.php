@@ -12,7 +12,7 @@
                         </div>
                     </div>
                     <div class="card-body collapse show" id="data-card">
-                        <form action="<?= base_url('pembelian/detail-pembelian/report')?>" method="post">
+                        <form action="<?= base_url('pembelian/detail-pembelian/report') ?>" method="post">
                             <div class="row">
                                 <div class="col">
                                     <label for="merchant">Merchant</label>
@@ -59,81 +59,62 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $no = 1;
-                                foreach ($pembelian as $data) : ?>
-                                    <tr>
-                                        <td><?= $no++ ?></td>
-                                        <td style="max-width: 150px"><?= $data->nama_toko ?></td>
-                                        <td><?= $data->nama_supplier ?></td>
-                                        <td><?= $data->nama_barang ?></td>
-                                        <td align="center">
-                                            <?= $data->no_invoice ?>
-                                        </td>
-                                        <td>Rp<?= number_format($data->totalharga, 0, ",", ".") ?>,-</td>
-                                        <td><?= date_format(date_create($data->tanggal), "d M Y") ?></td>
-                                        <td align="center">
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#<?= $data->id_pembelian ?>">
-                                                <i class="fa fa-eye"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <div class="modal fade" id="<?= $data->id_pembelian ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-md" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Detail Pembelian - <?= $data->no_invoice ?></h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="row">
-                                                        <div class="col-5 text-bold">Nama Toko</div>
-                                                        <div class="col-7"><?= $data->nama_toko ?></div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-5 text-bold">Nama Supplier</div>
-                                                        <div class="col-7"><?= $data->nama_supplier ?></div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-5 text-bold">Nama Barang</div>
-                                                        <div class="col-7"><?= $data->nama_barang ?></div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-5 text-bold">No. Invoice</div>
-                                                        <div class="col-7"><?= $data->no_invoice ?></div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-5 text-bold">Jumlah</div>
-                                                        <div class="col-7"><?= $data->jumlah ?></div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-5 text-bold">Harga</div>
-                                                        <div class="col-7">Rp<?= number_format($data->harga, 0, ',', '.') ?></div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-5 text-bold">Total Harga</div>
-                                                        <div class="col-7">Rp<?= number_format($data->totalharga, 0, ',', '.') ?></div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-5 text-bold">Tanggal Transaksi</div>
-                                                        <div class="col-7"><?= $data->tanggal ?></div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-5 text-bold">Catatan</div>
-                                                        <div class="col-7"><?= $data->catatan ?></div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-5 text-bold">Status Transaksi</div>
-                                                        <div class="col-7"><?= $data->status ?></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php endforeach; ?>
                             </tbody>
                         </table>
+                        <div class="modal fade" id="modal-detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-md" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modal-title"></h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-5 text-bold">Nama Toko</div>
+                                            <div class="col-7" id="nama_toko"></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-5 text-bold">Nama Supplier</div>
+                                            <div class="col-7" id="nama_supplier"></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-5 text-bold">Nama Barang</div>
+                                            <div class="col-7" id="nama_barang"></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-5 text-bold">No. Invoice</div>
+                                            <div class="col-7" id="no_invoice"></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-5 text-bold">Jumlah</div>
+                                            <div class="col-7" id="jumlah_barang"></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-5 text-bold">Harga</div>
+                                            <div class="col-7" id="harga_barang"></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-5 text-bold">Total Harga</div>
+                                            <div class="col-7" id="total_harga"></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-5 text-bold">Tanggal Transaksi</div>
+                                            <div class="col-7" id="tanggal_transaksi"></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-5 text-bold">Catatan</div>
+                                            <div class="col-7" id="catatan"></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-5 text-bold">Status Transaksi</div>
+                                            <div class="col-7" id="status_transaksi"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
