@@ -8,7 +8,7 @@
     <title>Login - Point of sale</title>
     <link rel="shortcut icon" href="<?= base_url('assets/dist/img/profit.png')?>" type="image/x-icon">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="<?= base_url('assets/plugins/font-awesome/css/font-awesome.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/plugins/font-awesome/css/all.css') ?>">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="<?= base_url('assets/plugins/bootstrap/css/bootstrap.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/dist/css/custom.css') ?>">
