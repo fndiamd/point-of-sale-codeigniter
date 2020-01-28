@@ -15,6 +15,19 @@
                         <form method="post" action="<?= base_url('kategori/store') ?>">
                             <div class="row">
                                 <div class="col">
+                                    <label for="user">User <span class="label-required">*</span></label>
+                                    <select name="user" class="form-control select-plugin" id="user" required>
+                                        <option value="0">Master</option>
+                                        <?php foreach ($user as $user) : ?>
+                                            <?php if ($user->no_telp == $data->user) : ?>
+                                                <option selected value="<?= $user->no_telp ?>"><?= $user->no_telp ?></option>
+                                            <?php else : ?>
+                                                <option value="<?= $user->no_telp ?>"><?= $user->no_telp ?></option>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                                <div class="col">
                                     <label for="nama_kategori">Nama Kategori <span class="label-required">*</span></label>
                                     <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" placeholder="Nama Kategori" required>
                                 </div>
@@ -47,7 +60,7 @@
                             <tbody></tbody>
                         </table>
                         <div class="modal fade" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
+                            <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="modal-title"></h5>
@@ -59,8 +72,12 @@
                                         <form method="post">
                                             <div class="row">
                                                 <div class="col">
+                                                    <label for="user">User <span class="label-required">*</span></label>
+                                                    <input type="text" class="form-control" id="modaluser" required>
+                                                </div>
+                                                <div class="col">
                                                     <label for="nama_kategori">Nama Kategori<span class="label-required"> *</span></label>
-                                                    <input type="text" class="form-control" id="modalnama_kategori" name="nama_kategori" placeholder="Nama Kategori" >
+                                                    <input type="text" class="form-control" id="modalnama_kategori" name="nama_kategori" placeholder="Nama Kategori" required>
                                                 </div>
                                                 <div class="col">
                                                     <label for="jenis_kategori">Jenis Kategori<span class="label-optional"> ( Optional )</span></label>

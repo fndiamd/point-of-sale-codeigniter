@@ -72,7 +72,7 @@
 
               <div class="form-group">
                 <label for="telp_toko">Nomor HP <span class="label-optional">( Optional )</span></label>
-                <input type="text" class="form-control" id="telp_toko" name="telp_toko" placeholder="08123456789" aria-describedby="telponHelp">
+                <input type="tel" pattern="\+?([ -]?\d+)+|\(\d+\)([ -]\d+)" class="form-control" id="telp_toko" name="telp_toko" placeholder="Format: +628XXXXXX / 08XXXXXX" aria-describedby="telponHelp">
                 <small id="telponHelp" class="form-text text-muted">Biarkan kosong bila sama dengan nomor telpon user.</small>
               </div>
 

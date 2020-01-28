@@ -116,6 +116,7 @@ function detailKategori(data) {
     setInputValue('modalnama_kategori', data.nama_kategori)
     setInputValue('modaljenis_kategori', data.jenis_kategori)
     setInputValue('modalid_kategori', data.id_kategori)
+    setInputValue('modaluser', data.user)
 }
 
 // detail ajax
@@ -136,6 +137,7 @@ function getDetail(url, detailFunction) {
 function editKategori() {
     $(document).on('click', '.btn-submit', function (e) {
         e.preventDefault();
+        const user = getInputValue('modaluser')
         const kategori = getInputValue('modalnama_kategori')
         const jenis = getInputValue('modaljenis_kategori')
         const id = getInputValue('modalid_kategori')
@@ -144,6 +146,7 @@ function editKategori() {
             url: 'kategori/update/' + id,
             method: 'post',
             data: {
+                user_kategori: user,
                 nama_kategori: kategori,
                 jenis_kategori: jenis
             },

@@ -10,13 +10,15 @@ class Kategori extends CI_Controller
     parent::__construct();
 
     $this->load->model('MKategori', 'kategori');
+    $this->load->model('MUser', 'user');
   }
 
   public function index()
   {
     $data = [
       'title' => 'Manajemen Kategori',
-      'page' => 'kategori/index'
+      'page' => 'kategori/index',
+      'user' => $this->user->getAll()
     ];
 
     $this->load->view('index', $data);
@@ -61,10 +63,9 @@ class Kategori extends CI_Controller
     $data = [
       'nama_kategori' => $this->input->post('nama_kategori'),
       'jenis_kategori' => $this->input->post('jenis_kategori'),
-      'user' => '089612994819',
+      'user' => $this->input->post('user'),
       'status' => 0
     ];
-
 
     $this->db->insert('kategori', $data);
     $this->session->set_flashdata('success', 'Kategori berhasil ditambahkan');
@@ -77,7 +78,7 @@ class Kategori extends CI_Controller
     $data = [
       'nama_kategori' => $this->input->post('nama_kategori'),
       'jenis_kategori' => $this->input->post('jenis_kategori'),
-      'user' => '089612994819',
+      'user' => $this->input->post('user_kategori'),
       'status' => 0
     ];
 
