@@ -148,7 +148,7 @@ class User extends CI_Controller
 
     $this->db->where('no_telp', $id);
     $this->db->update('users', $data);
-    $this->session->set_flashdata('success', 'supplier berhasil update');
+    $this->session->set_flashdata('success', 'User berhasil update');
     redirect(base_url('user'));
   }
 

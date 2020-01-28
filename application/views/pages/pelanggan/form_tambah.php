@@ -16,7 +16,7 @@
                     <div class="form-group">
                         <label for="user">User <span class="label-required"> *</span></label>
                         <select name="user" class="form-control select-plugin" id="user" required>
-                          <option disabled selected>--- Pilih User ---</option>
+                          <option value="" selected>--- Pilih User ---</option>
                           <option value="0">Master</option>
                           <?php foreach ($user as $user) : ?>
                             <option value="<?= $user->no_telp ?>"><?= $user->no_telp ?></option>
@@ -46,14 +46,14 @@
                     <div class="row">
                       <div class="col">
                         <div class="form-group">
-                          <label for="status">Status<span class="label-optional"></span></label>
+                          <label for="status">Status<span class="label-optional"> ( Optional )</span></label>
                           <input type="text" class="form-control" id="status" name="status" placeholder="Status Pelanggan">
                         </div>
                       </div>
 
                       <div class="col">
                         <div class="form-group">
-                          <label for="aktiv">Active<span class="label-optional"></span></label>
+                          <label for="aktiv">Active<span class="label-optional"> ( Optional )</span></label>
                           <input type="text" class="form-control" id="aktiv" name="aktiv" placeholder="Active Pelanggan">
                         </div>
                       </div>

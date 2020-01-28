@@ -19,7 +19,7 @@
               <hr>
               <div class="form-group">
                 <label for="nama_lengkap">Nama Lengkap<span class="label-required"> *</span></label>
-                <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" placeholder="Nama Lengkap User">
+                <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" required placeholder="Nama Lengkap User">
               </div>
 
               <div class="row">

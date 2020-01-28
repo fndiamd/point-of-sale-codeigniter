@@ -16,7 +16,7 @@
                             <div class="row">
                                 <div class="col">
                                     <label for="nama_kategori">Nama Kategori <span class="label-required">*</span></label>
-                                    <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" placeholder="Nama Kategori">
+                                    <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" placeholder="Nama Kategori" required>
                                 </div>
                                 <div class="col">
                                     <label for="jenis_kategori">Jenis Kategori <span class="label-optional">( Optional )</span></label>
@@ -59,11 +59,11 @@
                                         <form method="post">
                                             <div class="row">
                                                 <div class="col">
-                                                    <label for="nama_kategori">Nama Kategori</label>
-                                                    <input type="text" class="form-control" id="modalnama_kategori" name="nama_kategori" placeholder="Nama Kategori">
+                                                    <label for="nama_kategori">Nama Kategori<span class="label-required"> *</span></label>
+                                                    <input type="text" class="form-control" id="modalnama_kategori" name="nama_kategori" placeholder="Nama Kategori" >
                                                 </div>
                                                 <div class="col">
-                                                    <label for="jenis_kategori">Jenis Kategori</label>
+                                                    <label for="jenis_kategori">Jenis Kategori<span class="label-optional"> ( Optional )</span></label>
                                                     <input type="text" class="form-control" id="modaljenis_kategori" name="jenis_kategori" placeholder="Jenis Kategori (Optional)">
                                                 </div>
                                                 <input type="hidden" id="modalid_kategori">

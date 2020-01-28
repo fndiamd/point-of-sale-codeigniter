@@ -15,12 +15,12 @@
             <form method="post" action="<?= base_url('user/update/' . $data->no_telp) ?>" enctype="multipart/form-data">
               <div class="form-group">
                 <label for="nama_lengkap">Nama Lengkap<span class="label-required"> *</span></label>
-                <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" value="<?php echo $data->nama_lengkap ?>">
+                <input type="text" class="form-control" id="nama_lengkap" required name="nama_lengkap" value="<?php echo $data->nama_lengkap ?>">
               </div>
 
               <div class="form-group">
                 <label for="password">Password<span class="label-required"> *</span></label>
-                <input type="text" class="form-control" id="password" name="password" value="<?php echo $data->password ?>">
+                <input type="text" class="form-control" id="password" required name="password" value="<?php echo $data->password ?>">
               </div>
 
               <div class="form-group">
@@ -30,7 +30,7 @@
 
               <div class="form-group">
                 <label for="master">Master<span class="label-required"> *</span></label>
-                <input type="text" class="form-control" id="master" name="master" value="<?php echo $data->master ?>">
+                <input type="text" class="form-control" id="master" required name="master" value="<?php echo $data->master ?>">
               </div>
 
               <div class="form-group">
@@ -44,8 +44,8 @@
               </div>
 
               <div class="form-group">
-                <label for="no_telp">Telepon<span class="label-required"> *</span></label>
-                <input type="text" class="form-control" id="no_telp" name="no_telp" value="<?php echo $data->no_telp ?>">
+                <label for="telp_user">Telepon<span class="label-required"> *</span></label>
+                <input type="tel" pattern="\+?([ -]?\d+)+|\(\d+\)([ -]\d+)" required class="form-control" id="telp_user" name="telp_user" required value="<?=$data->no_telp?>">
               </div>
 
               <div class="form-group">

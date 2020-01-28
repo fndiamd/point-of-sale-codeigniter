@@ -153,7 +153,7 @@ class Pelanggan extends CI_Controller
 
     $this->db->where('id_pelanggan', $id);
     $this->db->update('pelanggan', $data);
-    $this->session->set_flashdata('success', 'barang berhasil update');
+    $this->session->set_flashdata('success', 'Pelanggan berhasil diperbarui');
     redirect(base_url('pelanggan'));
   }
 

@@ -29,17 +29,17 @@
 
               <div class="form-group">
                 <label for="nama_pelanggan">Nama Pelanggan<span class="label-required"> *</span></label>
-                <input type="text" class="form-control" id="nama_pelanggan" name="nama_pelanggan" value="<?php echo $data->nama_pelanggan ?>">
+                <input type="text" class="form-control" id="nama_pelanggan" name="nama_pelanggan" required value="<?php echo $data->nama_pelanggan ?>">
               </div>
 
               <div class="form-group">
                 <label for="alamat">Alamat<span class="label-required"> *</span></label>
-                <textarea type="text" class="form-control" id="alamat" name="alamat" cols="30" rows="5"><?php echo $data->alamat ?></textarea>
+                <textarea type="text" class="form-control" id="alamat" name="alamat" required cols="30" rows="5"><?php echo $data->alamat ?></textarea>
               </div>
 
               <div class="form-group">
                 <label for="email">Email<span class="label-optional"> ( Optional )</span></label>
-                <input type="text" class="form-control" id="email" name="email" value="<?php echo $data->email ?>">
+                <input type="email" class="form-control" id="email" name="email" value="<?php echo $data->email ?>">
               </div>
 
               <div class="form-group">

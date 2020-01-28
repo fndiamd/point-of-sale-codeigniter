@@ -17,7 +17,7 @@
                     <div class="form-group">
                         <label for="user">User <span class="label-required"> *</span></label>
                         <select name="user" class="form-control select-plugin" id="user" required>
-                          <option disabled selected>--- Pilih User ---</option>
+                          <option value="" selected>--- Pilih User ---</option>
                           <option value="0">Master</option>
                           <?php foreach ($user as $user) : ?>
                             <option value="<?= $user->no_telp ?>"><?= $user->no_telp ?></option>
@@ -42,17 +42,23 @@
 
                     <div class="form-group">
                       <label for="telpon">Telepon<span class="label-required"> *</span></label>
-                      <input type="text" class="form-control" id="telpon" name="telpon" required placeholder="Telepon Suppplier">
+                      <input type="tel" pattern="\+?([ -]?\d+)+|\(\d+\)([ -]\d+)" class="form-control" id="telpon" name="telpon" required placeholder="Format: +628XXXXXX / 08XXXXXX">
                     </div>
 
-                    <div class="form-group">
-                      <label for="Profinsi">Provinsi<span class="label-required"> *</span></label>
-                      <input type="text" class="form-control" id="profinsi" name="profinsi" required placeholder="Provinsi Supplier">
-                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="profinsi">Provinsi<span class="label-required"> *</span></label>
+                          <input type="text" class="form-control" id="profinsi" required name="profinsi" placeholder="Provinsi Supplier">
+                        </div>
+                      </div>
 
-                    <div class="form-group">
-                      <label for="kota">Kota<span class="label-required"> *</span></label>
-                      <input type="text" class="form-control" id="kota" name="kota" required placeholder="Kota Supplier">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="kota">Kota<span class="label-required"> *</span></label>
+                          <input type="text" class="form-control" id="kota" required name="kota" placeholder="Kota Supplier">
+                        </div>
+                      </div>
                     </div>
 
                     <div class="row">
