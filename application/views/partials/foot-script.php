@@ -26,4 +26,4 @@
         $('.select-plugin').select2();
     });
 </script>
-<script src="<?= base_url('assets/dist/js/obfuscated.js') ?>"></script>
+<script src="<?= base_url('assets/dist/js/custom.js') ?>"></script>

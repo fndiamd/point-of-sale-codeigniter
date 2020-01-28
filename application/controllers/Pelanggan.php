@@ -44,9 +44,9 @@ class Pelanggan extends CI_Controller
         $row->email,
         $row->telpon,
         $row->status,
-        '<a href="'.base_url('pelanggan/view/'.$row->id_pelanggan).'" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-        <a href="'.base_url('pelanggan/edit/'.$row->id_pelanggan).'" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-        <button class="delete-button btn btn-danger" row-data="pelanggan-'.$row->id_pelanggan.'" data-url="'.base_url('pelanggan/delete/' .$row->id_pelanggan).'">
+        '<a href="' . base_url('pelanggan/view/' . $row->id_pelanggan) . '" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+        <a href="' . base_url('pelanggan/edit/' . $row->id_pelanggan) . '" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+        <button class="delete-button btn btn-danger" row-data="pelanggan-' . $row->id_pelanggan . '" data-url="' . base_url('pelanggan/delete/' . $row->id_pelanggan) . '">
             <i class="fa fa-trash"></i>
         </button>'
       );
@@ -60,27 +60,28 @@ class Pelanggan extends CI_Controller
     exit();
   }
 
-  public function store(){
-      $data = [
-        'nama_pelanggan' => $this->input->post('nama_pelanggan'),
-        'alamat' => $this->input->post('alamat'),
-        'email' => $this->input->post('email'),
-        'telpon' => $this->input->post('telpon'),
-        'user' => $this->input->post('user'),
-        'status' => $this->input->post('status'),
-        'hutang' => $this->input->post('hutang'),
-        'aktiv' => $this->input->post('aktiv'),
-      ];
+  public function store()
+  {
+    $data = [
+      'nama_pelanggan' => $this->input->post('nama_pelanggan'),
+      'alamat' => $this->input->post('alamat'),
+      'email' => $this->input->post('email'),
+      'telpon' => $this->input->post('telpon'),
+      'user' => $this->input->post('user'),
+      'status' => $this->input->post('status'),
+      'hutang' => $this->input->post('hutang'),
+      'aktiv' => $this->input->post('aktiv'),
+    ];
 
-      if (!empty($_FILES['gambar']['name'])) {
-        if (!$this->upload->do_upload('gambar')) {
-          $this->session->set_flashdata('error', $this->upload->display_errors());
-          redirect(base_url('pelanggan/create'));
-        } else {
-          $gambar = $this->upload->data();
-          $data['gbr'] = $gambar['file_name'];
-        }
+    if (!empty($_FILES['gambar']['name'])) {
+      if (!$this->upload->do_upload('gambar')) {
+        $this->session->set_flashdata('error', $this->upload->display_errors());
+        redirect(base_url('pelanggan/create'));
+      } else {
+        $gambar = $this->upload->data();
+        $data['gbr'] = $gambar['file_name'];
       }
+    }
 
 
     $this->db->insert('pelanggan', $data);
@@ -129,27 +130,27 @@ class Pelanggan extends CI_Controller
 
   function update($id)
   {
-    
-      $data = [
-        'nama_pelanggan' => $this->input->post('nama_pelanggan'),
-        'alamat' => $this->input->post('alamat'),
-        'email' => $this->input->post('email'),
-        'telpon' => $this->input->post('telpon'),
-        'user' => $this->input->post('user'),
-        'status' => $this->input->post('status'),
-        'hutang' => $this->input->post('hutang'),
-        'aktiv' => $this->input->post('aktiv'),
-      ];
-      
-      if (!empty($_FILES['gambar']['name'])) {
-        if (!$this->upload->do_upload('gambar')) {
-          $this->session->set_flashdata('error', $this->upload->display_errors());
-          redirect(base_url('pelanggan/create'));
-        } else {
-          $gambar = $this->upload->data();
-          $data['gbr'] = $gambar['file_name'];
-        }
+
+    $data = [
+      'nama_pelanggan' => $this->input->post('nama_pelanggan'),
+      'alamat' => $this->input->post('alamat'),
+      'email' => $this->input->post('email'),
+      'telpon' => $this->input->post('telpon'),
+      'user' => $this->input->post('user'),
+      'status' => $this->input->post('status'),
+      'hutang' => $this->input->post('hutang'),
+      'aktiv' => $this->input->post('aktiv'),
+    ];
+
+    if (!empty($_FILES['gambar']['name'])) {
+      if (!$this->upload->do_upload('gambar')) {
+        $this->session->set_flashdata('error', $this->upload->display_errors());
+        redirect(base_url('pelanggan/create'));
+      } else {
+        $gambar = $this->upload->data();
+        $data['gbr'] = $gambar['file_name'];
       }
+    }
 
     $this->db->where('id_pelanggan', $id);
     $this->db->update('pelanggan', $data);
@@ -160,10 +161,15 @@ class Pelanggan extends CI_Controller
   public function delete($id)
   {
     $pelanggan = $this->pelanggan->getById($id);
-    unlink(FCPATH.'assets/uploads/pelanggan/'.$pelanggan->gbr);
     $this->pelanggan->delete($id);
-  }
 
+    if ($pelanggan->gbr != '' && file_exists('assets/uploads/pelanggan/' . $pelanggan->gbr)) {
+      unlink(FCPATH . 'assets/uploads/pelanggan/' . $pelanggan->gbr);
+    }
+
+    header('Content-Type: application/json');
+    echo json_encode(['section' => 'Pelanggan', 'data' => $pelanggan->nama_pelanggan]);
+  }
 }
 
 

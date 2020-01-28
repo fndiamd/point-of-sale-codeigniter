@@ -154,7 +154,10 @@ class Toko extends CI_Controller
 
   public function delete($id)
   {
+    $toko = $this->toko->getById($id);
     $this->toko->delete(['id_toko' => $id]);
+    header('Content-Type: application/json');
+    echo json_encode(['section' => 'Toko', 'data' => $toko->nama_toko]);
   }
 }
 

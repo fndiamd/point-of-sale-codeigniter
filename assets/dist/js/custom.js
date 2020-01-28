@@ -232,7 +232,7 @@ $(document).ready(function () {
 
         swalWithBootstrapButtons.fire({
             title: 'Apakah anda yakin?',
-            text: "Data yang sudah dihapus nantinya tidak dapat dikembalikan!",
+            text: "Data yang telah dihapus tidak dapat dikembalikan!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Ya, saya yakin!',
@@ -243,12 +243,13 @@ $(document).ready(function () {
                 $.ajax({
                     url: urlData,
                     method: 'post',
-                    success: function () {
+                    success: function (data) {
                         swalWithBootstrapButtons.fire(
-                            'Deleted!',
-                            'Data kamu sudah dihapus.',
+                            data.section + ' Deleted!',
+                            data.data + ' berhasil dihapus.',
                             'success'
                         );
+                        console.log(data);
                         $('#data-tables').DataTable().ajax.reload();
                     }
                 });
@@ -258,7 +259,7 @@ $(document).ready(function () {
             ) {
                 swalWithBootstrapButtons.fire(
                     'Cancelled',
-                    'Datamu tidak jadi dihapus',
+                    'Data batal dihapus',
                     'error'
                 )
             }

@@ -43,9 +43,9 @@ class User extends CI_Controller
         $row->email,
         $row->kota,
         $row->level,
-        '<a href="'.base_url('user/view/' . $row->no_telp).'" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-        <a href="'.base_url('user/edit/' . $row->no_telp).'" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-        <button class="delete-button btn btn-danger" row-data="user-'.$row->no_telp.'" data-url="'.base_url('user/delete/' . $row->no_telp).'">
+        '<a href="' . base_url('user/view/' . $row->no_telp) . '" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+        <a href="' . base_url('user/edit/' . $row->no_telp) . '" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+        <button class="delete-button btn btn-danger" row-data="user-' . $row->no_telp . '" data-url="' . base_url('user/delete/' . $row->no_telp) . '">
             <i class="fa fa-trash"></i>
         </button>'
       );
@@ -59,7 +59,8 @@ class User extends CI_Controller
     exit();
   }
 
-  public function store(){
+  public function store()
+  {
     if (!$this->upload->do_upload('gambar')) {
       $this->session->set_flashdata('error', $this->upload->display_errors());
       redirect(base_url('user/create'));
@@ -79,7 +80,7 @@ class User extends CI_Controller
         'gbr' => $gambar['file_name'],
         'paket' => $this->input->post('paket'),
       ];
-  }
+    }
 
     $this->db->insert('users', $data);
     $this->session->set_flashdata('success', 'User berhasil ditambahkan');
@@ -123,28 +124,28 @@ class User extends CI_Controller
   function update($id)
   {
     $data = [
-        'nama_lengkap' => $this->input->post('nama_lengkap'),
-        'password' => $this->input->post('password'),
-        'tanggal' => $this->input->post('tanggal'),
-        'alamat' => $this->input->post('alamat'),
-        'email' => $this->input->post('email'),
-        'no_telp' => $this->input->post('no_telp'),
-        'kota' => $this->input->post('kota'),
-        'level' => $this->input->post('level'),
-        'blokir' => $this->input->post('blokir'),
-        'id_session' => $this->input->post('id_session'),
-        'paket' => $this->input->post('paket'),
-      ];
+      'nama_lengkap' => $this->input->post('nama_lengkap'),
+      'password' => $this->input->post('password'),
+      'tanggal' => $this->input->post('tanggal'),
+      'alamat' => $this->input->post('alamat'),
+      'email' => $this->input->post('email'),
+      'no_telp' => $this->input->post('no_telp'),
+      'kota' => $this->input->post('kota'),
+      'level' => $this->input->post('level'),
+      'blokir' => $this->input->post('blokir'),
+      'id_session' => $this->input->post('id_session'),
+      'paket' => $this->input->post('paket'),
+    ];
 
-      if (!empty($_FILES['gambar']['name'])) {
-        if (!$this->upload->do_upload('gambar')) {
-          $this->session->set_flashdata('error', $this->upload->display_errors());
-          redirect(base_url('user/create'));
-        } else {
-          $gambar = $this->upload->data();
-          $data['gbr'] = $gambar['file_name'];
-        }
+    if (!empty($_FILES['gambar']['name'])) {
+      if (!$this->upload->do_upload('gambar')) {
+        $this->session->set_flashdata('error', $this->upload->display_errors());
+        redirect(base_url('user/create'));
+      } else {
+        $gambar = $this->upload->data();
+        $data['gbr'] = $gambar['file_name'];
       }
+    }
 
     $this->db->where('no_telp', $id);
     $this->db->update('users', $data);
@@ -155,8 +156,12 @@ class User extends CI_Controller
   public function delete($id)
   {
     $user = $this->user->getById($id);
-    unlink(FCPATH.'assets/uploads/user/'.$user->gbr);
     $this->user->delete($id);
+    if ($user->gbr != '' && file_exists('assets/uploads/user/' . $user->gbr)) {
+      unlink(FCPATH . 'assets/uploads/user/' . $user->gbr);
+    }
+    header('Content-Type: application/json');
+    echo json_encode(['section' => 'User', 'data' => $user->nama_lengkap]);
   }
 }
 

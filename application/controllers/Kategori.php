@@ -89,7 +89,10 @@ class Kategori extends CI_Controller
 
   public function delete($id)
   {
+    $kategori = $this->kategori->getById($id);
     $this->kategori->delete($id);
+    header('Content-Type: application/json');
+    echo json_encode(['section' => 'Kategori', 'data' => $kategori->nama_kategori]);
   }
 }
 

@@ -45,9 +45,9 @@ class Supplier extends CI_Controller
         $row->telpon,
         $row->profinsi,
         $row->kota,
-        '<a href="'.base_url('supplier/view/'.$row->id_supplier).'" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-        <a href="'.base_url('supplier/edit/'.$row->id_supplier).'" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-        <button class="delete-button btn btn-danger" row-data="supplier-'.$row->id_supplier.'" data-url="'.base_url('supplier/delete/' .$row->id_supplier).'">
+        '<a href="' . base_url('supplier/view/' . $row->id_supplier) . '" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+        <a href="' . base_url('supplier/edit/' . $row->id_supplier) . '" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+        <button class="delete-button btn btn-danger" row-data="supplier-' . $row->id_supplier . '" data-url="' . base_url('supplier/delete/' . $row->id_supplier) . '">
             <i class="fa fa-trash"></i>
         </button>'
       );
@@ -61,28 +61,29 @@ class Supplier extends CI_Controller
     exit();
   }
 
-  public function store(){
-      $data = [
-        'nama_supplier' => $this->input->post('nama_supplier'),
-        'alamat' => $this->input->post('alamat'),
-        'email' => $this->input->post('email'),
-        'telpon' => $this->input->post('telpon'),
-        'user' => $this->input->post('user'),
-        'profinsi' => $this->input->post('profinsi'),
-        'kota' => $this->input->post('kota'),
-        'hutang' => $this->input->post('hutang'),
-        'aktiv' => $this->input->post('aktiv')
-      ];
+  public function store()
+  {
+    $data = [
+      'nama_supplier' => $this->input->post('nama_supplier'),
+      'alamat' => $this->input->post('alamat'),
+      'email' => $this->input->post('email'),
+      'telpon' => $this->input->post('telpon'),
+      'user' => $this->input->post('user'),
+      'profinsi' => $this->input->post('profinsi'),
+      'kota' => $this->input->post('kota'),
+      'hutang' => $this->input->post('hutang'),
+      'aktiv' => $this->input->post('aktiv')
+    ];
 
-      if (!empty($_FILES['gambar']['name'])) {
-        if (!$this->upload->do_upload('gambar')) {
-          $this->session->set_flashdata('error', $this->upload->display_errors());
-          redirect(base_url('supplier/create'));
-        } else {
-          $gambar = $this->upload->data();
-          $data['gbr'] = $gambar['file_name'];
-        }
+    if (!empty($_FILES['gambar']['name'])) {
+      if (!$this->upload->do_upload('gambar')) {
+        $this->session->set_flashdata('error', $this->upload->display_errors());
+        redirect(base_url('supplier/create'));
+      } else {
+        $gambar = $this->upload->data();
+        $data['gbr'] = $gambar['file_name'];
       }
+    }
 
     $this->db->insert('supplier', $data);
     $this->session->set_flashdata('success', 'Supplier berhasil ditambahkan');
@@ -128,27 +129,27 @@ class Supplier extends CI_Controller
 
   function update($id)
   {
-      $data = [
-        'nama_supplier' => $this->input->post('nama_supplier'),
-        'alamat' => $this->input->post('alamat'),
-        'email' => $this->input->post('email'),
-        'telpon' => $this->input->post('telpon'),
-        'user' => $this->input->post('user'),
-        'profinsi' => $this->input->post('profinsi'),
-        'kota' => $this->input->post('kota'),
-        'hutang' => $this->input->post('hutang'),
-        'aktiv' => $this->input->post('aktiv'),
-      ];
+    $data = [
+      'nama_supplier' => $this->input->post('nama_supplier'),
+      'alamat' => $this->input->post('alamat'),
+      'email' => $this->input->post('email'),
+      'telpon' => $this->input->post('telpon'),
+      'user' => $this->input->post('user'),
+      'profinsi' => $this->input->post('profinsi'),
+      'kota' => $this->input->post('kota'),
+      'hutang' => $this->input->post('hutang'),
+      'aktiv' => $this->input->post('aktiv'),
+    ];
 
-      if (!empty($_FILES['gambar']['name'])) {
-        if (!$this->upload->do_upload('gambar')) {
-          $this->session->set_flashdata('error', $this->upload->display_errors());
-          redirect(base_url('supplier/create'));
-        } else {
-          $gambar = $this->upload->data();
-          $data['gbr'] = $gambar['file_name'];
-        }
+    if (!empty($_FILES['gambar']['name'])) {
+      if (!$this->upload->do_upload('gambar')) {
+        $this->session->set_flashdata('error', $this->upload->display_errors());
+        redirect(base_url('supplier/create'));
+      } else {
+        $gambar = $this->upload->data();
+        $data['gbr'] = $gambar['file_name'];
       }
+    }
 
     $this->db->where('id_supplier', $id);
     $this->db->update('supplier', $data);
@@ -159,8 +160,12 @@ class Supplier extends CI_Controller
   public function delete($id)
   {
     $supplier = $this->supplier->getById($id);
-    unlink(FCPATH.'assets/uploads/supplier/'.$supplier->gbr);
     $this->supplier->delete($id);
+    if ($supplier->gbr != '' && file_exists('assets/uploads/supplier/' . $supplier->gbr)) {
+      unlink(FCPATH . 'assets/uploads/supplier/' . $supplier->gbr);
+    }
+    header('Content-Type: application/json');
+    echo json_encode(['section' => 'Supplier', 'data' => $supplier->nama_supplier]);
   }
 }
 
