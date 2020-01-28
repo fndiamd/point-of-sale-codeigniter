@@ -46,7 +46,7 @@
 
               <div class="form-group">
                 <label for="telp_user">Telepon<span class="label-required"> *</span></label>
-                <input type="text" class="form-control" id="telp_user" name="telp_user" required placeholder="Telepon User">
+                <input type="tel" pattern="\+?([ -]?\d+)+|\(\d+\)([ -]\d+)" class="form-control" id="telp_user" name="telp_user" required placeholder="Format: +628XXXXXX / 08XXXXXX">
               </div>
               <div class="form-group">
                 <label for="gambar">Gambar<span class="label-optional">( Optional )</span></label>
