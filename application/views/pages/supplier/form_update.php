@@ -30,12 +30,12 @@
                     
                     <div class="form-group">
                       <label for="nama_supplier">Nama Supplier<span class="label-required">*</span></label>
-                      <input type="text" class="form-control" id="nama_supplier" name="nama_supplier" value="<?php echo $data->nama_supplier ?>">
+                      <input type="text" class="form-control" id="nama_supplier" required name="nama_supplier" value="<?php echo $data->nama_supplier ?>">
                     </div>
 
                     <div class="form-group">
                       <label for="alamat">Alamat<span class="label-required"> *</span></label>
-                      <textarea type="text" class="form-control" id="alamat" cols="30" rows="5" name="alamat"><?php echo $data->alamat ?></textarea>
+                      <textarea type="text" class="form-control" id="alamat" required cols="30" rows="5" name="alamat"><?php echo $data->alamat ?></textarea>
                     </div>
 
                     <div class="form-group">
@@ -45,21 +45,21 @@
 
                     <div class="form-group">
                       <label for="telpon">Telepon<span class="label-required"> *</span></label>
-                      <input type="text" class="form-control" id="telpon" name="telpon" value="<?php echo $data->telpon ?>">
+                      <input type="tel" pattern="\+?([ -]?\d+)+|\(\d+\)([ -]\d+)" required class="form-control" id="telpon" name="telpon" value="<?php echo $data->telpon ?>">
                     </div>
 
                     <div class="row">
                       <div class="col">
                         <div class="form-group">
                           <label for="profinsi">Provinsi<span class="label-required"> *</span></label>
-                          <input type="text" class="form-control" id="profinsi" name="profinsi" value="<?php echo $data->profinsi ?>">
+                          <input type="text" class="form-control" id="profinsi" required name="profinsi" value="<?php echo $data->profinsi ?>">
                         </div>
                       </div>
 
                       <div class="col">
                         <div class="form-group">
                           <label for="kota">Kota<span class="label-required"> *</span></label>
-                          <input type="text" class="form-control" id="kota" name="kota" value="<?php echo $data->kota ?>">
+                          <input type="text" class="form-control" required id="kota" name="kota" value="<?php echo $data->kota ?>">
                         </div>
                       </div>
                     </div>

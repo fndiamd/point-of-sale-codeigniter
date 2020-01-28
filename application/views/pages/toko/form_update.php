@@ -33,18 +33,18 @@
               </div>
 
               <div class="form-group">
-                <label for="alamat">Alamat <span class="label-required">*</span></label>
-                <textarea name="alamat" id="alamat" cols="30" rows="5" class="form-control" required placeholder="Alamat lengkap"><?= $data->alamat?></textarea>
+                <label for="alamat">Alamat <span class="label-optional"> ( Optional )</span></label>
+                <textarea name="alamat" id="alamat" cols="30" rows="5" class="form-control" placeholder="Alamat lengkap"><?= $data->alamat?></textarea>
               </div>
 
               <div class="form-group">
-                <label for="email">Email <span class="label-required">*</span></label>
-                <input type="text" class="form-control" id="email" name="email" placeholder="user@email.com" value="<?= $data->email?>">
+                <label for="email">Email <span class="label-optional"> ( Optional )</span></label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="user@email.com" value="<?= $data->email?>">
               </div>
 
               <div class="form-group">
-                <label for="nohp">Nomor HP <span class="label-required">*</span></label>
-                <input type="text" class="form-control" id="nohp" name="nohp" placeholder="08123456789" value="<?= $data->nohp?>" required>
+                <label for="nohp">Nomor HP <span class="label-optional"> ( Optional )</span></label>
+                <input type="tel" pattern="\+?([ -]?\d+)+|\(\d+\)([ -]\d+)" class="form-control" id="nohp" name="nohp" value="<?= $data->nohp?>">
               </div>
 
               <button type="submit" class="btn btn-primary">Submit</button>

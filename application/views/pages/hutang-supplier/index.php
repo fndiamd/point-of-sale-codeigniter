@@ -17,7 +17,7 @@
                                 <div class="col">
                                     <label for="merchant">Merchant</label>
                                     <select name="id_toko" class="form-control select-plugin" id="merchant">
-                                        <option disabled selected>Semua</option>
+                                        <option value="" selected>Semua</option>
                                         <?php foreach ($merchant as $merchant) : ?>
                                             <option value="<?= $merchant->id_toko ?>"><?= $merchant->nama_toko ?></option>
                                         <?php endforeach; ?>
