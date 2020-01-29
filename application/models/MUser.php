@@ -14,7 +14,8 @@ class MUser extends CI_Model {
     return $this->db->get('users')->row();
   }
 
-  public function getAll(){
+  public function getAll($column = 'tanggal', $sort = 'desc'){
+    $this->db->order_by($column, $sort);
     return $this->db->get('users')->result();
   }
 

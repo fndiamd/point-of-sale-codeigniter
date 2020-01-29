@@ -9,7 +9,8 @@ class MSupplier extends CI_Model {
     parent::__construct();
   }
 
-  public function getAll(){
+  public function getAll($column = 'id_supplier', $sort = 'desc'){
+    $this->db->order_by($column, $sort);
     return $this->db->get('supplier')->result();
   }
 

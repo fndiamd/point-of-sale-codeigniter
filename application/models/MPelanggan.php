@@ -9,7 +9,8 @@ class MPelanggan extends CI_Model {
     parent::__construct();
   }
 
-  public function getAll(){
+  public function getAll($column = 'id_pelanggan', $sort = 'desc'){
+    $this->db->order_by($column, $sort);
     return $this->db->get('pelanggan')->result();
   }
 

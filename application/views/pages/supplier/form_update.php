@@ -40,7 +40,7 @@
 
               <div class="form-group">
                 <label for="email">Email<span class="label-optional"> ( Optional )</span></label>
-                <input type="text" class="form-control" id="email" name="email" value="<?php echo $data->email ?>">
+                <input type="email" class="form-control" id="email" name="email" value="<?php echo $data->email ?>">
               </div>
 
               <div class="form-group">

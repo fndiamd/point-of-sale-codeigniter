@@ -11,11 +11,12 @@ class MHutangPelanggan extends CI_Model
     parent::__construct();
   }
 
-  public function getAll()
+  public function getAll($column = 'tanggal', $sort = 'desc')
   {
     $this->db->from($this->table);
     $this->db->join('pelanggan', 'pelanggan.id_pelanggan=' . $this->table . '.id_pelanggan', 'left');
     $this->db->join('toko', 'toko.user=' . $this->table . '.user', 'left');
+    $this->db->order_by($column, $sort);
     return $this->db->get()->result();
   }
 

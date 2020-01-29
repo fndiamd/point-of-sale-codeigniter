@@ -69,7 +69,6 @@ class User extends CI_Controller
       $data = [
         'nama_lengkap' => $this->input->post('nama_lengkap'),
         'password' => $this->input->post('password'),
-        'tanggal' => $this->input->post('tanggal'),
         'alamat' => $this->input->post('alamat'),
         'email' => $this->input->post('email'),
         'no_telp' => $this->input->post('no_telp'),
@@ -126,7 +125,6 @@ class User extends CI_Controller
     $data = [
       'nama_lengkap' => $this->input->post('nama_lengkap'),
       'password' => $this->input->post('password'),
-      'tanggal' => $this->input->post('tanggal'),
       'alamat' => $this->input->post('alamat'),
       'email' => $this->input->post('email'),
       'no_telp' => $this->input->post('no_telp'),
