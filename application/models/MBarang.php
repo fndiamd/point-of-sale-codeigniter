@@ -13,6 +13,15 @@ class MBarang extends CI_Model {
   public function getAll($column = 'id_barang', $sort = 'desc'){
     $this->db->from($this->table);
     $this->db->join('kategori', 'kategori.id_kategori='.$this->table.'.id_kategori', 'left');
+    $this->db->where('barang.user !=', 0);
+    $this->db->order_by($column, $sort);
+    return $this->db->get()->result();
+  }
+
+  public function getAllMaster($column = 'id_barang', $sort = 'desc'){
+    $this->db->from($this->table);
+    $this->db->join('kategori', 'kategori.id_kategori='.$this->table.'.id_kategori', 'left');
+    $this->db->where('barang.user', 0);
     $this->db->order_by($column, $sort);
     return $this->db->get()->result();
   }

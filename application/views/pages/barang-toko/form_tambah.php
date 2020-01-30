@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
-        <a href="<?= base_url('barang') ?>" class="btn btn-default">
+        <a href="<?= base_url('barang-toko') ?>" class="btn btn-default">
           <i class="fa fa-arrow-left"></i>&nbsp; Kembali
         </a>
       </div>
@@ -12,7 +12,16 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <form method="post" action="<?= base_url('barang/store') ?>" enctype="multipart/form-data">
+            <form method="post" action="<?= base_url('barang-toko/store') ?>" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="user">Toko <span class="label-required">*</span></label>
+                <select name="user" class="form-control select-plugin" id="toko-user" required>
+                  <option disabled selected>--- Pilih Toko ---</option>
+                  <?php foreach ($toko as $toko) : ?>
+                    <option value="<?= $toko->user ?>"><?= $toko->nama_toko ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
               <div class="form-group">
                 <label for="nama_barang">Nama Barang <span class="label-required">*</span></label>
                 <input type="text" class="form-control" id="nama_barang" name="nama_barang" required placeholder="Nama barang">
@@ -24,10 +33,7 @@
               <div class="form-group">
                 <label for="kategori">Kategori <span class="label-required">*</span></label>
                 <select name="kategori" class="form-control select-plugin" id="kategori" required>
-                  <option selected disabled>--- Pilih Kategori ---</option>
-                  <?php foreach ($kategori as $kategori) : ?>
-                    <option value="<?= $kategori->id_kategori ?>"><?= $kategori->nama_kategori ?></option>
-                  <?php endforeach; ?>
+                    <option value="" disabled selected>--- Pilih Toko terlebih dahulu ---</option>
                 </select>
               </div>
               <div class="form-group">

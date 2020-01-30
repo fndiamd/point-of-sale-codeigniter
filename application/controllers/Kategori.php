@@ -11,6 +11,7 @@ class Kategori extends CI_Controller
 
     $this->load->model('MKategori', 'kategori');
     $this->load->model('MUser', 'user');
+    $this->load->model('MToko', 'toko');
   }
 
   public function index()
@@ -18,7 +19,7 @@ class Kategori extends CI_Controller
     $data = [
       'title' => 'Manajemen Kategori',
       'page' => 'kategori/index',
-      'user' => $this->user->getAll()
+      'merchant' => $this->toko->getAll()
     ];
 
     $this->load->view('index', $data);
@@ -94,6 +95,12 @@ class Kategori extends CI_Controller
     $this->kategori->delete($id);
     header('Content-Type: application/json');
     echo json_encode(['section' => 'Kategori', 'data' => $kategori->nama_kategori]);
+  }
+
+  public function searchByUser(){
+    $user = $this->input->post('user');
+    header('Content-Type: application/json');
+    echo json_encode($this->kategori->kategoriUser($user));
   }
 }
 

@@ -164,6 +164,28 @@ function editKategori() {
     });
 }
 
+// select kategori by toko
+$('#toko-user').on('change', function () {
+    const kategori = $('#kategori');
+    $.ajax({
+        method: 'post',
+        url: base_url + "kategori/searchByUser",
+        data: {
+            user: this.value
+        },
+        success: function (data) {
+            kategori.empty();
+            $('#kategori').val(null).trigger('change')
+            $('#select2-kategori-container').attr('title', '--- Pilih Kategori ---')
+            setHtmlValue('select2-kategori-container', '--- Pilih Kategori ---')
+            kategori.append("<option value='' disabled selected>--- Pilih Kategori ---</option>")
+            for (let i = 0; i < data.length; i++) {
+                kategori.append("<option value='" + data[i].id_kategori + "'>" + data[i].nama_kategori + "</option>")
+            }
+        }
+    })
+})
+
 $(document).ready(function () {
     $(".datepicker").datepicker({
         dateFormat: 'dd-mm-yyyy'
@@ -203,6 +225,9 @@ $(document).ready(function () {
             break;
         case 'barang':
             generateDataTable(true, 'barang/load')
+            break;
+        case 'barang-toko':
+            generateDataTable(true, 'barang-toko/load')
             break;
         case 'kategori':
             generateDataTable(true, 'kategori/load')

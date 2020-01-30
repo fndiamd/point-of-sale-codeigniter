@@ -14,6 +14,18 @@ class MKategori extends CI_Model {
     return $this->db->get('kategori')->result();
   }
 
+  public function getAllMaster($column = 'id_kategori', $sort = 'desc'){
+    $this->db->where('user', 0);
+    $this->db->order_by($column, $sort);
+    return $this->db->get('kategori')->result();
+  }
+
+  public function kategoriUser($user){
+    $this->db->where("user='0' OR user='$user'");
+    $this->db->order_by('id_kategori', 'desc');
+    return $this->db->get('kategori')->result();
+  }
+
   public function getById($id){
     $this->db->where('id_kategori', $id);
     return $this->db->get('kategori')->row();

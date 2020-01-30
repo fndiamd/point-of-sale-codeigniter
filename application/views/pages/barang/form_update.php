@@ -14,19 +14,6 @@
           <div class="card-body">
             <form method="post" action="<?= base_url('barang/update/'.$barang->id_barang) ?>" enctype="multipart/form-data">
               <div class="form-group">
-                <label for="user">User <span class="label-required">*</span></label>
-                <select name="user" class="form-control select-plugin" id="user" required>
-                  <option value="0">Master</option>
-                  <?php foreach ($user as $user) : ?>
-                    <?php if ($barang->user == $user->no_telp) : ?>
-                      <option selected value="<?= $barang->user ?>"><?= $barang->user ?></option>
-                    <?php else : ?>
-                      <option value="<?= $user->no_telp ?>"><?= $user->no_telp ?></option>
-                    <?php endif; ?>
-                  <?php endforeach; ?>
-                </select>
-              </div>
-              <div class="form-group">
                 <label for="nama_barang">Nama Barang <span class="label-required">*</span></label>
                 <input type="text" class="form-control" id="nama_barang" name="nama_barang" required value="<?= $barang->nama_barang ?>" placeholder="Nama barang">
               </div>

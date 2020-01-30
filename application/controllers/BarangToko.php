@@ -5,7 +5,7 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Reader\Csv;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 
-class Barang extends CI_Controller
+class BarangToko extends CI_Controller
 {
 
   public function __construct()
@@ -22,13 +22,15 @@ class Barang extends CI_Controller
     $this->load->model('MBarang', 'barang');
     $this->load->model('MKategori', 'kategori');
     $this->load->model('MUser', 'user');
+    $this->load->model('MToko', 'toko');
   }
 
   public function index()
   {
     $data = [
-      'title' => 'Manajemen Barang Master',
-      'page' => 'barang/index'
+      'title' => 'Manajemen Barang Toko',
+      'page' => 'barang-toko/index',
+      'merchant' => $this->toko->getAll()
     ];
 
     $this->load->view('index', $data);
@@ -39,7 +41,7 @@ class Barang extends CI_Controller
     $data = [];
     $no = 1;
 
-    foreach ($this->barang->getAllMaster() as $row) {
+    foreach ($this->barang->getAll() as $row) {
       $data[] = array(
         $no++,
         $row->kodebarang,
@@ -48,9 +50,9 @@ class Barang extends CI_Controller
         $row->hargabeli,
         $row->hargajual,
         $row->stok,
-        '<a href="' . base_url('barang/view/' . $row->id_barang) . '" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-        <a href="' . base_url('barang/edit/' . $row->id_barang) . '" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-        <button class="delete-button btn btn-danger" row-data="barang-' . $row->id_barang . '" data-url="' . base_url('barang/delete/' . $row->id_barang) . '">
+        '<a href="' . base_url('barang-toko/view/' . $row->id_barang) . '" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+        <a href="' . base_url('barang-toko/edit/' . $row->id_barang) . '" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+        <button class="delete-button btn btn-danger" row-data="barang-toko-' . $row->id_barang . '" data-url="' . base_url('barang-toko/delete/' . $row->id_barang) . '">
             <i class="fa fa-trash"></i>
         </button>'
       );
@@ -67,9 +69,9 @@ class Barang extends CI_Controller
   public function create()
   {
     $data = [
-      'title' => 'Tambah Barang',
-      'page' => 'barang/form_tambah',
-      'kategori' => $this->kategori->getAllMaster(),
+      'title' => 'Tambah Barang Toko',
+      'page' => 'barang-toko/form_tambah',
+      'toko' => $this->toko->getAll()
     ];
 
     $this->load->view('index', $data);
@@ -81,14 +83,14 @@ class Barang extends CI_Controller
     if (!$this->upload->do_upload('gambar')) {
 
       $this->session->set_flashdata('error', $this->upload->display_errors());
-      redirect(base_url('barang/create'));
+      redirect(base_url('barang-toko/create'));
     } else {
 
       $gambar = $this->upload->data();
       $data = [
         'nama_barang' => $this->input->post('nama_barang'),
         'kodebarang' => $this->input->post('kodebarang'),
-        'user' => '0',
+        'user' => $this->input->post('user'),
         'id_kategori' => $this->input->post('kategori'),
         'hargabeli' => $this->input->post('hargabeli'),
         'hargajual' => $this->input->post('hargajual'),
@@ -102,17 +104,19 @@ class Barang extends CI_Controller
 
       $this->barang->save($data);
       $this->session->set_flashdata('success', 'Barang berhasil ditambahkan');
-      redirect(base_url('barang'));
+      redirect(base_url('barang-toko'));
     }
   }
 
   public function edit($idbarang)
   {
+    $barang = $this->barang->getById($idbarang);
     $data = [
-      'title' => 'Update Barang',
-      'page' => 'barang/form_update',
-      'barang' => $this->barang->getById($idbarang),
-      'kategori' => $this->kategori->getAllMaster(),
+      'title' => 'Update Barang Toko',
+      'page' => 'barang-toko/form_update',
+      'barang' => $barang,
+      'kategori' => $this->kategori->kategoriUser($barang->user),
+      'toko' => $this->toko->getAll()
     ];
 
     $this->load->view('index', $data);
@@ -123,7 +127,7 @@ class Barang extends CI_Controller
     $data = [
       'nama_barang' => $this->input->post('nama_barang'),
       'kodebarang' => $this->input->post('kodebarang'),
-      'user' => '0',
+      'user' => $this->input->post('user'),
       'id_kategori' => $this->input->post('kategori'),
       'hargabeli' => $this->input->post('hargabeli'),
       'hargajual' => $this->input->post('hargajual'),
@@ -147,7 +151,7 @@ class Barang extends CI_Controller
     $this->db->where('id_barang', $idbarang);
     $this->db->update('barang', $data);
     $this->session->set_flashdata('success', 'Barang berhasil diubah');
-    redirect(base_url('barang'));
+    redirect(base_url('barang-toko'));
   }
 
   public function view($id)
@@ -156,7 +160,7 @@ class Barang extends CI_Controller
     $barang = $this->db->get('barang')->row();
     $data = [
       'title' => 'View',
-      'page' => 'barang/form_view',
+      'page' => 'barang-toko/form_view',
       'data' => $barang
     ];
     $this->load->view('index', $data);
@@ -170,7 +174,7 @@ class Barang extends CI_Controller
       unlink(FCPATH . 'assets/uploads/barang/' . $barang->gbr);
     }
     header('Content-Type: application/json');
-    echo json_encode(['section' => 'Barang Master', 'data' => $barang->nama_barang]);
+    echo json_encode(['section' => 'Barang', 'data' => $barang->nama_barang]);
   }
 
   public function import()
@@ -197,16 +201,17 @@ class Barang extends CI_Controller
           $data = [
             'kodebarang' => $sheetData[$i][$kodebarang],
             'nama_barang' => $sheetData[$i][$barang],
-            'user' => '0',
+            'user' => $this->input->post('user'),
             'id_kategori' => 1
           ];
           $this->barang->save($data);
         }
-        $this->session->set_flashdata('success', 'Data barang berhasil diimport');
-        redirect(base_url('barang'));
+        $toko = $this->toko->getWhere(['user' => $this->input->post('user')]);
+        $this->session->set_flashdata('success', 'Data barang untuk toko '.$toko->nama_toko.' berhasil diimport');
+        redirect(base_url('barang-toko'));
       } else {
         $this->session->set_flashdata('error', 'Tipe file tidak sesuai, gunakan file dengan format xls, xlsx, xlt atau csv');
-        redirect(base_url('barang'));
+        redirect(base_url('barang-toko'));
       }
     }
   }

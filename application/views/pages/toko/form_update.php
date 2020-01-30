@@ -19,7 +19,7 @@
                   <option value="0">Master</option>
                   <?php foreach ($user as $user) : ?>
                     <?php if($user->no_telp == $data->user):?>
-                      <option selected value="<?= $user->no_telp ?>"><?= $user->no_telp ?></option>
+                      <option selected value="<?= $user->no_telp ?>"><?= $user->no_telp ?> (<?= $user->nama_lengkap?>)</option>
                     <?php else:?>
                       <option value="<?= $user->no_telp ?>"><?= $user->no_telp ?></option>
                     <?php endif;?>

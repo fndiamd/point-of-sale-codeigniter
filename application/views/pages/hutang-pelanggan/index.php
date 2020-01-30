@@ -15,9 +15,9 @@
                         <form action="<?= base_url('log-pembayaran/hutang-pelanggan/report')?>" method="post">
                             <div class="row">
                                 <div class="col">
-                                    <label for="merchant">Merchant</label>
+                                    <label for="merchant">Toko</label>
                                     <select name="id_toko" class="form-control select-plugin" id="merchant">
-                                        <option value="" selected>Semua</option>
+                                        <option value="" selected>Semua Toko</option>
                                         <?php foreach ($merchant as $merchant) : ?>
                                             <option value="<?= $merchant->id_toko ?>"><?= $merchant->nama_toko ?></option>
                                         <?php endforeach; ?>

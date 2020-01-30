@@ -45,7 +45,13 @@
                         <li class="nav-item">
                             <a href="<?= base_url('barang') ?>" class="nav-link">
                                 <i class="fa fa-gifts nav-icon"></i>
-                                <p>Barang</p>
+                                <p>Barang Master</p>
+                            </a>
+                        </li>
+                        <li class="nav-site">
+                            <a href="<?= base_url('barang-toko')?>" class="nav-link">
+                                <i class="fa fa-gift nav-icon"></i>
+                                <p>Barang Toko</p>
                             </a>
                         </li>
                         <li class="nav-item">

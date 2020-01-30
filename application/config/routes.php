@@ -2,6 +2,18 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['default_controller'] = 'auth';
+
+// Barang Toko
+$route['barang-toko'] = 'BarangToko';
+$route['barang-toko/load'] = 'BarangToko/load';
+$route['barang-toko/view/(:any)'] = 'BarangToko/view/$1';
+$route['barang-toko/create'] = 'BarangToko/create';
+$route['barang-toko/store'] = 'BarangToko/store';
+$route['barang-toko/edit/(:any)'] = 'BarangToko/edit/$1';
+$route['barang-toko/update/(:any)'] = 'BarangToko/update/$1';
+$route['barang-toko/delete/(:any)'] = 'BarangToko/delete/$1';
+$route['barang-toko/import'] = 'BarangToko/import';
+
 // Data Penjualan
 $route['penjualan/data-penjualan'] = 'DataPenjualan';
 $route['penjualan/data-penjualan/load'] = 'DataPenjualan/load';

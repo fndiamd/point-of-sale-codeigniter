@@ -15,15 +15,12 @@
                         <form method="post" action="<?= base_url('kategori/store') ?>">
                             <div class="row">
                                 <div class="col">
-                                    <label for="user">User <span class="label-required">*</span></label>
-                                    <select name="user" class="form-control select-plugin" id="user" required>
+                                    <label for="user">Toko <span class="label-required">*</span></label>
+                                    <select name="user" class="form-control select-plugin" id="merchant">
+                                        <option value="" disabled selected>--- Pilih Toko ---</option>
                                         <option value="0">Master</option>
-                                        <?php foreach ($user as $user) : ?>
-                                            <?php if ($user->no_telp == $data->user) : ?>
-                                                <option selected value="<?= $user->no_telp ?>"><?= $user->no_telp ?></option>
-                                            <?php else : ?>
-                                                <option value="<?= $user->no_telp ?>"><?= $user->no_telp ?></option>
-                                            <?php endif; ?>
+                                        <?php foreach ($merchant as $merchant) : ?>
+                                            <option value="<?= $merchant->user ?>"><?= $merchant->nama_toko ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>

@@ -21,9 +21,10 @@
 <script src="<?= base_url('assets/plugins/select2/select2.min.js') ?>"></script>
 <!-- AdminLTE App -->
 <script src="<?= base_url('assets/dist/js/adminlte.js') ?>"></script>
-<script>
+<script type="text/javascript">
     $(function() {
         $('.select-plugin').select2();
     });
+    var base_url = "<?= base_url()?>";
 </script>
 <script src="<?= base_url('assets/dist/js/custom.js') ?>"></script>
