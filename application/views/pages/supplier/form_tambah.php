@@ -15,13 +15,11 @@
             <form method="post" action="<?= base_url('supplier/store') ?>" enctype="multipart/form-data">
 
               <div class="form-group">
-                <label for="user">User <span class="label-required"> *</span></label>
-                <select name="user" class="form-control select-plugin" id="user" required>
-                  <option value="" selected>--- Pilih User ---</option>
+                <label for="user">Toko <span class="label-required"> *</span></label>
+                <select name="user" class="form-control select-plugin select2-toko" id="user" required>
+                  <option value="" selected>--- Pilih Toko ---</option>
                   <option value="0">Master</option>
-                  <?php foreach ($user as $user) : ?>
-                    <option value="<?= $user->no_telp ?>"><?= $user->no_telp ?></option>
-                  <?php endforeach; ?>
+                  
                 </select>
               </div>
 

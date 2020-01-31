@@ -15,9 +15,11 @@ class MSupplier extends CI_Model {
   }
 
   public function getById($value){
+    $this->db->select('supplier.*, toko.nama_toko');
+    $this->db->from('supplier');
+    $this->db->join('toko', 'toko.user=supplier.user', 'left');
     $this->db->where('supplier.id_supplier', $value);
-    
-    return $this->db->get('supplier')->row();
+    return $this->db->get()->row();
   }
 
   public function supplierUser($user){

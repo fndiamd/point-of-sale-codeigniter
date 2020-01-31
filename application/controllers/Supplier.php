@@ -115,14 +115,12 @@ class Supplier extends CI_Controller
 
   public function edit($id)
   {
-    $this->db->where('id_supplier', $id);
-    $supplier = $this->db->get('supplier')->row();
     $data = [
       'title' => 'Update Supplier',
       'page' => 'supplier/form_update',
       'kategori' => $this->kategori->getAll(),
       'user' => $this->user->getAll(),
-      'data' => $supplier
+      'data' => $this->supplier->getById($id)
     ];
     $this->load->view('index', $data);
   }

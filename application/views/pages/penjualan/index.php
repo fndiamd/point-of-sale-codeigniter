@@ -16,11 +16,9 @@
                             <div class="row">
                                 <div class="col">
                                     <label for="merchant">Toko</label>
-                                    <select name="id_toko" class="form-control select-plugin" id="merchant">
+                                    <select name="id_toko" class="form-control select-plugin select2-toko-transaction" id="merchant">
                                         <option value="" selected>Semua Toko</option>
-                                        <?php foreach ($merchant as $merchant) : ?>
-                                            <option value="<?= $merchant->id_toko ?>"><?= $merchant->nama_toko ?></option>
-                                        <?php endforeach; ?>
+                                        
                                     </select>
                                 </div>
                                 <div class="col">

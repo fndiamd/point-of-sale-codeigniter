@@ -30,7 +30,8 @@ class Auth extends CI_Controller
       if(password_verify($data['password'], $admin->password)){
         $sessionData = [
           'id_admin' => $admin->id_admin,
-          'nama_admin' => $admin->nama
+          'nama_admin' => $admin->nama,
+          'role_admin' => $admin->role
         ];
         $this->session->set_userdata($sessionData);
         redirect(base_url('dashboard'));

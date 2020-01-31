@@ -26,13 +26,13 @@ class Admin extends CI_Controller
   {
     $data = [];
     $no = 1;
-
+    $role = [ "Guest", "Admin" ];
     foreach ($this->admin->getAll() as $row) {
       $data[] = array(
         $no++,
         $row->nama,
         $row->email,
-        $row->role,
+        $role[$row->role],
         '<a href="' . base_url('admin/edit/' . $row->id_admin) . '" class="btn btn-warning"><i class="fa fa-edit"></i></a>
         <button class="delete-button btn btn-danger" row-data="user-' . $row->id_admin . '" data-url="' . base_url('admin/delete/' . $row->id_admin) . '">
             <i class="fa fa-trash"></i>
@@ -64,10 +64,18 @@ class Admin extends CI_Controller
   function update($id){
     $data = [
       'nama' => $this->input->post('nama'),
-      'password' => $this->input->post('password'),
+      'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
       'role' => $this->input->post('role'),
       'email' => $this->input->post('email')
     ];
+
+    if($id == $this->session->userdata('id_admin')){
+      $sessionData = [
+        'nama_admin' => $data['nama'],
+        'role_admin' => $data['role']
+      ];
+      $this->session->set_userdata($sessionData);
+    }
 
     $this->db->where('id_admin', $id);
     $this->db->update('admin', $data);
@@ -88,7 +96,7 @@ class Admin extends CI_Controller
   {
       $data = [
         'nama' => $this->input->post('nama'),
-        'password' => password_hash('password', PASSWORD_DEFAULT),
+        'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
         'role' => $this->input->post('role'),
         'email' => $this->input->post('email')
       ];

@@ -29,7 +29,7 @@
 
               <div class="form-group">
                 <label for="nama_toko">Nama Toko <span class="label-required">*</span></label>
-                <input type="text" class="form-control" id="nama_toko" name="nama_toko" placeholder="Nama toko" value="<?= $data->nama_toko?>" required>
+                <input type="text" class="form-control" id="nama_toko" name="nama_toko" placeholder="Nama toko" value="<?= $data->nama_toko?>" required autofocus>
               </div>
 
               <div class="form-group">

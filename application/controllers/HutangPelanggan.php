@@ -22,7 +22,6 @@ class HutangPelanggan extends CI_Controller
     $data = [
       'page' => 'hutang-pelanggan/index',
       'title' => 'Pembayaran Hutang Pelanggan',
-      'merchant' => $this->db->get('toko')->result(),
       'bulan_lalu' => $back->format('Y-m-d')
     ];
 

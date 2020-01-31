@@ -15,11 +15,8 @@
             <form method="post" action="<?= base_url('barang-toko/store') ?>" enctype="multipart/form-data">
               <div class="form-group">
                 <label for="user">Toko <span class="label-required">*</span></label>
-                <select name="user" class="form-control select-plugin" id="toko-user" required>
+                <select name="user" class="form-control select-plugin select2-toko" id="toko-user" required>
                   <option disabled selected>--- Pilih Toko ---</option>
-                  <?php foreach ($toko as $toko) : ?>
-                    <option value="<?= $toko->user ?>"><?= $toko->nama_toko ?></option>
-                  <?php endforeach; ?>
                 </select>
               </div>
               <div class="form-group">

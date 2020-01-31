@@ -47,6 +47,32 @@ function generateDataTable(is_ajax, url = null) {
     }
 }
 
+async function loadSelect2Toko() {
+    $.ajax({
+        method: 'post',
+        url: base_url + 'toko/getAll',
+        success: function (data) {
+            const select = $('.select2-toko')
+            for (let i = 0; i < data.length; i++) {
+                select.append("<option value='" + data[i].user + "'>" + data[i].nama_toko + "</option>")
+            }
+        }
+    })
+}
+
+async function loadSelect2TokoTransaction() {
+    $.ajax({
+        method: 'post',
+        url: base_url + 'toko/getAll',
+        success: function (data) {
+            const select = $('.select2-toko-transaction')
+            for (let i = 0; i < data.length; i++) {
+                select.append("<option value='" + data[i].id_toko + "'>" + data[i].nama_toko + "</option>")
+            }
+        }
+    })
+}
+
 // function detail
 
 function detailDataPenjualan(data) {
@@ -119,6 +145,28 @@ function detailKategori(data) {
     setInputValue('modaluser', data.user)
 }
 
+function detailToko(data) {
+    setHtmlValue('modal-title', 'Detail ' + data.nama_toko)
+    setHtmlValue('nama_toko', data.nama_toko)
+    setHtmlValue('email', data.email)
+    setHtmlValue('no_hp', data.nohp)
+    setHtmlValue('user', data.user)
+    setHtmlValue('alamat', data.alamat)
+}
+
+function detailBarang(data) {
+    setHtmlValue('modal-title', data.nama_barang)
+    setHtmlValue('nama_barang', data.nama_barang)
+    setHtmlValue('kategori_barang', data.nama_kategori)
+    setHtmlValue('kode_barang', data.kodebarang)
+    setHtmlValue('harga_beli', currencyFormat(data.hargabeli))
+    setHtmlValue('harga_jual', currencyFormat(data.hargajual))
+    setHtmlValue('stok', data.stok + ' pcs')
+    setHtmlValue('min_stok', data.minimalstok + ' pcs')
+    setHtmlValue('diskon', data.diskon + '%')
+    setHtmlValue('deskripsi', data.deskripsi)
+}
+
 // detail ajax
 function getDetail(url, detailFunction) {
     $(document).on('click', '.detail-button', function () {
@@ -187,6 +235,11 @@ $('#toko-user').on('change', function () {
 })
 
 $(document).ready(function () {
+
+    $(function () {
+        $('.select-plugin').select2();
+    });
+
     $(".datepicker").datepicker({
         dateFormat: 'dd-mm-yyyy'
     });
@@ -194,45 +247,58 @@ $(document).ready(function () {
     switch (page) {
         case 'history/piutang-pelanggan':
             generateDataTable(true, 'piutang-pelanggan/load')
+            loadSelect2TokoTransaction()
             break;
         case 'history/piutang-supplier':
             generateDataTable(true, 'piutang-supplier/load')
+            loadSelect2TokoTransaction()
             break;
         case 'log-pembayaran/hutang-pelanggan':
             generateDataTable(true, 'hutang-pelanggan/load')
+            loadSelect2TokoTransaction()
             break;
         case 'log-pembayaran/hutang-supplier':
             generateDataTable(true, 'hutang-supplier/load')
+            loadSelect2TokoTransaction()
             break;
         case 'penjualan/data-penjualan':
             generateDataTable(true, 'data-penjualan/load')
             getDetail('data-penjualan/detail', detailDataPenjualan)
+            loadSelect2TokoTransaction()
             break;
         case 'penjualan/detail-penjualan':
             generateDataTable(true, 'detail-penjualan/load')
             getDetail('detail-penjualan/detail', detailPenjualan)
+            loadSelect2TokoTransaction();
             break;
         case 'pembelian/data-pembelian':
             generateDataTable(true, 'data-pembelian/load')
             getDetail('data-pembelian/detail', detailDataPembelian)
+            loadSelect2TokoTransaction()
             break;
         case 'pembelian/detail-pembelian':
             generateDataTable(true, 'detail-pembelian/load')
             getDetail('detail-pembelian/detail', detailPembelian)
+            loadSelect2TokoTransaction()
             break;
         case 'toko':
             generateDataTable(true, 'toko/load')
+            getDetail('toko/detail', detailToko)
             break;
         case 'barang':
             generateDataTable(true, 'barang/load')
+            getDetail('barang/detail', detailBarang)
             break;
         case 'barang-toko':
             generateDataTable(true, 'barang-toko/load')
+            getDetail('barang/detail', detailBarang)
+            loadSelect2Toko()
             break;
         case 'kategori':
             generateDataTable(true, 'kategori/load')
             getDetail('kategori/detail', detailKategori)
-            editKategori();
+            editKategori()
+            loadSelect2Toko()
             break;
         case 'pelanggan':
             generateDataTable(true, 'pelanggan/load')
@@ -247,6 +313,7 @@ $(document).ready(function () {
             generateDataTable(true, 'admin/load');
             break;
         default:
+            loadSelect2Toko()
             generateDataTable(false)
     }
 

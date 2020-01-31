@@ -21,7 +21,6 @@ class DataPembelian extends CI_Controller
     $data = [
       'title' => 'Data Pembelian',
       'page' => 'data-pembelian/index',
-      'merchant' => $this->toko->getAll(),
       'bulan_lalu' => $back->format('Y-m-d')
     ];
 

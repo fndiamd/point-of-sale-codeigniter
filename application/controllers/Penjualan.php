@@ -24,7 +24,6 @@ class Penjualan extends CI_Controller
     $data = [
       'title' => 'Detail Penjualan',
       'page' => 'penjualan/index',
-      'merchant' => $this->toko->getAll(),
       'bulan_lalu' => $back->format('Y-m-d')
     ];
 

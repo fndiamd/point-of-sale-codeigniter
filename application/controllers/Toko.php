@@ -29,6 +29,11 @@ class Toko extends CI_Controller
     $this->load->view('index', $data);
   }
 
+  public function getAll(){
+    header('Content-Type: application/json');
+    echo json_encode($this->toko->getAll());
+  }
+
   public function load()
   {
     $data = [];
@@ -40,7 +45,9 @@ class Toko extends CI_Controller
         $row->user,
         $row->nama_toko,
         $row->email,
-        '<a href="'.base_url('toko/view/'.$row->id_toko).'" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+        '<button type="button" class="btn btn-primary detail-button" data-toggle="modal" data-target="#modal-detail" data-id="'.$row->id_toko.'">
+          <i class="fa fa-eye"></i>
+        </button>
         <a href="'.base_url('toko/edit/'.$row->id_toko).'" class="btn btn-warning"><i class="fa fa-edit"></i></a>
         <button class="delete-button btn btn-danger" row-data="toko-'.$row->id_toko.'" data-url="'.base_url('toko/delete/'.$row->id_toko).'">
             <i class="fa fa-trash"></i>
@@ -112,15 +119,11 @@ class Toko extends CI_Controller
     redirect(base_url('toko'));
   }
 
-  public function view($id)
+  public function detail()
   {
-    $merchant = $this->toko->getById($id);
-    $data = [
-      'title' => 'Detail ' . $merchant->nama_toko,
-      'page' => 'toko/form_view',
-      'data' => $merchant
-    ];
-    $this->load->view('index', $data);
+    $id = $this->input->post('id');
+    header('Content-Type: application/json');
+    echo json_encode($this->toko->getById($id));
   }
 
   public function edit($id)
@@ -136,7 +139,7 @@ class Toko extends CI_Controller
     $this->load->view('index', $data);
   }
 
-  function update($id)
+  public function update($id)
   {
     $data = [
       'nama_toko' => $this->input->post('nama_toko'),

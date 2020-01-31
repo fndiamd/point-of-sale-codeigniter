@@ -48,7 +48,9 @@ class Barang extends CI_Controller
         $row->hargabeli,
         $row->hargajual,
         $row->stok,
-        '<a href="' . base_url('barang/view/' . $row->id_barang) . '" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+        '<button type="button" class="btn btn-primary detail-button" data-toggle="modal" data-target="#modal-detail" data-id="' . $row->id_barang . '">
+          <i class="fa fa-eye"></i>
+        </button>
         <a href="' . base_url('barang/edit/' . $row->id_barang) . '" class="btn btn-warning"><i class="fa fa-edit"></i></a>
         <button class="delete-button btn btn-danger" row-data="barang-' . $row->id_barang . '" data-url="' . base_url('barang/delete/' . $row->id_barang) . '">
             <i class="fa fa-trash"></i>
@@ -150,23 +152,18 @@ class Barang extends CI_Controller
     redirect(base_url('barang'));
   }
 
-  public function view($id)
+  public function detail()
   {
-    $this->db->where('id_barang', $id);
-    $barang = $this->db->get('barang')->row();
-    $data = [
-      'title' => 'View',
-      'page' => 'barang/form_view',
-      'data' => $barang
-    ];
-    $this->load->view('index', $data);
+    $id = $this->input->post('id');
+    header('Content-Type: application/json');
+    echo json_encode($this->barang->getById($id));
   }
 
   public function delete($id)
   {
     $barang = $this->barang->getById($id);
     $this->barang->delete($id);
-    if($barang->gbr != '' && file_exists('assets/uploads/barang/'.$barang->gbr)){
+    if ($barang->gbr != '' && file_exists('assets/uploads/barang/' . $barang->gbr)) {
       unlink(FCPATH . 'assets/uploads/barang/' . $barang->gbr);
     }
     header('Content-Type: application/json');

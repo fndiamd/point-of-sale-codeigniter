@@ -14,16 +14,10 @@
           <div class="card-body">
             <form method="post" action="<?= base_url('pelanggan/update/' . $data->id_pelanggan) ?>" enctype="multipart/form-data">
               <div class="form-group">
-                <label for="user">User <span class="label-required">*</span></label>
-                <select name="user" class="form-control select-plugin" id="user" required>
+                <label for="user">Toko <span class="label-required">*</span></label>
+                <select name="user" class="form-control select-plugin select2-toko" id="user" required>
                   <option value="0">Master</option>
-                  <?php foreach ($user as $user) : ?>
-                    <?php if ($data->user == $user->no_telp) : ?>
-                      <option selected value="<?= $data->user ?>"><?= $data->user ?></option>
-                    <?php else : ?>
-                      <option value="<?= $user->no_telp ?>"><?= $user->no_telp ?></option>
-                    <?php endif; ?>
-                  <?php endforeach; ?>
+                  <option selected value="<?= $data->user ?>"><?= $data->nama_toko ?></option>
                 </select>
               </div>
 

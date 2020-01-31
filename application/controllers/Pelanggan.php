@@ -116,13 +116,10 @@ class Pelanggan extends CI_Controller
 
   public function edit($id)
   {
-    $this->db->where('id_pelanggan', $id);
-    $pelanggan = $this->db->get('pelanggan')->row();
     $data = [
       'title' => 'Update Pelanggan',
       'page' => 'pelanggan/form_update',
-      'data' => $pelanggan,
-      'kategori' => $this->kategori->getAll(),
+      'data' => $this->pelanggan->getById($id),
       'user' => $this->user->getAll()
     ];
     $this->load->view('index', $data);

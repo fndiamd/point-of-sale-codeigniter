@@ -20,9 +20,11 @@ class MPelanggan extends CI_Model {
   }
 
   public function getById($value){
+    $this->db->select('pelanggan.*, toko.nama_toko');
+    $this->db->from('pelanggan');
+    $this->db->join('toko', 'toko.user=pelanggan.user', 'left');
     $this->db->where('pelanggan.id_pelanggan', $value);
-    
-    return $this->db->get('pelanggan')->row();
+    return $this->db->get()->row();
   }
 
   public function delete($idpelanggan){

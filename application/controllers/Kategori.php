@@ -29,13 +29,13 @@ class Kategori extends CI_Controller
   {
     $data = [];
     $no = 1;
-
+    $status = ["Aktif", "Dihapus"];
     foreach ($this->kategori->getAll() as $row) {
       $data[] = array(
         $no++,
         $row->nama_kategori,
         $row->jenis_kategori,
-        $row->status,
+        $status[$row->status],
         '<button type="button" class="btn btn-warning detail-button" data-toggle="modal" data-target="#modal-edit" data-id="'.$row->id_kategori.'">
           <i class="fa fa-edit"></i>
         </button>

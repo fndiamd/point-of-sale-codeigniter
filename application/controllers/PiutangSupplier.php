@@ -22,7 +22,6 @@ class PiutangSupplier extends CI_Controller
     $data = [
       'page' => 'piutang-supplier/index',
       'title' => 'History Piutang Supplier',
-      'merchant' => $this->db->get('toko')->result(),
       'bulan_lalu' => $back->format('Y-m-d')
     ];
 

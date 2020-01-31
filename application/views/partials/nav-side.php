@@ -78,6 +78,12 @@
                                 <p>User</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('admin') ?>" class="nav-link">
+                                <i class="fa fa-user-secret nav-icon"></i>
+                                <p>Admin</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-header">Transaksi</li>

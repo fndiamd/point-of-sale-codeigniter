@@ -22,7 +22,6 @@ class PiutangPelanggan extends CI_Controller
     $data = [
       'page' => 'piutang-pelanggan/index',
       'title' => 'History Piutang Pelanggan',
-      'merchant' => $this->db->get('toko')->result(),
       'bulan_lalu' => $back->format('Y-m-d')
     ];
 

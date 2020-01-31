@@ -16,12 +16,10 @@
                             <div class="row">
                                 <div class="col">
                                     <label for="user">Toko <span class="label-required">*</span></label>
-                                    <select name="user" class="form-control select-plugin" id="merchant">
+                                    <select name="user" class="form-control select-plugin select2-toko" id="merchant">
                                         <option value="" disabled selected>--- Pilih Toko ---</option>
                                         <option value="0">Master</option>
-                                        <?php foreach ($merchant as $merchant) : ?>
-                                            <option value="<?= $merchant->user ?>"><?= $merchant->nama_toko ?></option>
-                                        <?php endforeach; ?>
+                                        
                                     </select>
                                 </div>
                                 <div class="col">
@@ -57,7 +55,7 @@
                             <tbody></tbody>
                         </table>
                         <div class="modal fade" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="modal-title"></h5>
@@ -74,7 +72,7 @@
                                                 </div>
                                                 <div class="col">
                                                     <label for="nama_kategori">Nama Kategori<span class="label-required"> *</span></label>
-                                                    <input type="text" class="form-control" id="modalnama_kategori" name="nama_kategori" placeholder="Nama Kategori" required>
+                                                    <input type="text" class="form-control" id="modalnama_kategori" autofocus name="nama_kategori" placeholder="Nama Kategori" required>
                                                 </div>
                                                 <div class="col">
                                                     <label for="jenis_kategori">Jenis Kategori<span class="label-optional"> ( Optional )</span></label>

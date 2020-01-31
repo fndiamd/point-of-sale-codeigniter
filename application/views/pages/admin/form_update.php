@@ -19,18 +19,25 @@
               </div>
 
               <div class="form-group">
-                <label for="password">Password Admin<span class="label-required"> *</span></label>
-                <input type="password" class="form-control" id="password" required name="password" value="<?php echo $data->password ?>">
+                <label for="password">Password Admin <span class="label-optional">( Optional )</span></label>
+                <input type="password" class="form-control" id="password" name="password" aria-describedby="passwordHelp">
+                <small id="passwordHelp" class="form-text text-muted">Kosongkan apabila tidak ingin mengganti password</small>
               </div>
 
               <div class="form-group">
                 <label for="email">Email Admin<span class="label-required"> *</span></label>
-                <input type="email" class="form-control" id="email" name="email" value="<?php echo $data->email ?>">
+                <input type="email" class="form-control" id="email" name="email" required value="<?php echo $data->email ?>">
               </div>
 
               <div class="form-group">
                 <label for="role">Role<span class="label-required"> *</span></label>
-                <input type="text" class="form-control" id="role" required name="role" value="<?php echo $data->role ?>">
+                <select name="role" required id="role" class="form-control">
+                  <?php if ($data->role == 0) : ?>
+                    <option value="0">Guest</option>
+                  <?php else : ?>
+                    <option value="1">Admin</option>
+                  <?php endif; ?>
+                </select>
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>

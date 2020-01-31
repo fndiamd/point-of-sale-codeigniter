@@ -19,12 +19,12 @@
               <hr>
               <div class="form-group">
                 <label for="nama_lengkap">Nama Lengkap<span class="label-required"> *</span></label>
-                <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" required placeholder="Nama Lengkap User">
+                <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" required placeholder="Nama Lengkap User" autofocus>
               </div>
 
               <div class="row">
                 <div class="col">
-                  <label for="email">Email<span class="label-optional">( Optional )</span></label>
+                  <label for="email">Email <span class="label-optional">( Optional )</span></label>
                   <input type="email" class="form-control" id="email" name="email" placeholder="Email User">
                 </div>
                 <div class="col">
@@ -40,7 +40,7 @@
               </div>
 
               <div class="form-group">
-                <label for="alamat_user">Alamat<span class="label-optional">( Optional )</span></label>
+                <label for="alamat_user">Alamat <span class="label-optional">( Optional )</span></label>
                 <textarea class="form-control" id="alamat_user" name="alamat_user" cols="30" rows="5" placeholder="Alamat User"></textarea>
               </div>
 
@@ -49,7 +49,7 @@
                 <input type="tel" pattern="\+?([ -]?\d+)+|\(\d+\)([ -]\d+)" class="form-control" id="telp_user" name="telp_user" required placeholder="Format: +628XXXXXX / 08XXXXXX">
               </div>
               <div class="form-group">
-                <label for="gambar">Gambar<span class="label-optional">( Optional )</span></label>
+                <label for="gambar">Gambar <span class="label-optional">( Optional )</span></label>
                 <input type="file" name="gambar" id="gambar" class="form-control">
               </div>
 
