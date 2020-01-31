@@ -19,6 +19,20 @@ class MAdmin extends CI_Model {
     return $this->db->get($this->table);
   }
 
+  public function getAll($column = 'id_admin', $sort = 'desc'){
+    $this->db->order_by($column, $sort);
+    return $this->db->get('admin')->result();
+  }
+
+  public function getById($id){
+    $this->db->where('id_admin', $id);
+    return $this->db->get('admin')->row();
+  }
+
+  public function delete($id){
+    $this->db->where('id_admin', $id);
+    $this->db->delete('admin');
+  }
 }
 
 /* End of file MAdmin_model.php */

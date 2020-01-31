@@ -243,6 +243,9 @@ $(document).ready(function () {
         case 'user':
             generateDataTable(true, 'user/load');
             break;
+        case 'admin':
+            generateDataTable(true, 'admin/load');
+            break;
         default:
             generateDataTable(false)
     }
