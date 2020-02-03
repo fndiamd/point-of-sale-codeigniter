@@ -1,32 +1,34 @@
 <section class="content">
     <div class="container-fluid">
-        <div class="row justify-content-between">
-            <div class="col-4">
-                <a href="<?= base_url('barang-toko/create') ?>" class="btn btn-success">
-                    <i class="fa fa-plus"></i>&nbsp; Tambah Barang
-                </a>
+        <?php if ($this->session->userdata('role_admin') != 0) : ?>
+            <div class="row justify-content-between">
+                <div class="col-4">
+                    <a href="<?= base_url('barang-toko/create') ?>" class="btn btn-success">
+                        <i class="fa fa-plus"></i>&nbsp; Tambah Barang
+                    </a>
+                </div>
+                <div class="col-8">
+                    <form action="barang-toko/import" method="post" enctype="multipart/form-data">
+                        <div class="form-row">
+                            <div class="col-5">
+                                <select name="user" class="form-control select-plugin select2-toko" required>
+                                    <option value="" disabled selected>--- Pilih Toko ---</option>
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                <input type="file" class="form-control" name="excelbarang" id="import-excel" required>
+                            </div>
+                            <div class="col">
+                                <button type="submit" class="btn btn-info mb-2">
+                                    <i class="fa fa-file-import"></i>&nbsp; Import Data
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="col-8">
-                <form action="barang-toko/import" method="post" enctype="multipart/form-data">
-                    <div class="form-row">
-                        <div class="col-5">
-                            <select name="user" class="form-control select-plugin select2-toko" required>
-                                <option value="" disabled selected>--- Pilih Toko ---</option>
-                            </select>
-                        </div>
-                        <div class="col-4">
-                            <input type="file" class="form-control" name="excelbarang" id="import-excel" required>
-                        </div>
-                        <div class="col">
-                            <button type="submit" class="btn btn-info mb-2">
-                                <i class="fa fa-file-import"></i>&nbsp; Import Data
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <br>
+            <br>
+        <?php endif; ?>
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -92,7 +94,7 @@
                                         <div class="row">
                                             <div class="col-4 text-bold">Deskripsi Barang</div>
                                             <div class="col-8" id="deskripsi"></div>
-                                        </div>                        
+                                        </div>
                                     </div>
                                 </div>
                             </div>

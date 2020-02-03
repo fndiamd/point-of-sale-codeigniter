@@ -36,6 +36,8 @@ class User extends CI_Controller
     $data = [];
     $no = 1;
 
+    ($this->session->userdata('role_admin') == 0) ? $display = 'hidden-guest' : $display = '';
+
     foreach ($this->user->getAll() as $row) {
       $data[] = array(
         $no++,
@@ -43,9 +45,11 @@ class User extends CI_Controller
         $row->email,
         $row->kota,
         $row->level,
-        '<a href="' . base_url('user/view/' . $row->no_telp) . '" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-        <a href="' . base_url('user/edit/' . $row->no_telp) . '" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-        <button class="delete-button btn btn-danger" row-data="user-' . $row->no_telp . '" data-url="' . base_url('user/delete/' . $row->no_telp) . '">
+        '<button type="button" class="btn btn-primary detail-button" data-toggle="modal" data-target="#modal-detail" data-id="' . $row->no_telp . '">
+          <i class="fa fa-eye"></i>
+        </button>
+        <a href="' . base_url('user/edit/' . $row->no_telp) . '" class="btn btn-warning ' . $display . '"><i class="fa fa-edit"></i></a>
+        <button class="delete-button btn btn-danger ' . $display . '" row-data="user-' . $row->no_telp . '" data-url="' . base_url('user/delete/' . $row->no_telp) . '">
             <i class="fa fa-trash"></i>
         </button>'
       );
@@ -61,6 +65,11 @@ class User extends CI_Controller
 
   public function store()
   {
+    if ($this->session->userdata('role_admin') == 0) {
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('user'));
+    }
+
     if (!$this->upload->do_upload('gambar')) {
       $this->session->set_flashdata('error', $this->upload->display_errors());
       redirect(base_url('user/create'));
@@ -88,6 +97,11 @@ class User extends CI_Controller
 
   public function create()
   {
+    if ($this->session->userdata('role_admin') == 0) {
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('user'));
+    }
+
     $data = [
       'title' => 'Tambah User',
       'page' => 'user/form_tambah',
@@ -95,20 +109,20 @@ class User extends CI_Controller
     $this->load->view('index', $data);
   }
 
-  public function view($id)
+  public function detail()
   {
-    $this->db->where('no_telp', $id);
-    $user = $this->db->get('users')->row();
-    $data = [
-      'title' => 'Lihat User',
-      'page' => 'user/form_view',
-      'data' => $user
-    ];
-    $this->load->view('index', $data);
+    $id = $this->input->post('id');
+    header('Content-Type: application/json');
+    echo json_encode($this->user->getById($id));
   }
 
   public function edit($id)
   {
+    if ($this->session->userdata('role_admin') == 0) {
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('user'));
+    }
+
     $this->db->where('no_telp', $id);
     $user = $this->db->get('users')->row();
     $data = [
@@ -122,6 +136,11 @@ class User extends CI_Controller
 
   function update($id)
   {
+    if ($this->session->userdata('role_admin') == 0) {
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('user'));
+    }
+
     $data = [
       'nama_lengkap' => $this->input->post('nama_lengkap'),
       'password' => $this->input->post('password'),
@@ -153,6 +172,11 @@ class User extends CI_Controller
 
   public function delete($id)
   {
+    if ($this->session->userdata('role_admin') == 0) {
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('user'));
+    }
+
     $user = $this->user->getById($id);
     $this->user->delete($id);
     if ($user->gbr != '' && file_exists('assets/uploads/user/' . $user->gbr)) {

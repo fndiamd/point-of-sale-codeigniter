@@ -70,3 +70,7 @@
   height:39px;
   line-height: 20px;
 }
+
+.hidden-guest{
+  display: none;
+}

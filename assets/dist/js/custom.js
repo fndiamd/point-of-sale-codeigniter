@@ -167,6 +167,42 @@ function detailBarang(data) {
     setHtmlValue('deskripsi', data.deskripsi)
 }
 
+function detailPelanggan(data){
+    setHtmlValue('modal-title', 'Pelanggan ' + data.nama_pelanggan)
+    setHtmlValue('nama_toko', data.nama_toko)
+    setHtmlValue('nama_pelanggan', data.nama_pelanggan)
+    setHtmlValue('email', data.email)
+    setHtmlValue('telepon', data.telpon)
+    setHtmlValue('status', data.status)
+    setHtmlValue('aktif', data.aktiv)
+    setHtmlValue('hutang', currencyFormat(data.hutang))
+    setHtmlValue('alamat', data.alamat)
+}
+
+function detailSupplier(data){
+    setHtmlValue('modal-title', 'Supplier ' + data.nama_supplier)
+    setHtmlValue('nama_toko', data.nama_toko)
+    setHtmlValue('nama_supplier', data.nama_supplier)
+    setHtmlValue('email', data.email)
+    setHtmlValue('telepon', data.telpon)
+    setHtmlValue('aktif', data.aktiv)
+    setHtmlValue('hutang', currencyFormat(data.hutang))
+    setHtmlValue('provinsi', data.profinsi)
+    setHtmlValue('kota', data.kota)
+    setHtmlValue('alamat', data.alamat)
+}
+
+function detailUser(data){
+    setHtmlValue('modal-title', 'User ' + data.nama_lengkap)
+    setHtmlValue('nama_lengkap', data.nama_lengkap)
+    setHtmlValue('email', data.email)
+    setHtmlValue('telepon', data.no_telp)
+    setHtmlValue('kota', data.kota)
+    setHtmlValue('alamat', data.alamat)
+    setHtmlValue('level', data.level)
+    setHtmlValue('paket', data.paket)
+}
+
 // detail ajax
 function getDetail(url, detailFunction) {
     $(document).on('click', '.detail-button', function () {
@@ -302,12 +338,15 @@ $(document).ready(function () {
             break;
         case 'pelanggan':
             generateDataTable(true, 'pelanggan/load')
+            getDetail('pelanggan/detail', detailPelanggan)
             break;
         case 'supplier':
-            generateDataTable(true, 'supplier/load');
+            generateDataTable(true, 'supplier/load')
+            getDetail('supplier/detail', detailSupplier)
             break;
         case 'user':
             generateDataTable(true, 'user/load');
+            getDetail('user/detail', detailUser)
             break;
         case 'admin':
             generateDataTable(true, 'admin/load');

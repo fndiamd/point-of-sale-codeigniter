@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Admin extends CI_Controller
 {
-    
+
   public function __construct()
   {
     parent::__construct();
@@ -26,15 +26,17 @@ class Admin extends CI_Controller
   {
     $data = [];
     $no = 1;
-    $role = [ "Guest", "Admin" ];
+    $role = ["Guest", "Admin"];
+    ($this->session->userdata('role_admin') == 0) ? $display = 'hidden-guest' : $display = ''; 
+
     foreach ($this->admin->getAll() as $row) {
       $data[] = array(
         $no++,
         $row->nama,
         $row->email,
         $role[$row->role],
-        '<a href="' . base_url('admin/edit/' . $row->id_admin) . '" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-        <button class="delete-button btn btn-danger" row-data="user-' . $row->id_admin . '" data-url="' . base_url('admin/delete/' . $row->id_admin) . '">
+        '<a href="' . base_url('admin/edit/' . $row->id_admin) . '" class="btn btn-warning '.$display.'"><i class="fa fa-edit"></i></a>
+        <button class="delete-button btn btn-danger '.$display.'" row-data="user-' . $row->id_admin . '" data-url="' . base_url('admin/delete/' . $row->id_admin) . '">
             <i class="fa fa-trash"></i>
         </button>'
       );
@@ -50,6 +52,11 @@ class Admin extends CI_Controller
 
   public function edit($id)
   {
+    if ($this->session->userdata('role_admin') == 0) {
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('admin'));
+    }
+
     $this->db->where('id_admin', $id);
     $admin = $this->db->get('admin')->row();
     $data = [
@@ -61,15 +68,24 @@ class Admin extends CI_Controller
     $this->load->view('index', $data);
   }
 
-  function update($id){
+  function update($id)
+  {
+    if ($this->session->userdata('role_admin') == 0) {
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('admin'));
+    }
+
     $data = [
       'nama' => $this->input->post('nama'),
-      'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
       'role' => $this->input->post('role'),
       'email' => $this->input->post('email')
     ];
 
-    if($id == $this->session->userdata('id_admin')){
+    if (!empty($this->input->post('password'))) {
+      $data['password'] = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+    }
+
+    if ($id == $this->session->userdata('id_admin')) {
       $sessionData = [
         'nama_admin' => $data['nama'],
         'role_admin' => $data['role']
@@ -85,6 +101,11 @@ class Admin extends CI_Controller
 
   public function create()
   {
+    if ($this->session->userdata('role_admin') == 0) {
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('admin'));
+    }
+
     $data = [
       'title' => 'Tambah Admin',
       'page' => 'admin/form_tambah',
@@ -94,12 +115,17 @@ class Admin extends CI_Controller
 
   public function store()
   {
-      $data = [
-        'nama' => $this->input->post('nama'),
-        'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-        'role' => $this->input->post('role'),
-        'email' => $this->input->post('email')
-      ];
+    if ($this->session->userdata('role_admin') == 0) {
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('admin'));
+    }
+
+    $data = [
+      'nama' => $this->input->post('nama'),
+      'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+      'role' => $this->input->post('role'),
+      'email' => $this->input->post('email')
+    ];
     $this->db->insert('admin', $data);
     $this->session->set_flashdata('success', 'Admin berhasil ditambahkan');
     redirect(base_url('admin'));
@@ -107,9 +133,14 @@ class Admin extends CI_Controller
 
   public function delete($id)
   {
+    if($this->session->userdata('role_admin') == 0){
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('admin'));
+    }
+
     $admin = $this->admin->getById($id);
     $this->admin->delete($id);
-    
+
     header('Content-Type: application/json');
     echo json_encode(['section' => 'Admin', 'data' => $admin->nama]);
   }

@@ -40,6 +40,7 @@ class BarangToko extends CI_Controller
   {
     $data = [];
     $no = 1;
+    ($this->session->userdata('role_admin') == 0) ? $display = 'hidden-guest' : $display = ''; 
 
     foreach ($this->barang->getAll() as $row) {
       $data[] = array(
@@ -53,8 +54,8 @@ class BarangToko extends CI_Controller
         '<button type="button" class="btn btn-primary detail-button" data-toggle="modal" data-target="#modal-detail" data-id="' . $row->id_barang . '">
           <i class="fa fa-eye"></i>
         </button>
-        <a href="' . base_url('barang-toko/edit/' . $row->id_barang) . '" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-        <button class="delete-button btn btn-danger" row-data="barang-toko-' . $row->id_barang . '" data-url="' . base_url('barang-toko/delete/' . $row->id_barang) . '">
+        <a href="' . base_url('barang-toko/edit/' . $row->id_barang) . '" class="btn btn-warning '.$display.'"><i class="fa fa-edit"></i></a>
+        <button class="delete-button btn btn-danger '.$display.'" row-data="barang-toko-' . $row->id_barang . '" data-url="' . base_url('barang-toko/delete/' . $row->id_barang) . '">
             <i class="fa fa-trash"></i>
         </button>'
       );
@@ -70,6 +71,11 @@ class BarangToko extends CI_Controller
 
   public function create()
   {
+    if($this->session->userdata('role_admin') == 0){
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('barang-toko'));
+    }
+    
     $data = [
       'title' => 'Tambah Barang Toko',
       'page' => 'barang-toko/form_tambah',
@@ -81,6 +87,10 @@ class BarangToko extends CI_Controller
 
   public function store()
   {
+    if($this->session->userdata('role_admin') == 0){
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('barang-toko'));
+    }
 
     if (!$this->upload->do_upload('gambar')) {
 
@@ -112,6 +122,11 @@ class BarangToko extends CI_Controller
 
   public function edit($idbarang)
   {
+    if($this->session->userdata('role_admin') == 0){
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('barang-toko'));
+    }
+    
     $barang = $this->barang->getById($idbarang);
     $data = [
       'title' => 'Update Barang Toko',
@@ -126,6 +141,11 @@ class BarangToko extends CI_Controller
 
   public function update($idbarang)
   {
+    if($this->session->userdata('role_admin') == 0){
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('barang-toko'));
+    }
+
     $data = [
       'nama_barang' => $this->input->post('nama_barang'),
       'kodebarang' => $this->input->post('kodebarang'),
@@ -158,6 +178,11 @@ class BarangToko extends CI_Controller
 
   public function delete($id)
   {
+    if($this->session->userdata('role_admin') == 0){
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('barang-toko'));
+    }
+
     $barang = $this->barang->getById($id);
     $this->barang->delete($id);
     if($barang->gbr != '' && file_exists('assets/uploads/barang/'.$barang->gbr)){
@@ -169,6 +194,11 @@ class BarangToko extends CI_Controller
 
   public function import()
   {
+    if($this->session->userdata('role_admin') == 0){
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('barang-toko'));
+    }
+    
     $allowFile = ['xls', 'xlsx', 'csv', 'xlt'];
     if (isset($_FILES['excelbarang']['name'])) {
       $arr_file = explode('.', $_FILES['excelbarang']['name']);

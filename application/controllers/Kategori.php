@@ -61,6 +61,11 @@ class Kategori extends CI_Controller
 
   public function store()
   {
+    if($this->session->userdata('role_admin') == 0){
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('kategori'));
+    }
+
     $data = [
       'nama_kategori' => $this->input->post('nama_kategori'),
       'jenis_kategori' => $this->input->post('jenis_kategori'),
@@ -75,6 +80,11 @@ class Kategori extends CI_Controller
 
   public function update()
   {
+    if($this->session->userdata('role_admin') == 0){
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('kategori'));
+    }
+
     $id = $this->uri->segment(3);
     $data = [
       'nama_kategori' => $this->input->post('nama_kategori'),
@@ -91,6 +101,11 @@ class Kategori extends CI_Controller
 
   public function delete($id)
   {
+    if($this->session->userdata('role_admin') == 0){
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('toko'));
+    }
+    
     $kategori = $this->kategori->getById($id);
     $this->kategori->delete($id);
     header('Content-Type: application/json');

@@ -22,6 +22,7 @@
 <!-- AdminLTE App -->
 <script src="<?= base_url('assets/dist/js/adminlte.js') ?>"></script>
 <script type="text/javascript">
-    var base_url = "<?= base_url()?>";
+    var base_url = "<?= base_url() ?>";
+    const role_admin = "<?= $this->session->userdata('role_admin') ?>";
 </script>
 <script src="<?= base_url('assets/dist/js/custom.js') ?>"></script>

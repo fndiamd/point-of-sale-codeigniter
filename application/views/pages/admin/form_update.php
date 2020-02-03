@@ -33,9 +33,11 @@
                 <label for="role">Role<span class="label-required"> *</span></label>
                 <select name="role" required id="role" class="form-control">
                   <?php if ($data->role == 0) : ?>
-                    <option value="0">Guest</option>
-                  <?php else : ?>
+                    <option value="0" selected>Guest</option>
                     <option value="1">Admin</option>
+                  <?php else : ?>
+                    <option value="0">Guest</option>
+                    <option value="1" selected>Admin</option>
                   <?php endif; ?>
                 </select>
               </div>

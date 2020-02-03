@@ -1,13 +1,16 @@
 <section class="content">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <a href="<?= base_url('toko/create') ?>" class="btn btn-success ">
-                    <i class="fa fa-plus"></i>&nbsp; Tambah Toko
-                </a>
+        <?php if ($this->session->userdata('role_admin') != 0) : ?>
+            <div class="row">
+                <div class="col-12">
+
+                    <a href="<?= base_url('toko/create') ?>" class="btn btn-success ">
+                        <i class="fa fa-plus"></i>&nbsp; Tambah Toko
+                    </a>
+                </div>
             </div>
-        </div>
-        <br>
+            <br>
+        <?php endif; ?>
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -53,7 +56,7 @@
                                         <div class="row">
                                             <div class="col-3 text-bold">Alamat</div>
                                             <div class="col-9" id="alamat"></div>
-                                        </div>                        
+                                        </div>
                                     </div>
                                 </div>
                             </div>

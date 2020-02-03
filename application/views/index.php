@@ -1,11 +1,12 @@
 <?php
-  if (!$this->session->userdata('id_admin')) {
-    $this->session->set_flashdata('error', 'Anda harus sign-in terlebih dahulu!');
-    redirect(base_url());
-  }
+if (!$this->session->userdata('id_admin')) {
+  $this->session->set_flashdata('error', 'Anda harus sign-in terlebih dahulu!');
+  redirect(base_url());
+}
 ?>
 
 <?php $this->load->view('partials/head') ?>
+
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
     <!-- Navbar -->
@@ -26,16 +27,22 @@
       </div>
       <!-- /.content-header -->
       <!-- Main content -->
-      <div class="container">
-        <?php if ($this->session->flashdata('success')) : ?>
-          <div class="alert alert-success">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><?= $this->session->flashdata('success'); ?>
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <?php if ($this->session->flashdata('success')) : ?>
+                <div class="alert alert-success">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><?= $this->session->flashdata('success'); ?>
+                </div>
+              <?php elseif ($this->session->flashdata('error')) : ?>
+                <div class="alert alert-danger">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><?= $this->session->flashdata('error'); ?>
+                </div>
+              <?php endif; ?>
+            </div>
           </div>
-        <?php elseif ($this->session->flashdata('error')) : ?>
-          <div class="alert alert-danger">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><?= $this->session->flashdata('error'); ?>
-          </div>
-        <?php endif; ?>
+        </div>
       </div>
       <?php $this->load->view('pages/' . $page) ?>
       <!-- /.content -->
@@ -49,6 +56,7 @@
       </div>
     </footer>
   </div>
-  <?php $this->load->view('partials/foot-script')?>
+  <?php $this->load->view('partials/foot-script') ?>
 </body>
+
 </html>

@@ -1,13 +1,15 @@
 <section class="content">
     <div class="container-fluid">
-        <div class="row justify-content-between">
-            <div class="col-4">
-                <a href="<?= base_url('admin/create') ?>" class="btn btn-success">
-                    <i class="fa fa-plus"></i>&nbsp; Tambah Admin
-                </a>
+        <?php if ($this->session->userdata('role_admin') != 0) : ?>
+            <div class="row justify-content-between">
+                <div class="col-4">
+                    <a href="<?= base_url('admin/create') ?>" class="btn btn-success">
+                        <i class="fa fa-plus"></i>&nbsp; Tambah Admin
+                    </a>
+                </div>
             </div>
-        </div>
-        <br>
+            <br>
+        <?php endif; ?>
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -19,11 +21,13 @@
                                     <th>Nama</th>
                                     <th>Email</th>
                                     <th>Role</th>
-                                    <th>Action</th>
+                                    <?php if ($this->session->userdata('role_admin') != 0) : ?>
+                                        <th>Action</th>
+                                    <?php endif; ?>
                                 </tr>
                             </thead>
                             <tbody>
-                                
+
                             </tbody>
                         </table>
                     </div>

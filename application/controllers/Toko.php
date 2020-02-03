@@ -39,6 +39,8 @@ class Toko extends CI_Controller
     $data = [];
     $no = 1;
 
+    ($this->session->userdata('role_admin') == 0) ? $display = 'hidden-guest' : $display = ''; 
+
     foreach ($this->toko->getAll() as $row) {
       $data[] = array(
         $no++,
@@ -48,8 +50,8 @@ class Toko extends CI_Controller
         '<button type="button" class="btn btn-primary detail-button" data-toggle="modal" data-target="#modal-detail" data-id="'.$row->id_toko.'">
           <i class="fa fa-eye"></i>
         </button>
-        <a href="'.base_url('toko/edit/'.$row->id_toko).'" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-        <button class="delete-button btn btn-danger" row-data="toko-'.$row->id_toko.'" data-url="'.base_url('toko/delete/'.$row->id_toko).'">
+        <a href="'.base_url('toko/edit/'.$row->id_toko).'" class="btn btn-warning '.$display.'"><i class="fa fa-edit"></i></a>
+        <button class="delete-button btn btn-danger '.$display.'" row-data="toko-'.$row->id_toko.'" data-url="'.base_url('toko/delete/'.$row->id_toko).'">
             <i class="fa fa-trash"></i>
         </button>'
       );
@@ -65,6 +67,11 @@ class Toko extends CI_Controller
 
   public function create()
   {
+    if($this->session->userdata('role_admin') == 0){
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('toko'));
+    }
+
     $data = [
       'title' => 'Tambah Toko Baru',
       'page' => 'toko/form_tambah',
@@ -76,6 +83,11 @@ class Toko extends CI_Controller
 
   public function store()
   {
+    if($this->session->userdata('role_admin') == 0){
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('toko'));
+    }
+
     $data = [
       'dataUser' => [
         'nama_lengkap' => $this->input->post('nama_lengkap'),
@@ -128,6 +140,11 @@ class Toko extends CI_Controller
 
   public function edit($id)
   {
+    if($this->session->userdata('role_admin') == 0){
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('toko'));
+    }
+
     $merchant = $this->toko->getById($id);
     $data = [
       'title' => 'Update ' . $merchant->nama_toko,
@@ -141,6 +158,11 @@ class Toko extends CI_Controller
 
   public function update($id)
   {
+    if($this->session->userdata('role_admin') == 0){
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('toko'));
+    }
+
     $data = [
       'nama_toko' => $this->input->post('nama_toko'),
       'alamat' => $this->input->post('alamat'),
@@ -157,6 +179,11 @@ class Toko extends CI_Controller
 
   public function delete($id)
   {
+    if($this->session->userdata('role_admin') == 0){
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('toko'));
+    }
+    
     $toko = $this->toko->getById($id);
     $this->toko->delete(['id_toko' => $id]);
     header('Content-Type: application/json');

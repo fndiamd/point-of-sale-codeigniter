@@ -1,13 +1,15 @@
 <section class="content">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <a href="<?= base_url('pelanggan/create') ?>" class="btn btn-success">
-                    <i class="fa fa-plus"></i>&nbsp; Tambah Pelanggan
-                </a>
+        <?php if ($this->session->userdata('role_admin') != 0) : ?>
+            <div class="row">
+                <div class="col-12">
+                    <a href="<?= base_url('pelanggan/create') ?>" class="btn btn-success">
+                        <i class="fa fa-plus"></i>&nbsp; Tambah Pelanggan
+                    </a>
+                </div>
             </div>
-        </div>
-        <br>
+            <br>
+        <?php endif; ?>
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -36,40 +38,36 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="row">
-                                            <div class="col-4 text-bold"></div>
-                                            <div class="col-8" id=""></div>
+                                            <div class="col-4 text-bold">Nama Toko</div>
+                                            <div class="col-8" id="nama_toko"></div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-4 text-bold"></div>
-                                            <div class="col-8" id=""></div>
+                                            <div class="col-4 text-bold">Nama Pelanggan</div>
+                                            <div class="col-8" id="nama_pelanggan"></div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-4 text-bold"></div>
-                                            <div class="col-8" id=""></div>
+                                            <div class="col-4 text-bold">Email</div>
+                                            <div class="col-8" id="email"></div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-4 text-bold"></div>
-                                            <div class="col-8" id=""></div>
+                                            <div class="col-4 text-bold">Telepon</div>
+                                            <div class="col-8" id="telepon"></div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-4 text-bold"></div>
-                                            <div class="col-8" id=""></div>
+                                            <div class="col-4 text-bold">Status</div>
+                                            <div class="col-8" id="status"></div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-4 text-bold"></div>
-                                            <div class="col-8" id=""></div>
+                                            <div class="col-4 text-bold">Aktif</div>
+                                            <div class="col-8" id="aktif"></div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-4 text-bold"></div>
-                                            <div class="col-8" id=""></div>
+                                            <div class="col-4 text-bold">Hutang</div>
+                                            <div class="col-8" id="hutang"></div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-4 text-bold"></div>
-                                            <div class="col-8" id=""></div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-4 text-bold"></div>
-                                            <div class="col-8" id=""></div>
+                                            <div class="col-4 text-bold">Alamat</div>
+                                            <div class="col-8" id="alamat"></div>
                                         </div>
                                     </div>
                                 </div>

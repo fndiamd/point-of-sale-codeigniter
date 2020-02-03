@@ -37,6 +37,8 @@ class Supplier extends CI_Controller
     $data = [];
     $no = 1;
 
+    ($this->session->userdata('role_admin') == 0) ? $display = 'hidden-guest' : $display = '';
+
     foreach ($this->supplier->getAll() as $row) {
       $data[] = array(
         $no++,
@@ -45,9 +47,11 @@ class Supplier extends CI_Controller
         $row->telpon,
         $row->profinsi,
         $row->kota,
-        '<a href="' . base_url('supplier/view/' . $row->id_supplier) . '" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-        <a href="' . base_url('supplier/edit/' . $row->id_supplier) . '" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-        <button class="delete-button btn btn-danger" row-data="supplier-' . $row->id_supplier . '" data-url="' . base_url('supplier/delete/' . $row->id_supplier) . '">
+        '<button type="button" class="btn btn-primary detail-button" data-toggle="modal" data-target="#modal-detail" data-id="' . $row->id_supplier . '">
+          <i class="fa fa-eye"></i>
+        </button>
+        <a href="' . base_url('supplier/edit/' . $row->id_supplier) . '" class="btn btn-warning ' . $display . '"><i class="fa fa-edit"></i></a>
+        <button class="delete-button btn btn-danger ' . $display . '" row-data="supplier-' . $row->id_supplier . '" data-url="' . base_url('supplier/delete/' . $row->id_supplier) . '">
             <i class="fa fa-trash"></i>
         </button>'
       );
@@ -63,6 +67,11 @@ class Supplier extends CI_Controller
 
   public function store()
   {
+    if ($this->session->userdata('role_admin') == 0) {
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('supplier'));
+    }
+
     $data = [
       'nama_supplier' => $this->input->post('nama_supplier'),
       'alamat' => $this->input->post('alamat'),
@@ -92,6 +101,11 @@ class Supplier extends CI_Controller
 
   public function create()
   {
+    if ($this->session->userdata('role_admin') == 0) {
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('supplier'));
+    }
+
     $data = [
       'title' => 'Tambah Supplier',
       'page' => 'supplier/form_tambah',
@@ -101,20 +115,20 @@ class Supplier extends CI_Controller
     $this->load->view('index', $data);
   }
 
-  public function view($id)
+  public function detail()
   {
-    $this->db->where('id_supplier', $id);
-    $supplier = $this->db->get('supplier')->row();
-    $data = [
-      'title' => 'Lihat Supplier',
-      'page' => 'supplier/form_view',
-      'data' => $supplier
-    ];
-    $this->load->view('index', $data);
+    $id = $this->input->post('id');
+    header('Content-Type: application/json');
+    echo json_encode($this->supplier->getById($id));
   }
 
   public function edit($id)
   {
+    if ($this->session->userdata('role_admin') == 0) {
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('supplier'));
+    }
+
     $data = [
       'title' => 'Update Supplier',
       'page' => 'supplier/form_update',
@@ -127,6 +141,11 @@ class Supplier extends CI_Controller
 
   function update($id)
   {
+    if ($this->session->userdata('role_admin') == 0) {
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('supplier'));
+    }
+
     $data = [
       'nama_supplier' => $this->input->post('nama_supplier'),
       'alamat' => $this->input->post('alamat'),
@@ -157,6 +176,11 @@ class Supplier extends CI_Controller
 
   public function delete($id)
   {
+    if ($this->session->userdata('role_admin') == 0) {
+      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      redirect(base_url('supplier'));
+    }
+
     $supplier = $this->supplier->getById($id);
     $this->supplier->delete($id);
     if ($supplier->gbr != '' && file_exists('assets/uploads/supplier/' . $supplier->gbr)) {
