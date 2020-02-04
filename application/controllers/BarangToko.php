@@ -72,7 +72,7 @@ class BarangToko extends CI_Controller
   public function create()
   {
     if($this->session->userdata('role_admin') == 0){
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('barang-toko'));
     }
     
@@ -88,7 +88,7 @@ class BarangToko extends CI_Controller
   public function store()
   {
     if($this->session->userdata('role_admin') == 0){
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('barang-toko'));
     }
 
@@ -123,13 +123,13 @@ class BarangToko extends CI_Controller
   public function edit($idbarang)
   {
     if($this->session->userdata('role_admin') == 0){
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('barang-toko'));
     }
     
     $barang = $this->barang->getById($idbarang);
     $data = [
-      'title' => 'Update Barang Toko',
+      'title' => 'Update Barang - '.$barang->nama_barang,
       'page' => 'barang-toko/form_update',
       'barang' => $barang,
       'kategori' => $this->kategori->kategoriUser($barang->user),
@@ -142,7 +142,7 @@ class BarangToko extends CI_Controller
   public function update($idbarang)
   {
     if($this->session->userdata('role_admin') == 0){
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('barang-toko'));
     }
 
@@ -179,7 +179,7 @@ class BarangToko extends CI_Controller
   public function delete($id)
   {
     if($this->session->userdata('role_admin') == 0){
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('barang-toko'));
     }
 
@@ -195,7 +195,7 @@ class BarangToko extends CI_Controller
   public function import()
   {
     if($this->session->userdata('role_admin') == 0){
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('barang-toko'));
     }
     

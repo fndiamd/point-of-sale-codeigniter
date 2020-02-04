@@ -15,32 +15,33 @@
             <form method="post" action="<?= base_url('user/update/' . $data->no_telp) ?>" enctype="multipart/form-data">
               <div class="form-group">
                 <label for="nama_lengkap">Nama Lengkap<span class="label-required"> *</span></label>
-                <input type="text" class="form-control" id="nama_lengkap" required name="nama_lengkap" value="<?php echo $data->nama_lengkap ?>">
+                <input type="text" class="form-control" id="nama_lengkap" required name="nama_lengkap" value="<?php echo $data->nama_lengkap ?>" placeholder="Nama lengkap">
               </div>
 
               <div class="form-group">
-                <label for="password">Password<span class="label-required"> *</span></label>
-                <input type="text" class="form-control" id="password" required name="password" value="<?php echo $data->password ?>">
+                <label for="password">Password<span class="label-optional"> ( Optional )</span></label>
+                <input type="text" class="form-control" id="password" required name="password" aria-describedby="passwordHelp" placeholder="Password baru">
+                <small id="passwordHelp" class="form-text text-muted">Biarkan kosong jika tidak ingin mengganti password</small>
               </div>
 
               <div class="form-group">
                 <label for="kota">Kota<span class="label-optional">( Optional )</span></label>
-                <input type="text" class="form-control" id="kota" name="kota" value="<?php echo $data->kota ?>">
+                <input type="text" class="form-control" id="kota" name="kota" value="<?php echo $data->kota ?>" placeholder="Kota asal">
               </div>
 
               <div class="form-group">
                 <label for="master">Master<span class="label-required"> *</span></label>
-                <input type="text" class="form-control" id="master" required name="master" value="<?php echo $data->master ?>">
+                <input type="text" class="form-control" id="master" required name="master" value="<?php echo $data->master ?>" placeholder="Telp Master">
               </div>
 
               <div class="form-group">
                 <label for="alamat">Alamat<span class="label-optional">( Optional )</span></label>
-                <textarea type="text" class="form-control" id="alamat" cols="30" rows="5" name="alamat"><?php echo $data->alamat ?></textarea>
+                <textarea type="text" class="form-control" id="alamat" cols="30" rows="5" name="alamat" placeholder="Alamat lengkap"><?php echo $data->alamat ?></textarea>
               </div>
 
               <div class="form-group">
                 <label for="email">Email<span class="label-optional">( Optional )</span></label>
-                <input type="email" class="form-control" id="email" name="email" value="<?php echo $data->email ?>">
+                <input type="email" class="form-control" id="email" name="email" value="<?php echo $data->email ?>" placeholder="user@email.com">
               </div>
 
               <div class="form-group">
@@ -50,17 +51,17 @@
 
               <div class="form-group">
                 <label for="level">Level<span class="label-optional"></span></label>
-                <input type="text" class="form-control" id="level" name="level" value="<?php echo $data->level ?>">
+                <input type="text" class="form-control" id="level" name="level" value="<?php echo $data->level ?>" placeholder="Level user">
               </div>
 
               <div class="form-group">
                 <label for="blokir">Blokir<span class="label-optional"></span></label>
-                <input type="text" class="form-control" id="blokir" name="blokir" value="<?php echo $data->blokir ?>">
+                <input type="text" class="form-control" id="blokir" name="blokir" value="<?php echo $data->blokir ?>" placeholder="Y/N">
               </div>
 
               <div class="form-group">
                 <label for="id_session">ID Session<span class="label-optional"></span></label>
-                <input type="text" class="form-control" id="id_session" name="id_session" value="<?php echo $data->id_session ?>">
+                <input type="text" class="form-control" id="id_session" name="id_session" value="<?php echo $data->id_session ?>" placeholder="Session ID">
               </div>
 
               <div class="form-group">
@@ -71,7 +72,7 @@
 
               <div class="form-group">
                 <label for="paket">Paket</label>
-                <input type="text" class="form-control" id="paket" name="paket" value="<?php echo $data->paket ?>">
+                <input type="text" class="form-control" id="paket" name="paket" value="<?php echo $data->paket ?>" placeholder="Paket user">
               </div>
 
               <button type="submit" class="btn btn-primary">Submit</button>

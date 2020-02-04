@@ -93,7 +93,7 @@
               </div>
               <div class="form-group">
                 <label for="deskripsi">Deskripsi Barang <span class="label-optional">( Optional )</span></label>
-                <textarea name="deskripsi" id="deskripsi" cols="30" rows="5" class="form-control"><?= $barang->deskripsi?></textarea>
+                <textarea name="deskripsi" id="deskripsi" cols="30" rows="5" class="form-control" placeholder="Deskripsi barang anda"><?= $barang->deskripsi?></textarea>
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>

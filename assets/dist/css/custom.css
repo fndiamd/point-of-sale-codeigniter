@@ -74,3 +74,7 @@
 .hidden-guest{
   display: none;
 }
+
+.nav-sidebar .nav-treeview{
+  padding-left:10px;
+}

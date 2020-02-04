@@ -68,14 +68,13 @@ class Toko extends CI_Controller
   public function create()
   {
     if($this->session->userdata('role_admin') == 0){
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('toko'));
     }
 
     $data = [
       'title' => 'Tambah Toko Baru',
-      'page' => 'toko/form_tambah',
-      'user' => $this->user->getAll()
+      'page' => 'toko/form_tambah'
     ];
 
     $this->load->view('index', $data);
@@ -84,7 +83,7 @@ class Toko extends CI_Controller
   public function store()
   {
     if($this->session->userdata('role_admin') == 0){
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('toko'));
     }
 
@@ -141,13 +140,13 @@ class Toko extends CI_Controller
   public function edit($id)
   {
     if($this->session->userdata('role_admin') == 0){
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('toko'));
     }
 
     $merchant = $this->toko->getById($id);
     $data = [
-      'title' => 'Update ' . $merchant->nama_toko,
+      'title' => 'Update Toko - ' . $merchant->nama_toko,
       'page' => 'toko/form_update',
       'data' => $merchant,
       'user' => $this->user->getAll()
@@ -159,7 +158,7 @@ class Toko extends CI_Controller
   public function update($id)
   {
     if($this->session->userdata('role_admin') == 0){
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('toko'));
     }
 
@@ -180,7 +179,7 @@ class Toko extends CI_Controller
   public function delete($id)
   {
     if($this->session->userdata('role_admin') == 0){
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('toko'));
     }
     

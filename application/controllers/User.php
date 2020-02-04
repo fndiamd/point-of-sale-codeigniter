@@ -63,52 +63,6 @@ class User extends CI_Controller
     exit();
   }
 
-  public function store()
-  {
-    if ($this->session->userdata('role_admin') == 0) {
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
-      redirect(base_url('user'));
-    }
-
-    if (!$this->upload->do_upload('gambar')) {
-      $this->session->set_flashdata('error', $this->upload->display_errors());
-      redirect(base_url('user/create'));
-    } else {
-      $gambar = $this->upload->data();
-      $data = [
-        'nama_lengkap' => $this->input->post('nama_lengkap'),
-        'password' => $this->input->post('password'),
-        'alamat' => $this->input->post('alamat'),
-        'email' => $this->input->post('email'),
-        'no_telp' => $this->input->post('no_telp'),
-        'kota' => $this->input->post('kota'),
-        'level' => $this->input->post('level'),
-        'blokir' => $this->input->post('blokir'),
-        'id_session' => $this->input->post('id_session'),
-        'gbr' => $gambar['file_name'],
-        'paket' => $this->input->post('paket'),
-      ];
-    }
-
-    $this->db->insert('users', $data);
-    $this->session->set_flashdata('success', 'User berhasil ditambahkan');
-    redirect(base_url('user'));
-  }
-
-  public function create()
-  {
-    if ($this->session->userdata('role_admin') == 0) {
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
-      redirect(base_url('user'));
-    }
-
-    $data = [
-      'title' => 'Tambah User',
-      'page' => 'user/form_tambah',
-    ];
-    $this->load->view('index', $data);
-  }
-
   public function detail()
   {
     $id = $this->input->post('id');
@@ -119,17 +73,15 @@ class User extends CI_Controller
   public function edit($id)
   {
     if ($this->session->userdata('role_admin') == 0) {
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('user'));
     }
 
-    $this->db->where('no_telp', $id);
-    $user = $this->db->get('users')->row();
+    $user = $this->user->getById($id);
     $data = [
-      'title' => 'Update User',
+      'title' => 'Update User - '.$user->nama_lengkap,
       'page' => 'user/form_update',
-      'data' => $user,
-      'user' => $this->user->getAll()
+      'data' => $user
     ];
     $this->load->view('index', $data);
   }
@@ -137,13 +89,12 @@ class User extends CI_Controller
   function update($id)
   {
     if ($this->session->userdata('role_admin') == 0) {
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('user'));
     }
 
     $data = [
       'nama_lengkap' => $this->input->post('nama_lengkap'),
-      'password' => $this->input->post('password'),
       'alamat' => $this->input->post('alamat'),
       'email' => $this->input->post('email'),
       'no_telp' => $this->input->post('no_telp'),
@@ -153,6 +104,10 @@ class User extends CI_Controller
       'id_session' => $this->input->post('id_session'),
       'paket' => $this->input->post('paket'),
     ];
+
+    if(!empty($this->input->post('password'))){
+      $data['password'] = md5($this->input->post('password'));
+    }
 
     if (!empty($_FILES['gambar']['name'])) {
       if (!$this->upload->do_upload('gambar')) {
@@ -173,7 +128,7 @@ class User extends CI_Controller
   public function delete($id)
   {
     if ($this->session->userdata('role_admin') == 0) {
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('user'));
     }
 

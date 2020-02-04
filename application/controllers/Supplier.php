@@ -68,7 +68,7 @@ class Supplier extends CI_Controller
   public function store()
   {
     if ($this->session->userdata('role_admin') == 0) {
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('supplier'));
     }
 
@@ -102,7 +102,7 @@ class Supplier extends CI_Controller
   public function create()
   {
     if ($this->session->userdata('role_admin') == 0) {
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('supplier'));
     }
 
@@ -125,16 +125,16 @@ class Supplier extends CI_Controller
   public function edit($id)
   {
     if ($this->session->userdata('role_admin') == 0) {
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('supplier'));
     }
 
+    $supplier = $this->supplier->getById($id);
+
     $data = [
-      'title' => 'Update Supplier',
+      'title' => 'Update Supplier - '.$supplier->nama_supplier,
       'page' => 'supplier/form_update',
-      'kategori' => $this->kategori->getAll(),
-      'user' => $this->user->getAll(),
-      'data' => $this->supplier->getById($id)
+      'data' => $supplier
     ];
     $this->load->view('index', $data);
   }
@@ -142,7 +142,7 @@ class Supplier extends CI_Controller
   function update($id)
   {
     if ($this->session->userdata('role_admin') == 0) {
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('supplier'));
     }
 
@@ -177,7 +177,7 @@ class Supplier extends CI_Controller
   public function delete($id)
   {
     if ($this->session->userdata('role_admin') == 0) {
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('supplier'));
     }
 

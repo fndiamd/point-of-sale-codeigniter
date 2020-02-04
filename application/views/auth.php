@@ -42,7 +42,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope"></i></span>
                                     </div>
-                                    <input type="email" name="email" id="email" class="form-control" required placeholder="Enter your email">
+                                    <input type="email" name="email" id="email" class="form-control" required placeholder="Enter your email" autofocus>
                                 </div>
                             </div>
                             <div class="form-group">

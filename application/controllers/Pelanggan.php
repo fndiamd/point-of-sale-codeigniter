@@ -67,7 +67,7 @@ class Pelanggan extends CI_Controller
   public function store()
   {
     if($this->session->userdata('role_admin') == 0){
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('pelanggan'));
     }
 
@@ -108,7 +108,7 @@ class Pelanggan extends CI_Controller
   public function create()
   {
     if($this->session->userdata('role_admin') == 0){
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('pelanggan'));
     }
 
@@ -124,14 +124,16 @@ class Pelanggan extends CI_Controller
   public function edit($id)
   {
     if($this->session->userdata('role_admin') == 0){
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('pelanggan'));
     }
 
+    $pelanggan = $this->pelanggan->getById($id);
+
     $data = [
-      'title' => 'Update Pelanggan',
+      'title' => 'Update Pelanggan - '.$pelanggan->nama_pelanggan,
       'page' => 'pelanggan/form_update',
-      'data' => $this->pelanggan->getById($id),
+      'data' => $pelanggan,
       'user' => $this->user->getAll()
     ];
     $this->load->view('index', $data);
@@ -139,9 +141,8 @@ class Pelanggan extends CI_Controller
 
   function update($id)
   {
-
     if($this->session->userdata('role_admin') == 0){
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('pelanggan'));
     }
 
@@ -175,7 +176,7 @@ class Pelanggan extends CI_Controller
   public function delete($id)
   {
     if($this->session->userdata('role_admin') == 0){
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('pelanggan'));
     }
 

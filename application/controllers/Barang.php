@@ -69,7 +69,7 @@ class Barang extends CI_Controller
   public function create()
   {
     $data = [
-      'title' => 'Tambah Barang',
+      'title' => 'Tambah Barang Master',
       'page' => 'barang/form_tambah',
       'kategori' => $this->kategori->getAllMaster(),
     ];
@@ -110,10 +110,11 @@ class Barang extends CI_Controller
 
   public function edit($idbarang)
   {
+    $barang = $this->barang->getById($idbarang);
     $data = [
-      'title' => 'Update Barang',
+      'title' => 'Update Barang - '.$barang->nama_barang,
       'page' => 'barang/form_update',
-      'barang' => $this->barang->getById($idbarang),
+      'barang' => $barang,
       'kategori' => $this->kategori->getAllMaster(),
     ];
 

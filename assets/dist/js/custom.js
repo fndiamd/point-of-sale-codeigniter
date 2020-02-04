@@ -138,7 +138,7 @@ function detailPembelian(data) {
 }
 
 function detailKategori(data) {
-    setHtmlValue('modal-title', 'Edit kategori ' + data.nama_kategori)
+    setHtmlValue('modal-title', 'Edit - ' + data.nama_kategori)
     setInputValue('modalnama_kategori', data.nama_kategori)
     setInputValue('modaljenis_kategori', data.jenis_kategori)
     setInputValue('modalid_kategori', data.id_kategori)

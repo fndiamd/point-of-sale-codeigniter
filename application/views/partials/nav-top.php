@@ -20,12 +20,8 @@
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <div class="dropdown-divider"></div>
-                <a href="<?= base_url('user/setting') ?>" class="dropdown-item">
+                <a href="<?= base_url('admin/setting') ?>" class="dropdown-item">
                     <i class="fa fa-sliders-h mr-2"></i> Pengaturan akun
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <i class="fa fa-key mr-2"></i> Ganti Password
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="<?= base_url('auth/logout') ?>" class="dropdown-item">

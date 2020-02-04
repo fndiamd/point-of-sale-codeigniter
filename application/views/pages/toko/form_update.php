@@ -44,7 +44,7 @@
 
               <div class="form-group">
                 <label for="nohp">Nomor HP <span class="label-optional"> ( Optional )</span></label>
-                <input type="tel" pattern="\+?([ -]?\d+)+|\(\d+\)([ -]\d+)" class="form-control" id="nohp" name="nohp" value="<?= $data->nohp?>">
+                <input type="tel" pattern="\+?([ -]?\d+)+|\(\d+\)([ -]\d+)" class="form-control" id="nohp" name="nohp" value="<?= $data->nohp?>" placeholder="Format: +628XXXXXX / 08XXXXXX">
               </div>
 
               <button type="submit" class="btn btn-primary">Submit</button>

@@ -1,6 +1,6 @@
 <?php
 if (!$this->session->userdata('id_admin')) {
-  $this->session->set_flashdata('error', 'Anda harus sign-in terlebih dahulu!');
+  $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Anda harus sign-in terlebih dahulu!');
   redirect(base_url());
 }
 ?>
@@ -33,11 +33,11 @@ if (!$this->session->userdata('id_admin')) {
             <div class="col-12">
               <?php if ($this->session->flashdata('success')) : ?>
                 <div class="alert alert-success">
-                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><?= $this->session->flashdata('success'); ?>
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><i class="fa fa-check-circle"></i>&nbsp; <?= $this->session->flashdata('success'); ?>
                 </div>
               <?php elseif ($this->session->flashdata('error')) : ?>
                 <div class="alert alert-danger">
-                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><?= $this->session->flashdata('error'); ?>
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><i class="fa fa-exclamation-circle"></i>&nbsp; <?= $this->session->flashdata('error'); ?>
                 </div>
               <?php endif; ?>
             </div>

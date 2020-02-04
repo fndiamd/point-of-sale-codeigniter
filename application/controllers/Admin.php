@@ -27,7 +27,7 @@ class Admin extends CI_Controller
     $data = [];
     $no = 1;
     $role = ["Guest", "Admin"];
-    ($this->session->userdata('role_admin') == 0) ? $display = 'hidden-guest' : $display = ''; 
+    ($this->session->userdata('role_admin') == 0) ? $display = 'hidden-guest' : $display = '';
 
     foreach ($this->admin->getAll() as $row) {
       $data[] = array(
@@ -35,8 +35,8 @@ class Admin extends CI_Controller
         $row->nama,
         $row->email,
         $role[$row->role],
-        '<a href="' . base_url('admin/edit/' . $row->id_admin) . '" class="btn btn-warning '.$display.'"><i class="fa fa-edit"></i></a>
-        <button class="delete-button btn btn-danger '.$display.'" row-data="user-' . $row->id_admin . '" data-url="' . base_url('admin/delete/' . $row->id_admin) . '">
+        '<a href="' . base_url('admin/edit/' . $row->id_admin) . '" class="btn btn-warning ' . $display . '"><i class="fa fa-edit"></i></a>
+        <button class="delete-button btn btn-danger ' . $display . '" row-data="user-' . $row->id_admin . '" data-url="' . base_url('admin/delete/' . $row->id_admin) . '">
             <i class="fa fa-trash"></i>
         </button>'
       );
@@ -53,7 +53,7 @@ class Admin extends CI_Controller
   public function edit($id)
   {
     if ($this->session->userdata('role_admin') == 0) {
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('admin'));
     }
 
@@ -62,8 +62,7 @@ class Admin extends CI_Controller
     $data = [
       'title' => 'Update Admin',
       'page' => 'admin/form_update',
-      'data' => $admin,
-      'admin' => $this->admin->getAll()
+      'data' => $admin
     ];
     $this->load->view('index', $data);
   }
@@ -71,7 +70,7 @@ class Admin extends CI_Controller
   function update($id)
   {
     if ($this->session->userdata('role_admin') == 0) {
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('admin'));
     }
 
@@ -85,14 +84,6 @@ class Admin extends CI_Controller
       $data['password'] = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
     }
 
-    if ($id == $this->session->userdata('id_admin')) {
-      $sessionData = [
-        'nama_admin' => $data['nama'],
-        'role_admin' => $data['role']
-      ];
-      $this->session->set_userdata($sessionData);
-    }
-
     $this->db->where('id_admin', $id);
     $this->db->update('admin', $data);
     $this->session->set_flashdata('success', 'Admin berhasil update');
@@ -102,7 +93,7 @@ class Admin extends CI_Controller
   public function create()
   {
     if ($this->session->userdata('role_admin') == 0) {
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('admin'));
     }
 
@@ -116,7 +107,7 @@ class Admin extends CI_Controller
   public function store()
   {
     if ($this->session->userdata('role_admin') == 0) {
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('admin'));
     }
 
@@ -133,8 +124,8 @@ class Admin extends CI_Controller
 
   public function delete($id)
   {
-    if($this->session->userdata('role_admin') == 0){
-      $this->session->set_flashdata('error', '<i class="fa fa-exclamation-circle"></i>&nbsp; Access denied for guest!');
+    if ($this->session->userdata('role_admin') == 0) {
+      $this->session->set_flashdata('error', 'Access denied for guest!');
       redirect(base_url('admin'));
     }
 
@@ -143,6 +134,42 @@ class Admin extends CI_Controller
 
     header('Content-Type: application/json');
     echo json_encode(['section' => 'Admin', 'data' => $admin->nama]);
+  }
+
+  public function setting()
+  {
+    $this->db->where('id_admin', $this->session->userdata('id_admin'));
+    $admin = $this->db->get('admin')->row();
+    $data = [
+      'title' => 'Setting',
+      'page' => 'admin/form_setting',
+      'data' => $admin
+    ];
+    $this->load->view('index', $data);
+  }
+
+  public function settingProcess()
+  {
+    $data = [
+      'nama' => $this->input->post('nama'),
+      'email' => $this->input->post('email')
+    ];
+
+    if (!empty($this->input->post('password'))) {
+      $data['password'] = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+    }
+
+    $sessionData = [
+      'nama_admin' => $data['nama'],
+      'role_admin' => $data['role']
+    ];
+    $this->session->set_userdata($sessionData);
+
+
+    $this->db->where('id_admin', $this->session->userdata('id_admin'));
+    $this->db->update('admin', $data);
+    $this->session->set_flashdata('success', 'Data anda berhasil diperbarui');
+    redirect(base_url('admin'));
   }
 }
 
