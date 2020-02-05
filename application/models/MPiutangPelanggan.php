@@ -29,6 +29,7 @@ class MPiutangPelanggan extends CI_Model {
       $this->db->where('toko.id_toko', $id_toko);
     }
     $this->db->where('historipiutangpelanggan.tanggal BETWEEN "'.$awal.'" and "'.$akhir.'"');
+    $this->db->order_by('historipiutangpelanggan.tanggal', 'desc');
     return $this->db->get()->result();
   }
 

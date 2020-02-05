@@ -29,6 +29,7 @@ class MHutangPelanggan extends CI_Model
       $this->db->where('toko.id_toko', $id_toko);
     }
     $this->db->where('logpembayaranhutangpelanggan.tanggal BETWEEN "' . $awal . '" and "' . $akhir . '"');
+    $this->db->order_by('logpembayaranhutangpelanggan.tanggal', 'desc');
     return $this->db->get()->result();
   }
 }

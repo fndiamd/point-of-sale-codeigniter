@@ -41,6 +41,7 @@ class MPenjualan extends CI_Model {
       $this->db->where('toko.id_toko', $id_toko);
     }
     $this->db->where('penjualan.tanggal BETWEEN "'.$awal.'" and "'.$akhir.'"');
+    $this->db->order_by('penjualan.tanggal', 'desc');
     return $this->db->get()->result();
   }
 

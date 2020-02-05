@@ -27,6 +27,7 @@ class MHutangSupplier extends CI_Model {
       $this->db->where('toko.id_toko', $id_toko);
     }
     $this->db->where('logpembayaranhutangsupplier.tanggal BETWEEN "' . $awal . '" and "' . $akhir . '"');
+    $this->db->order_by('logpembayaranhutangsupplier.tanggal', 'desc');
     return $this->db->get()->result();
   }
 }
