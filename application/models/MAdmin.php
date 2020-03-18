@@ -20,6 +20,11 @@ class MAdmin extends CI_Model {
   }
 
   public function getAll($column = 'id_admin', $sort = 'desc'){
+    if($this->session->userdata('app_id') == 'wismilak'){
+      $this->db->where('app_id', 'wismilak');
+    } else {
+      $this->db->where('app_id !=', 'wismilak');
+    }
     $this->db->where('id_admin !=', $this->session->userdata('id_admin'));
     $this->db->order_by($column, $sort);
     return $this->db->get('admin')->result();

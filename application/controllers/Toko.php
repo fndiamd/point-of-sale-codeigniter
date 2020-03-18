@@ -99,7 +99,8 @@ class Toko extends CI_Controller
         'level' => 'master',
         'blokir' => 'N',
         'paket' => 1,
-        'master' => $this->input->post('telp_user')
+        'master' => $this->input->post('telp_user'),
+        'app_id' => $this->session->userdata('app_id')
       ],
       'dataToko' => [
         'nama_toko' => $this->input->post('nama_toko'),

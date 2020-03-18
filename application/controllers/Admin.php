@@ -35,6 +35,7 @@ class Admin extends CI_Controller
         $row->nama,
         $row->email,
         $role[$row->role],
+        $row->app_id,
         '<a href="' . base_url('admin/edit/' . $row->id_admin) . '" class="btn btn-warning ' . $display . '"><i class="fa fa-edit"></i></a>
         <button class="delete-button btn btn-danger ' . $display . '" row-data="user-' . $row->id_admin . '" data-url="' . base_url('admin/delete/' . $row->id_admin) . '">
             <i class="fa fa-trash"></i>
@@ -77,7 +78,8 @@ class Admin extends CI_Controller
     $data = [
       'nama' => $this->input->post('nama'),
       'role' => $this->input->post('role'),
-      'email' => $this->input->post('email')
+      'email' => $this->input->post('email'),
+      'app_id' => $this->input->post('app_id')
     ];
 
     if (!empty($this->input->post('password'))) {
@@ -115,7 +117,8 @@ class Admin extends CI_Controller
       'nama' => $this->input->post('nama'),
       'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
       'role' => $this->input->post('role'),
-      'email' => $this->input->post('email')
+      'email' => $this->input->post('email'),
+      'app_id' => $this->input->post('app_id')
     ];
     $this->db->insert('admin', $data);
     $this->session->set_flashdata('success', 'Admin berhasil ditambahkan');
@@ -164,7 +167,6 @@ class Admin extends CI_Controller
       'role_admin' => $data['role']
     ];
     $this->session->set_userdata($sessionData);
-
 
     $this->db->where('id_admin', $this->session->userdata('id_admin'));
     $this->db->update('admin', $data);

@@ -41,6 +41,20 @@
                   <?php endif; ?>
                 </select>
               </div>
+
+              <div class="form-group">
+                <label for="app_id">APP ID</label>
+                <select name="app_id" id="app_id" class="form-control">
+                  <?php if ($data->app_id == 'profit') : ?>
+                    <option value="profit" selected>Profit</option>
+                    <option value="wismilak">Wismilak</option>
+                  <?php else : ?>
+                    <option value="profit">Profit</option>
+                    <option value="wismilak" selected>Wismilak</option>
+                  <?php endif; ?>
+                </select>
+              </div>
+
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
           </div>

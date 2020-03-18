@@ -1,5 +1,6 @@
 .main-sidebar {
   background-color: #5c94bd !important;
+  min-width: 250px;
 }
 
 .select2-container--default .select2-selection--single {
@@ -77,4 +78,18 @@
 
 .nav-sidebar .nav-treeview{
   padding-left:10px;
+}
+
+.brand-link{
+  background-color: #FFF;
+  display:flex;
+}
+
+.brand-link span{
+  color: #000;
+  font-weight: 500;
+}
+
+.brand-image{
+  margin:auto;
 }

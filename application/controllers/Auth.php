@@ -31,7 +31,8 @@ class Auth extends CI_Controller
         $sessionData = [
           'id_admin' => $admin->id_admin,
           'nama_admin' => $admin->nama,
-          'role_admin' => $admin->role
+          'role_admin' => $admin->role,
+          'app_id' => $admin->app_id
         ];
         $this->session->set_userdata($sessionData);
         redirect(base_url('dashboard'));

@@ -15,6 +15,10 @@ class MPiutangPelanggan extends CI_Model {
     $this->db->from($this->table);
     $this->db->join('pelanggan', 'pelanggan.id_pelanggan='.$this->table.'.id_pelanggan', 'left');
     $this->db->join('toko', 'toko.user='.$this->table.'.user', 'left');
+    if($this->session->userdata('app_id') == 'wismilak'){
+      $this->db->join('users', 'users.master='.$this->table.'.user');
+      $this->db->where('users.app_id', 'wismilak');
+    }
     $this->db->order_by($column, $sort);
     return $this->db->get()->result();
   }
@@ -27,6 +31,10 @@ class MPiutangPelanggan extends CI_Model {
     $this->db->join('toko', 'toko.user='.$this->table.'.user', 'left');
     if ($id_toko != null) {
       $this->db->where('toko.id_toko', $id_toko);
+    }
+    if($this->session->userdata('app_id') == 'wismilak'){
+      $this->db->join('users', 'users.master='.$this->table.'.user');
+      $this->db->where('users.app_id', 'wismilak');
     }
     $this->db->where('historipiutangpelanggan.tanggal BETWEEN "'.$awal.'" and "'.$akhir.'"');
     $this->db->order_by('historipiutangpelanggan.tanggal', 'desc');

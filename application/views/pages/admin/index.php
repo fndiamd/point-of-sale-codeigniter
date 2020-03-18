@@ -21,6 +21,7 @@
                                     <th>Nama</th>
                                     <th>Email</th>
                                     <th>Role</th>
+                                    <th>APP ID</th>
                                     <?php if ($this->session->userdata('role_admin') != 0) : ?>
                                         <th>Action</th>
                                     <?php endif; ?>

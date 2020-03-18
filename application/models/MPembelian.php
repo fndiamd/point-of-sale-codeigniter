@@ -15,6 +15,10 @@ class MPembelian extends CI_Model {
     $this->db->join('supplier', 'supplier.id_supplier=pembelian.id_supplier', 'left');
     $this->db->join('barang', 'barang.id_barang=pembelian.id_barang', 'left');
     $this->db->join('toko', 'toko.user=pembelian.user');
+    if($this->session->userdata('app_id') == 'wismilak'){
+      $this->db->join('users', 'users.master='.$this->table.'.user');
+      $this->db->where('users.app_id', 'wismilak');
+    }
     $this->db->order_by($column, $sort);
     return $this->db->get()->result();
   }
@@ -37,6 +41,10 @@ class MPembelian extends CI_Model {
     $this->db->join('toko', 'toko.user=pembelian.user');
     if ($id_toko != null) {
       $this->db->where('toko.id_toko', $id_toko);
+    }
+    if($this->session->userdata('app_id') == 'wismilak'){
+      $this->db->join('users', 'users.master='.$this->table.'.user');
+      $this->db->where('users.app_id', 'wismilak');
     }
     $this->db->where('pembelian.tanggal BETWEEN "'.$awal.'" and "'.$akhir.'"');
     $this->db->order_by('pembelian.tanggal', 'desc');

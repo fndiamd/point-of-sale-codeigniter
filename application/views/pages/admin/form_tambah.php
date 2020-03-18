@@ -35,6 +35,15 @@
                   <option value="1">Admin</option>
                 </select>
               </div>
+
+              <div class="form-group">
+                <label for="app_id">APP ID</label>
+                <select name="app_id" id="app_id" class="form-control">
+                  <option value="profit" selected>Profit</option>
+                  <option value="wismilak">Wismilak</option>
+                </select>
+              </div>
+
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
           </div>

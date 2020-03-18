@@ -15,6 +15,9 @@ class MUser extends CI_Model {
   }
 
   public function getAll($column = 'tanggal', $sort = 'desc'){
+    if($this->session->userdata('app_id') == 'wismilak'){
+      $this->db->where('app_id', 'wismilak');
+    }
     $this->db->order_by($column, $sort);
     return $this->db->get('users')->result();
   }
