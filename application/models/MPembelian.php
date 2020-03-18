@@ -19,7 +19,7 @@ class MPembelian extends CI_Model {
       $this->db->join('users', 'users.master='.$this->table.'.user');
       $this->db->where('users.app_id', 'wismilak');
     }
-    $this->db->order_by($column, $sort);
+    $this->db->order_by($this->table.'.'.$column, $sort);
     return $this->db->get()->result();
   }
 

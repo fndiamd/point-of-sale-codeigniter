@@ -14,7 +14,11 @@ class MHutangSupplier extends CI_Model {
     $this->db->from($this->table);
     $this->db->join('supplier', 'supplier.id_supplier='.$this->table.'.id_supplier', 'left');
     $this->db->join('toko', 'toko.user='.$this->table.'.user', 'left');
-    $this->db->order_by($column, $sort);
+    if($this->session->userdata('app_id') == 'wismilak'){
+      $this->db->join('users', 'users.master='.$this->table.'.user');
+      $this->db->where('users.app_id', 'wismilak');
+    }
+    $this->db->order_by($this->table.'.'.$column, $sort);
     return $this->db->get()->result();
   }
 
@@ -25,6 +29,10 @@ class MHutangSupplier extends CI_Model {
     $this->db->join('toko', 'toko.user=' . $this->table . '.user', 'left');
     if ($id_toko != null) {
       $this->db->where('toko.id_toko', $id_toko);
+    }
+    if($this->session->userdata('app_id') == 'wismilak'){
+      $this->db->join('users', 'users.master='.$this->table.'.user');
+      $this->db->where('users.app_id', 'wismilak');
     }
     $this->db->where('logpembayaranhutangsupplier.tanggal BETWEEN "' . $awal . '" and "' . $akhir . '"');
     $this->db->order_by('logpembayaranhutangsupplier.tanggal', 'desc');

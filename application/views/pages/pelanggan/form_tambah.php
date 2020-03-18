@@ -17,8 +17,9 @@
                 <label for="user">Toko <span class="label-required"> *</span></label>
                 <select name="user" class="form-control select-plugin select2-toko" id="user" required>
                   <option value="" selected>--- Pilih Toko ---</option>
-                  <option value="0">Master</option>
-                  
+                  <?php if ($this->session->userdata('app_id') != 'wismilak') : ?>
+                    <option value="0">Master</option>
+                  <?php endif; ?>
                 </select>
               </div>
               <div class="form-group">

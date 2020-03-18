@@ -35,7 +35,11 @@ class MKategori extends CI_Model
 
   public function kategoriUser($user)
   {
-    $this->db->where("user='0' OR user='$user'");
+    if($this->session->userdata('app_id') == 'wismilak'){
+      $this->db->where('user', $user);
+    }else{
+      $this->db->where("user='0' OR user='$user'");
+    }
     $this->db->order_by('id_kategori', 'desc');
     return $this->db->get('kategori')->result();
   }
