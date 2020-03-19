@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login - Point of sale</title>
-    <link rel="shortcut icon" href="<?= base_url('assets/dist/img/profit.png')?>" type="image/x-icon">
+    <title>Sign-in | PROFIT</title>
+    <link rel="shortcut icon" href="<?= base_url('assets/dist/img/logo/aplikasi kasir logo lengkap_rev-22.png') ?>" type="image/x-icon">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?= base_url('assets/plugins/font-awesome/css/all.css') ?>">
     <!-- Bootstrap -->
@@ -32,7 +32,10 @@
                 <?php endif; ?>
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title text-center">Administrator Sign-in</h4>
+                        <!-- <h4 class="card-title text-center">Administrator Sign-in</h4> -->
+                        <div style="display:flex">
+                            <img src="<?= base_url('assets/dist/img/logo/aplikasi kasir logo lengkap_rev-22.png') ?>" width="155" height="55" style="margin:auto">
+                        </div>
                     </div>
                     <div class="card-body">
                         <form action="<?= base_url('auth/doLogin') ?>" method="post">
@@ -54,7 +57,7 @@
                                     <input type="password" name="password" id="password" class="form-control" required placeholder="Enter your password">
                                 </div>
                             </div>
-                            <button class="btn btn-primary" type="submit"><i class="fa fa-sign-in"></i>&nbsp;&nbsp;Sign in</button>
+                            <button class="btn btn-primary" type="submit"><i class="fa fa-sign-in-alt"></i>&nbsp;&nbsp;Sign in</button>
                         </form>
                     </div>
                 </div>
