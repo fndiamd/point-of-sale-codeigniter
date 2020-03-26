@@ -41,7 +41,11 @@
                     <div class="info-box-content">
                         <span class="info-box-text">Barang</span>
                         <span class="info-box-number"><?= number_format($total_barang, 0, ',', '.') ?></span>
-                        <a href="<?= base_url('barang') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        <?php if ($this->session->userdata('app_id') == 'wismilak') : ?>
+                            <a href="<?= base_url('barang-toko') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        <?php else : ?>
+                            <a href="<?= base_url('barang') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        <?php endif ?>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
